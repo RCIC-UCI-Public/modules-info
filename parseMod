@@ -1,24 +1,23 @@
 #!/usr/bin/env python
 
-# Parse /var/log/messages files and count
-# what modules were called 
-# As an arguetn provide files(s) path.
-# Without an argument all /var/log/messages* files are processed
+# Parse /var/log/messages files and count called modules 
+# Arguments:  list of files to process, if empty use all /var/log/messages* files
 
 from collections import defaultdict
 import sys
 import os
+from getModInfo import ModType, ModInfo
 
 class  FileParser:
     def __init__(self, args):
-        self.args = args[1:]          # command ine arguments
+        self.args = args[1:]          # command line arguments
         self.basedir = "/var/log/"    # default drectory for system messages files
         self.files = []               # file names to parse
 
         self.parseArgs()
 
     def exitError(self):
-        print self.errmsg
+        print (self.errmsg)
         sys.exit(1)
 
     def parseArgs(self):
@@ -42,13 +41,13 @@ class  FileParser:
 
     def getModuleLines(self):
         self.maxl = 0 
+        # create dictionary with key:value as modulename:number_times_called
         output = defaultdict(int)
         for log in self.files:
             f =  open(log) 
             for i, line in enumerate(f):
                 if line.find("module-hpc:") < 0: continue
                 module = line.split()[-1]
-                # dictionary key:value is {modulename: number_of_times_called}
                 output[module] += 1
                 ll = len(module)
                 if ll > self.maxl:
@@ -60,18 +59,30 @@ class  FileParser:
         self.entries = output # get all entries
         self.entriesTotal = len(self.entries)
 
-    def printAnswer(self):
+    def printUsedModules(self):
         self.getModuleLines()
         sortedEnries = sorted(self.entries.items(), key=lambda x: x[1], reverse=True)
 
+        print ("\n===== Total different modules used: %d\n" % self.entriesTotal)
         for i in sortedEnries:
-            print '{sw:{width}s} {num:12d}'.format(sw=i[0], num=i[1], width=self.maxl)
-        print "\nTotal different modules used:", self.entriesTotal
+            print ('{sw:{width}s} {num:12d}'.format(sw=i[0], num=i[1], width=self.maxl))
 
+    def printUnusedModules(self):
+        modinfo = ModInfo()
+        alist = sorted(modinfo.getModNameList())
+        blist = set(sorted(self.entries.keys()))
+        unused = [i for i in alist if i not in blist]
+
+        print ("\n===== Total unused modules: %d\n" % len(unused))
+        for i in unused: 
+            print (i)
 
     def run(self):
-        self.printAnswer()
+        self.printUsedModules()
+        self.printUnusedModules()
 
-app = FileParser(sys.argv)
-app.run()
+##### Run from a command line #####
+if __name__ == "__main__":
+    app = FileParser(sys.argv)
+    app.run()
 
