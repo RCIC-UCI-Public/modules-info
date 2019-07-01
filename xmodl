@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Purpose: extract lines with "module-hpc"  from /var/log/messages* files
+# Arguments: list of files names to process. 
+#            If empty, assume messages* files in the current directory
+
+if [ $# -eq 0 ];  then
+    echo "No arguments supplied. Assuming files in current directory `pwd`"
+    files=`ls messages*`
+else
+    files=$@
+fi
+
+prog=$0
+
+help () {
+    echo $"Usage: $prog [files]"
+    echo "        [files] - list of messages* files"
+    echo "        When empty, assume messages* files in the current directory"
+    exit 0
+}
+
+case "$1" in
+  -*h*|*help)
+	help
+	;;
+  *)
+        ;;
+esac
+
+for File in $files; do
+    if [ ! -f $File ]; then
+        echo "Skip $File: not a file"
+        continue
+    fi
+    if [[ $File =~ ".gz" ]];  then
+        gunzip $File
+        raw=${File%.gz}
+        Compress=True
+    else
+        raw=$File
+    fi
+    modfile=${raw//messages/modules}
+    grep module-hpc $raw > $modfile
+    echo  "Wrote " $modfile
+    if [ $Compress ]; then
+        gzip $raw
+        compress=False
+    fi
+done
