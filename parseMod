@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
-# Parse /var/log/messages files and count called modules 
+# Parse files created from /var/log/messages files and count what modules
+# were called per parsing lines with 'module-hpc'. 
 # Arguments:  list of files to process, if empty use all /var/log/messages* files
+# NOTE: using unprocessed /var/log/messages files is slow, extract needed liens by 
+# running 'xmodl' script on /var/log/messages first then use processsed files.
 
-from collections import defaultdict
 import sys
 import os
-from getModInfo import ModType, ModInfo
+from collections import defaultdict
+from getModInfo import ModInfo
 
 class  FileParser:
     def __init__(self, args):
@@ -39,42 +42,45 @@ class  FileParser:
                 if i.find("messages") == 0:
                     self.files.append(self.basedir + i)
 
-    def getModuleLines(self):
+    def countTimesLoaded(self):
         self.maxl = 0 
         # create dictionary with key:value as modulename:number_times_called
-        output = defaultdict(int)
+        self.count = defaultdict(int)
         for log in self.files:
             f =  open(log) 
             for i, line in enumerate(f):
                 if line.find("module-hpc:") < 0: continue
                 module = line.split()[-1]
-                output[module] += 1
+                self.count[module] += 1
                 ll = len(module)
                 if ll > self.maxl:
                     self.maxl = ll
 
-        # to get only entries with more than 1 count
-        # self.entries = {k: v for k, v in output.items() if v > 1}
+        self.countTotal = len(self.count)
 
-        self.entries = output # get all entries
-        self.entriesTotal = len(self.entries)
+        # NOTE to get only entries with more than 1 count
+        # self.count = {k: v for k, v in self.count.items() if v > 1}
+
+    def getUsedModules(self):
+        self.countTimesLoaded()
+        self.used = sorted(self.count.items(), key=lambda x: x[1], reverse=True)
+
+    def getUnusedModules(self):
+        self.modinfo = ModInfo()
+        alist = sorted(self.modinfo.getModNameList())
+        blist = set(sorted(self.count.keys()))
+        self.unused = [i for i in alist if i not in blist]
 
     def printUsedModules(self):
-        self.getModuleLines()
-        sortedEnries = sorted(self.entries.items(), key=lambda x: x[1], reverse=True)
-
-        print ("\n===== Total different modules used: %d\n" % self.entriesTotal)
-        for i in sortedEnries:
+        self.getUsedModules()
+        print ("\n===== Total unique used modules: %d" % self.countTotal)
+        for i in self.used:
             print ('{sw:{width}s} {num:12d}'.format(sw=i[0], num=i[1], width=self.maxl))
 
     def printUnusedModules(self):
-        modinfo = ModInfo()
-        alist = sorted(modinfo.getModNameList())
-        blist = set(sorted(self.entries.keys()))
-        unused = [i for i in alist if i not in blist]
-
-        print ("\n===== Total unused modules: %d\n" % len(unused))
-        for i in unused: 
+        self.getUnusedModules()
+        print ("\n===== Total unique unused modules: %d" % len(self.unused))
+        for i in self.unused: 
             print (i)
 
     def run(self):
