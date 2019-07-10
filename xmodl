@@ -2,7 +2,7 @@
 
 # Purpose: extract lines with "module-hpc"  from /var/log/messages* files
 # Arguments: list of files names to process. 
-#            If empty, assume messages* files in the current directory
+# If empty, assume messages* files in the current directory
 
 if [ $# -eq 0 ];  then
     echo "No arguments supplied. Assuming files in current directory `pwd`"
@@ -11,12 +11,20 @@ else
     files=$@
 fi
 
-prog=$0
+prog=`basename $0`
 
 help () {
-    echo $"Usage: $prog [files]"
-    echo "        [files] - list of messages* files"
-    echo "        When empty, assume messages* files in the current directory"
+
+    printf "\nNAME\n       $prog - eXtract MODule Lines from log files\n"
+    printf "SYNOPSIS\n       $prog [OPTION]... [FILE]...\n"
+    printf "DESCRIPTION\n"
+    printf "       Extract lines with 'module-hpc' from the /var/log/messages-DATE files.\n"
+    printf "       For each processed messages-DATE file generate an output file modules-DATE.\n"
+    printf "       If no  arguments are given on the command line assume messages-DATE files\n"
+    printf "       in the  current directory.\n\n"
+    printf "       -h, --h, -help, --help, help\n"
+    printf "              print usage info\n\n"
+
     exit 0
 }
 
