@@ -3,7 +3,7 @@
 # Parse files created from /var/log/messages files and count what modules
 # were called per parsing lines with 'module-hpc'. 
 # Arguments:  list of files to process, if empty use all /var/log/messages* files
-# NOTE: using unprocessed /var/log/messages files is slow, extract needed liens by 
+# NOTE: using unprocessed /var/log/messages files is slow, extract needed lines by 
 # running 'xmodl' script on /var/log/messages first then use processsed files.
 
 import sys
@@ -13,11 +13,25 @@ from getModInfo import ModInfo
 
 class  FileParser:
     def __init__(self, args):
+        self.prog = os.path.basename(args[0])
         self.args = args[1:]          # command line arguments
-        self.basedir = "/var/log/"    # default drectory for system messages files
+        self.basedir = "/var/log/"    # default directory for system messages files
         self.files = []               # file names to parse
+        print(args[0])
 
         self.parseArgs()
+
+    def exitHelp(self):
+        helpstr = "NAME\n        %s - parse log files and count how often modules were loaded\n" % self.prog \
+                + "\nSYNOPSIS\n        %s [OPTION] [FILE]...\n" % self.prog \
+                + "\nDESCRIPTION\n        Parse FILEs provided on a command line and find how many times modules were loaded.\n" \
+                + "        If none provided, will parse /var/log/messages* files. The output contains per each used\n" \
+                + "        module a module name and a count of times loaded and a list of modules that were not loaded.\n\n" \
+                + "        NOTE: using unprocessed /var/log/messages files can be slow. Process them first\n" \
+                + "        with 'xmodl' and then run this program on processsed files.\n\n" \
+                + "        -h, --h, --help, help\n              Print above usage info.\n" 
+        print (helpstr)
+        sys.exit(0)
 
     def exitError(self):
         print (self.errmsg)
@@ -26,6 +40,8 @@ class  FileParser:
     def parseArgs(self):
         if self.args == []:
             self.getDefaultFiles()
+        elif self.args[0] in ["-h","--h","help","-help","--help"]:
+            self.exitHelp()
         else:
             for i in self.args:
                 if os.path.isfile(i):
