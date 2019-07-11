@@ -17,6 +17,8 @@ class ModType:
         self.count = 0
         self.nologger = [] # list of modules that have no logging
         self.loaded = []   # list of loaded modules 
+        self.names = {}    # dictionary  where keys are module names per module filenames
+                           # and values are module names claimed on logger line
 
     def addModule(self, line):
         items = line.split()
@@ -38,18 +40,28 @@ class ModType:
         f.close()
         return txt
 
-    def checkLogging(self,txt, name):
-        if txt.find("/bin/logger") > -1 :
-            return "True"
-        else:
-            self.nologger.append(name)
-            return "False"
-
     def listModNames(self):
         listmn = []
         for i in self.modules:
             listmn.append(i[0])
         return listmn
+
+    def checkLogging(self,txt, name):
+        index = txt.find("/bin/logger")
+        if index > -1 :
+            self.checkName(txt[index:], name)
+            return "True"
+        else:
+            self.nologger.append(name)
+            return "False"
+
+    def checkName(self, txt, name):
+        line = txt.splitlines()[0]
+        line = line.replace('"','',2) # rm quotes if module name was surrounded by by them
+        claimedName = line.split()[-1]
+        if claimedName == name:
+            return
+        self.names[name] = claimedName
 
     def checkLoad(self,txt):
         load = []
@@ -69,7 +81,7 @@ class ModType:
            i.append(self.checkLogging(txt, i[0]))
            i.append(self.checkLoad(txt))
         self.loaded = list(set(self.loaded))
-        self.nologger = list(set(self.nologger))
+        self.nologger = sorted(list(set(self.nologger)))
 
     def listLoaded(self):
         return self.loaded 
@@ -85,14 +97,50 @@ class ModType:
         for mod in self.modules:
             print (mod)
 
+    def printStats(self):
+        print ("\n### Modules in %s: %d" % (self.path, self.count))
+        print ("    ### Modules without logging: %d" % len(self.nologger))
+        for mod in self.nologger:
+            print ("        %s" % mod)
+        print ("    ### Modules with inconsistent names: %d" % len(self.names))
+        for mod in self.names.items():
+            print ("%40s:  %s" % mod)
+
+
 class ModInfo:
-    def __init__(self):
+    def __init__(self, args=None):
+        self.args = args
         self.cmd = ['/data/apps/modules/Modules/%s/bin/modulecmd' % os.environ['MODULE_VERSION'],'python', 'avail', '-lv']
         self.modtypes = [] # list of ModType instances, one per module type: software, bio, mpi, compielrs, etc
         self.nologger = [] # list of modules that have no logging across all module types
         self.loaded = []   # list of loaded modules across all module types
 
+        self.parseArgs()
         self.readInfo()
+
+    def parseArgs(self):
+        if not self.args:
+            return
+        if len(self.args) == 1:
+            return 
+
+        self.prog = self.args[0]
+        if self.args[1] in ["-h","--h","help","-help","--help"]:
+            self.exitHelp()
+        return
+
+    def exitHelp(self):
+        helpstr = "NAME\n        %s - collect module info\n" % self.prog \
+                + "\nSYNOPSIS\n        %s [OPTION]\n" % self.prog \
+                + "\nDESCRIPTION\n" \
+                + "        Collect informtion about modules installed on the host using 'modules avail'. Checks available\n" \
+                + "        modules, parses their modulefiles, extracts info about logging, name and loaded modules for each\n" \
+                + "        category of modules (per MODULEPATH entries). Called as a python module from parseMod or modGraph.\n" \
+                + "        When executing on a command line, outputs collected info on stdout.\n\n" \
+                + "        -h, --h, --help, help\n              Print usage info.\n\n" 
+
+        print (helpstr)
+        sys.exit(0)
 
     def readInfo(self):
         '''Parse the output of the 'module avail' command and create a list of ModType instances'''
@@ -131,7 +179,7 @@ class ModInfo:
     def printTypes(self):
         '''print info for each ModType'''
         for item in self.modtypes:
-            item.printInfo()
+            item.printStats()
 
     def getModNameList(self):
         '''return a list of all modules names'''
@@ -151,6 +199,6 @@ class ModInfo:
 
 ##### Run from a command line #####
 if __name__ == "__main__":
-    app = ModInfo()
+    app = ModInfo(sys.argv)
     app.run()
 
