@@ -17,7 +17,6 @@ class  FileParser:
         self.args = args[1:]          # command line arguments
         self.basedir = "/var/log/"    # default directory for system messages files
         self.files = []               # file names to parse
-        print(args[0])
 
         self.parseArgs()
 
@@ -65,7 +64,7 @@ class  FileParser:
         for log in self.files:
             f =  open(log) 
             for i, line in enumerate(f):
-                if line.find("module-hpc:") < 0: continue
+                if line.find("module-hpc") < 0: continue
                 module = line.split()[-1]
                 self.count[module] += 1
                 ll = len(module)
