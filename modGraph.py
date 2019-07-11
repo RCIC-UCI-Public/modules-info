@@ -6,7 +6,6 @@
 import os
 import sys
 import itertools
-from graphviz import Digraph
 from getModInfo import ModInfo, ModType
 
 class  ModGraph:
@@ -32,7 +31,8 @@ class  ModGraph:
                 + "        provided assumes none were unused. Checks available modules, parse their modulefiles\n" \
                 + "        using info about logging and loaded modules and and build a dependecy graph for each\n" \
                 + "        category of modules (per MODULEPATH entries).\n\n" \
-                + "        -h, --h, --help, help\n              Print above usage info.\n" 
+                + "        -h, --h, --help, help\n              Print usage info.\n\n" \
+                + "        NOTE: this program requires python module graphviz and RPM graphviz (for dot) to be installed.\n "
         print (helpstr)
         sys.exit(0)
 
@@ -102,35 +102,35 @@ class  ModGraph:
 
     def addLegend(self, name, color1, color2, color3):
         # create legend  and set its attributes
-        c = Digraph('clusterLegend')
-        c.attr(label="Color legend for '%s' modules" % name, fontsize='18', fontname="Numbus-Roman")
-        c.attr(color='snow2')
-        c.attr(style='filled')
+        self.c.attr(label="Color legend for '%s' modules" % name, fontsize='18', fontname="Numbus-Roman")
+        self.c.attr(color='snow2')
+        self.c.attr(style='filled')
 
         # define legend nodes
         label1 = "module without logging"
         label2 = "module unused"
-        c.node(label1, fillcolor=color1)
-        c.node(label2, fillcolor=color2)
-        c.node("A", fillcolor=color3)
-        c.node("B", fillcolor=color3)
+        self.c.node(label1, fillcolor=color1)
+        self.c.node(label2, fillcolor=color2)
+        self.c.node("A", fillcolor=color3)
+        self.c.node("B", fillcolor=color3)
 
         # line all nodes on one level
-        c.edge(label2, label1)
+        self.c.edge(label2, label1)
 
         # dont draw lines between nodes
-        c.edge_attr['style'] = 'invis'
+        self.c.edge_attr['style'] = 'invis'
 
         # use colored box for the node
-        c.node_attr['style'] = 'filled'
+        self.c.node_attr['style'] = 'filled'
 
         # add edge explanation
-        c.edge("A","B",style="bold", label="A loads B")
+        self.c.edge("A","B",style="bold", label="A loads B")
 
         # add legend as a subgraph
-        self.g.subgraph(c)
+        self.g.subgraph(self.c)
 
     def makeGraph(self, mtype):
+        from graphviz import Digraph
         color1 = 'lightsalmon1'
         color2 = 'lightblue1'
         color3 = 'white'
@@ -138,10 +138,14 @@ class  ModGraph:
         self.g = Digraph(filename=mtype.name, directory=self.gdir, format=self.render)
         self.g.graph_attr['rankdir'] = 'LR'
  
+        # add nodes and edges
         if not self.findNodesEdges(mtype):
             return
         self.addNodes(color1, color2)
         self.addEdges()
+
+        # create legend subgraph 
+        self.c = Digraph('clusterLegend')
         self.addLegend(mtype.modTypeName(), color1, color2, color3)
 
         # output graph source  and figure  files
