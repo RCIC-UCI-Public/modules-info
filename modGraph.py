@@ -11,12 +11,13 @@ from getModInfo import ModInfo, ModType
 
 class  ModGraph:
     def __init__(self, args):
+        self.prog = os.path.basename(args[0])
         self.args = args[1:]     # command line arguments
         self.modinfo = None      # avail modules info
         self.unused = []         # list of unused modules, get from the input file
         self.gdir = "dot-graphs" # directory for saving  graphviz source and figure files
         self.render = 'png'      # rendering output format
-        self.nologger = []      # list of modules that do not call logger
+        self.nologger = []       # list of modules that do not call logger
 
         self.parseArgs()
 
@@ -24,10 +25,22 @@ class  ModGraph:
         print (self.errmsg)
         sys.exit(1)
 
+    def exitHelp(self):
+        helpstr = "NAME\n        %s - create module dependencies graphs\n" % self.prog \
+                + "\nSYNOPSIS\n        %s [OPTION] [FILE]\n" % self.prog \
+                + "\nDESCRIPTION\n        Parse FILE provided on a command line to get unused modules, if none\n" \
+                + "        provided assumes none were unused. Checks available modules, parse their modulefiles\n" \
+                + "        using info about logging and loaded modules and and build a dependecy graph for each\n" \
+                + "        category of modules (per MODULEPATH entries).\n\n" \
+                + "        -h, --h, --help, help\n              Print above usage info.\n" 
+        print (helpstr)
+        sys.exit(0)
+
     def parseArgs(self):
-        # TODO arguments 
         if self.args == []:
             self.file = None
+        elif self.args[0] in ["-h","--h","help","-help","--help"]:
+            self.exitHelp()
         else:
             if os.path.isfile(self.args[0]):
                 self.file = self.args[0]
@@ -75,11 +88,10 @@ class  ModGraph:
     def addNodes(self, color1, color2):
         # add graph nodes per module names
         for n in self.nodes:
-            if n in self.unused:
-                if n in self.nologger: 
-                    self.g.node(n, fillcolor=color1, style='filled')
-                else:
-                    self.g.node(n, fillcolor=color2, style='filled')
+            if n in self.nologger: 
+                self.g.node(n, fillcolor=color1, style='filled')
+            elif n in self.unused:
+                self.g.node(n, fillcolor=color2, style='filled')
             else:
                 self.g.node(n)
 
@@ -98,21 +110,22 @@ class  ModGraph:
         # define legend nodes
         label1 = "module without logging"
         label2 = "module unused"
-        label3 = "module name"
         c.node(label1, fillcolor=color1)
         c.node(label2, fillcolor=color2)
-        c.node(label3, fillcolor=color3)
+        c.node("A", fillcolor=color3)
+        c.node("B", fillcolor=color3)
 
         # line all nodes on one level
-        c.edge(label3, label2)
         c.edge(label2, label1)
 
         # dont draw lines between nodes
         c.edge_attr['style'] = 'invis'
 
         # use colored box for the node
-        c.node_attr['shape'] = 'none'
         c.node_attr['style'] = 'filled'
+
+        # add edge explanation
+        c.edge("A","B",style="bold", label="A loads B")
 
         # add legend as a subgraph
         self.g.subgraph(c)
