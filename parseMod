@@ -28,7 +28,7 @@ class  FileParser:
                 + "        module a module name and a count of times loaded and a list of modules that were not loaded.\n\n" \
                 + "        NOTE: using unprocessed /var/log/messages files can be slow. Process them first\n" \
                 + "        with 'xmodl' and then run this program on processsed files.\n\n" \
-                + "        -h, --h, --help, help\n              Print above usage info.\n" 
+                + "        -h, --h, --help, help\n              Print usage info.\n" 
         print (helpstr)
         sys.exit(0)
 
