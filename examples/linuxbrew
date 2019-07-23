@@ -1,0 +1,102 @@
+digraph {
+	graph [rankdir=LR]
+	"brew/a5" [fillcolor=lightsalmon1 style=filled]
+	"brew/abyss" [fillcolor=lightsalmon1 style=filled]
+	"brew/aragorn" [fillcolor=lightsalmon1 style=filled]
+	"brew/bamtools" [fillcolor=lightsalmon1 style=filled]
+	"brew/barrnap" [fillcolor=lightsalmon1 style=filled]
+	"brew/binutils" [fillcolor=lightsalmon1 style=filled]
+	"brew/blast" [fillcolor=lightsalmon1 style=filled]
+	"brew/blat" [fillcolor=lightsalmon1 style=filled]
+	"brew/bowtie" [fillcolor=lightsalmon1 style=filled]
+	"brew/bowtie2" [fillcolor=lightsalmon1 style=filled]
+	"brew/bpipe" [fillcolor=lightsalmon1 style=filled]
+	"brew/byobu" [fillcolor=lightsalmon1 style=filled]
+	"brew/clhep" [fillcolor=lightsalmon1 style=filled]
+	"brew/express" [fillcolor=lightsalmon1 style=filled]
+	"brew/fastqc" [fillcolor=lightsalmon1 style=filled]
+	"brew/gcc" [fillcolor=lightsalmon1 style=filled]
+	"brew/geant4" [fillcolor=lightsalmon1 style=filled]
+	"brew/glibc" [fillcolor=lightsalmon1 style=filled]
+	"brew/gmap-gsnap" [fillcolor=lightsalmon1 style=filled]
+	"brew/gsl" [fillcolor=lightsalmon1 style=filled]
+	"brew/hmmer" [fillcolor=lightsalmon1 style=filled]
+	"brew/hotspot" [fillcolor=lightsalmon1 style=filled]
+	"brew/htslib" [fillcolor=lightsalmon1 style=filled]
+	"brew/igraph" [fillcolor=lightsalmon1 style=filled]
+	"brew/igv" [fillcolor=lightsalmon1 style=filled]
+	"brew/igvtools" [fillcolor=lightsalmon1 style=filled]
+	"brew/infernal" [fillcolor=lightsalmon1 style=filled]
+	"brew/inter-views" [fillcolor=lightsalmon1 style=filled]
+	"brew/neuron" [fillcolor=lightsalmon1 style=filled]
+	"brew/parallel" [fillcolor=lightsalmon1 style=filled]
+	"brew/picard-tools" [fillcolor=lightsalmon1 style=filled]
+	"brew/prodigal" [fillcolor=lightsalmon1 style=filled]
+	"brew/prokka" [fillcolor=lightsalmon1 style=filled]
+	"brew/samtools" [fillcolor=lightsalmon1 style=filled]
+	"brew/snpeff" [fillcolor=lightsalmon1 style=filled]
+	"brew/tbl2asn" [fillcolor=lightsalmon1 style=filled]
+	"brew/tmux" [fillcolor=lightsalmon1 style=filled]
+	"brew/trans-abyss" [fillcolor=lightsalmon1 style=filled]
+	"brew/trinity" [fillcolor=lightsalmon1 style=filled]
+	"brew/vcftools" [fillcolor=lightsalmon1 style=filled]
+	"brew/velvetoptimiser" [fillcolor=lightsalmon1 style=filled]
+	"enthought_python/7.3.2"
+	java
+	"java/1.7"
+	perl
+	"brew/a5" -> perl
+	"brew/barrnap" -> perl
+	"brew/barrnap" -> "brew/hmmer"
+	"brew/bpipe" -> java
+	"brew/byobu" -> "brew/tmux"
+	"brew/fastqc" -> java
+	"brew/gcc" -> "brew/glibc"
+	"brew/gcc" -> "brew/binutils"
+	"brew/geant4" -> "brew/clhep"
+	"brew/hotspot" -> "brew/gsl"
+	"brew/igv" -> java
+	"brew/igvtools" -> java
+	"brew/neuron" -> "brew/inter-views"
+	"brew/picard-tools" -> java
+	"brew/prokka" -> perl
+	"brew/prokka" -> "brew/blast"
+	"brew/prokka" -> "brew/infernal"
+	"brew/prokka" -> "brew/hmmer"
+	"brew/prokka" -> "brew/aragorn"
+	"brew/prokka" -> "brew/prodigal"
+	"brew/prokka" -> "brew/tbl2asn"
+	"brew/prokka" -> "brew/parallel"
+	"brew/prokka" -> "brew/barrnap"
+	"brew/samtools" -> "brew/htslib"
+	"brew/snpeff" -> java
+	"brew/trans-abyss" -> "enthought_python/7.3.2"
+	"brew/trans-abyss" -> "brew/abyss"
+	"brew/trans-abyss" -> "brew/blat"
+	"brew/trans-abyss" -> "brew/bowtie2"
+	"brew/trans-abyss" -> "brew/gmap-gsnap"
+	"brew/trans-abyss" -> "brew/igraph"
+	"brew/trans-abyss" -> "brew/picard-tools"
+	"brew/trans-abyss" -> "brew/samtools"
+	"brew/trinity" -> "java/1.7"
+	"brew/trinity" -> perl
+	"brew/trinity" -> "brew/bowtie"
+	"brew/trinity" -> "brew/samtools"
+	"brew/trinity" -> "brew/bamtools"
+	"brew/trinity" -> "brew/express"
+	"brew/vcftools" -> perl
+	"brew/velvetoptimiser" -> perl
+	subgraph clusterLegend {
+		node [style=filled]
+		edge [style=invis]
+		fontname="Numbus-Roman" fontsize=18 label="Color legend for 'linuxbrew' modules"
+		color=snow2
+		style=filled
+		"module without logging" [fillcolor=lightsalmon1]
+		"module unused" [fillcolor=lightblue1]
+		A [fillcolor=white]
+		B [fillcolor=white]
+		"module unused" -> "module without logging"
+		A -> B [label="A loads B" style=bold]
+	}
+}

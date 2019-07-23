@@ -1,0 +1,77 @@
+digraph {
+	graph [rankdir=LR]
+	"gcc/4.7.2"
+	"gcc/4.7.3"
+	"gcc/4.8.1"
+	"gcc/4.8.2"
+	"gcc/4.8.3"
+	"gcc/4.8.4"
+	"gcc/4.9.2"
+	"gcc/4.9.3"
+	"gcc/5.2.0"
+	"gcc/5.3.0"
+	"gcc/6.4.0"
+	"intel-parallel-studio-xe/15.0.3" [fillcolor=lightsalmon1 style=filled]
+	"intel/12.0.5" [fillcolor=lightsalmon1 style=filled]
+	"mpich-3.0.4/gcc-4.8.1"
+	"mpich-3.0.4/gcc-4.8.3"
+	"mpich-3.1.3/gcc-4.9.2"
+	"mpich-3.1.4/pgi-14.10"
+	"mpich2-1.4.1/gcc-4.7.2"
+	"mpich2-1.4.1/gcc-4.8.2"
+	"openmpi-1.7.5/gcc-4.8.2"
+	"openmpi-1.8.3/gcc-4.7.3" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.3/gcc-4.8.2" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.3/gcc-4.8.3" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.3/gcc-4.9.2" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.3/intel-12.0.5"
+	"openmpi-1.8.3/intel-15.0.3"
+	"openmpi-1.8.3/pgi-14.10" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.3/pgi-15.5" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.8/gcc-4.8.4" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.8/gcc-4.9.3" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.8/gcc-5.2.0" [fillcolor=lightblue1 style=filled]
+	"openmpi-1.8.8/gcc-5.3.0" [fillcolor=lightblue1 style=filled]
+	"openmpi-2.0.2/gcc-6.4.0" [fillcolor=lightblue1 style=filled]
+	"openmpi-2.1.3/gcc-6.4.0" [fillcolor=lightblue1 style=filled]
+	"openmpi-3.1.2/gcc-4.8.2" [fillcolor=lightblue1 style=filled]
+	"openmpi-3.1.2/gcc-6.4.0" [fillcolor=lightblue1 style=filled]
+	"pgi/14.10"
+	"pgi/15.5"
+	"mpich2-1.4.1/gcc-4.7.2" -> "gcc/4.7.2"
+	"mpich2-1.4.1/gcc-4.8.2" -> "gcc/4.8.2"
+	"mpich-3.0.4/gcc-4.8.1" -> "gcc/4.8.1"
+	"mpich-3.0.4/gcc-4.8.3" -> "gcc/4.8.3"
+	"mpich-3.1.3/gcc-4.9.2" -> "gcc/4.9.2"
+	"mpich-3.1.4/pgi-14.10" -> "pgi/14.10"
+	"openmpi-1.7.5/gcc-4.8.2" -> "gcc/4.8.2"
+	"openmpi-1.8.3/gcc-4.7.3" -> "gcc/4.7.3"
+	"openmpi-1.8.3/gcc-4.8.2" -> "gcc/4.8.2"
+	"openmpi-1.8.3/gcc-4.8.3" -> "gcc/4.8.3"
+	"openmpi-1.8.3/gcc-4.9.2" -> "gcc/4.9.2"
+	"openmpi-1.8.3/intel-12.0.5" -> "intel/12.0.5"
+	"openmpi-1.8.3/intel-15.0.3" -> "intel-parallel-studio-xe/15.0.3"
+	"openmpi-1.8.3/pgi-14.10" -> "pgi/14.10"
+	"openmpi-1.8.3/pgi-15.5" -> "pgi/15.5"
+	"openmpi-1.8.8/gcc-4.8.4" -> "gcc/4.8.4"
+	"openmpi-1.8.8/gcc-4.9.3" -> "gcc/4.9.3"
+	"openmpi-1.8.8/gcc-5.2.0" -> "gcc/5.2.0"
+	"openmpi-1.8.8/gcc-5.3.0" -> "gcc/5.3.0"
+	"openmpi-2.0.2/gcc-6.4.0" -> "gcc/6.4.0"
+	"openmpi-2.1.3/gcc-6.4.0" -> "gcc/6.4.0"
+	"openmpi-3.1.2/gcc-4.8.2" -> "gcc/4.8.2"
+	"openmpi-3.1.2/gcc-6.4.0" -> "gcc/6.4.0"
+	subgraph clusterLegend {
+		node [style=filled]
+		edge [style=invis]
+		fontname="Numbus-Roman" fontsize=18 label="Color legend for 'mpi-message_passing_interface' modules"
+		color=snow2
+		style=filled
+		"module without logging" [fillcolor=lightsalmon1]
+		"module unused" [fillcolor=lightblue1]
+		A [fillcolor=white]
+		B [fillcolor=white]
+		"module unused" -> "module without logging"
+		A -> B [label="A loads B" style=bold]
+	}
+}

@@ -1,0 +1,284 @@
+digraph {
+	graph [rankdir=LR]
+	MUMmer
+	"MUMmer/3.23"
+	R
+	"R/3.0.1"
+	"R/3.1.1"
+	"R/3.1.3"
+	boost
+	"boost/1.49.0"
+	"boost/1.53.0"
+	"boost/1.54.0" [fillcolor=lightblue1 style=filled]
+	"boost/1.57.0"
+	"bowtie2/2.2.3"
+	bwa
+	"bwa/0.5.9"
+	"dunnw/tophat/2.0.8b" [fillcolor=lightblue1 style=filled]
+	"gcc/4.7.2"
+	"gcc/4.7.3"
+	"gcc/4.8.2"
+	"gcc/4.8.4"
+	"gcc/4.9.0"
+	"gcc/4.9.2e"
+	"gcc/6.4.0"
+	"gsl/1.16"
+	"igeorges/all" [fillcolor=lightsalmon1 style=filled]
+	"igeorges/armadillo/3.820.1" [fillcolor=lightsalmon1 style=filled]
+	"igeorges/armadillo/3.900.6" [fillcolor=lightsalmon1 style=filled]
+	"igeorges/git/1.8.3.4" [fillcolor=lightsalmon1 style=filled]
+	"igeorges/hdf5/1.8.10-patch1" [fillcolor=lightsalmon1 style=filled]
+	"igeorges/netcdf/4.1.3" [fillcolor=lightsalmon1 style=filled]
+	java
+	"java/1.7"
+	"java/1.8.0.51"
+	"jbaldwi1/quast/2.3/2015.8.25" [fillcolor=lightsalmon1 style=filled]
+	"jbaldwi1/quast/3.0/2015.8.25" [fillcolor=lightsalmon1 style=filled]
+	"jje/jjeutils/0.1a" [fillcolor=lightsalmon1 style=filled]
+	"jje/libsequence/1.8.4" [fillcolor=lightblue1 style=filled]
+	"jje/libsequence/1.8.4-1"
+	"jje/libsequence/test"
+	"jje/metassembler/1.4" [fillcolor=lightsalmon1 style=filled]
+	"jje/pecnv/20140513" [fillcolor=lightsalmon1 style=filled]
+	"jje/pilon/1.16"
+	"jje/rstudio/#0.98.50_R3.0.1#" [fillcolor=lightblue1 style=filled]
+	"jje/rstudio/0.98.50_R3.0.1" [fillcolor=lightblue1 style=filled]
+	"jsanjak/disease_sims/dominance" [fillcolor=lightblue1 style=filled]
+	"jsanjak/disease_sims/haps" [fillcolor=lightblue1 style=filled]
+	"krthornt/boost/1.59.0"
+	"krthornt/buRden/master" [fillcolor=lightblue1 style=filled]
+	"krthornt/buRden/master2" [fillcolor=lightblue1 style=filled]
+	"krthornt/disease_sims/dev" [fillcolor=lightblue1 style=filled]
+	"krthornt/disease_sims/dev4perms" [fillcolor=lightblue1 style=filled]
+	"krthornt/disease_sims/dev4permsJSS" [fillcolor=lightblue1 style=filled]
+	"krthornt/disease_sims/dev_EW" [fillcolor=lightblue1 style=filled]
+	"krthornt/disease_sims/dev_EW_dbg" [fillcolor=lightblue1 style=filled]
+	"krthornt/disease_sims/dev_LargeData2" [fillcolor=lightblue1 style=filled]
+	"krthornt/foRward/master" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.2.0" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.2.1" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.2.2" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.2.3" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.2.4" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.2.5" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.2.8" [fillcolor=lightblue1 style=filled]
+	"krthornt/fwdpp/0.5.4" [fillcolor=lightblue1 style=filled]
+	"krthornt/gperftools/2.4" [fillcolor=lightblue1 style=filled]
+	"krthornt/gsl/1.16" [fillcolor=lightblue1 style=filled]
+	"krthornt/hdf5/1.8.15-patch1" [fillcolor=lightblue1 style=filled]
+	"krthornt/hdf5/1.8.15-patch1_threadsafe" [fillcolor=lightblue1 style=filled]
+	"krthornt/htslib/1.1"
+	"krthornt/htslib/1.2.1" [fillcolor=lightblue1 style=filled]
+	"krthornt/jemalloc/3.5.0" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.7.8" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.8.0" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.8.3" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.8.4" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.8.5" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.8.7" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.8.8" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.8.9" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.9.0" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsequence/1.9.0_pre" [fillcolor=lightblue1 style=filled]
+	"krthornt/libsnappy/1.1.1" [fillcolor=lightblue1 style=filled]
+	"krthornt/libunwind/1.1" [fillcolor=lightblue1 style=filled]
+	"krthornt/msstats/0.3.4" [fillcolor=lightblue1 style=filled]
+	"krthornt/neovim"
+	"krthornt/pecnv/0.1.7" [fillcolor=lightblue1 style=filled]
+	"krthornt/pecnv/0.1.8" [fillcolor=lightblue1 style=filled]
+	"krthornt/pecnv/teclust_performance" [fillcolor=lightblue1 style=filled]
+	"krthornt/plink/1.07" [fillcolor=lightblue1 style=filled]
+	"krthornt/python/2.7.10" [fillcolor=lightblue1 style=filled]
+	"krthornt/qRHH/dev" [fillcolor=lightblue1 style=filled]
+	"krthornt/samtools/rocksdb" [fillcolor=lightblue1 style=filled]
+	"krthornt/sqlite/313" [fillcolor=lightblue1 style=filled]
+	"krthornt/tbb/4.4_2" [fillcolor=lightblue1 style=filled]
+	"krthornt/thorntonlab/1.0" [fillcolor=lightblue1 style=filled]
+	"mchakrab/canu/1.8" [fillcolor=lightblue1 style=filled]
+	"mchakrab/pecnv/20150107" [fillcolor=lightsalmon1 style=filled]
+	"mchakrab/repeatmasker"
+	"mchakrab/repeatmasker/4.0.7" [fillcolor=lightblue1 style=filled]
+	"mchakrab/repeatmodeler/1.0.11" [fillcolor=lightblue1 style=filled]
+	perl
+	"perl/5.16.2"
+	"perl/5.26.1"
+	"python/2.7.2"
+	"recon/1.08" [fillcolor=lightblue1 style=filled]
+	"repeatscout/1.0.5" [fillcolor=lightblue1 style=filled]
+	rmblast
+	samtools
+	"samtools/1.1"
+	"solarese/canu/1.8" [fillcolor=lightblue1 style=filled]
+	trf
+	"wbiesing/MATLAB/r2011b-local" [fillcolor=lightblue1 style=filled]
+	"ytao7/augustus/3.3" [fillcolor=lightblue1 style=filled]
+	"zlib/1.2.7"
+	"zlib/1.2.8"
+	"dunnw/tophat/2.0.8b" -> "boost/1.49.0"
+	"dunnw/tophat/2.0.8b" -> "gcc/4.7.2"
+	"igeorges/all" -> "igeorges/git/1.8.3.4"
+	"igeorges/all" -> "igeorges/hdf5/1.8.10-patch1"
+	"igeorges/all" -> "igeorges/armadillo/3.900.6"
+	"igeorges/all" -> "igeorges/netcdf/4.1.3"
+	"igeorges/armadillo/3.820.1" -> "igeorges/hdf5/1.8.10-patch1"
+	"igeorges/armadillo/3.900.6" -> "igeorges/hdf5/1.8.10-patch1"
+	"jbaldwi1/quast/2.3/2015.8.25" -> MUMmer
+	"jbaldwi1/quast/3.0/2015.8.25" -> MUMmer
+	"jje/jjeutils/0.1a" -> perl
+	"jje/libsequence/1.8.4" -> "gcc/4.8.2"
+	"jje/libsequence/1.8.4" -> "krthornt/htslib/1.1"
+	"jje/libsequence/1.8.4-1" -> "gcc/4.8.2"
+	"jje/libsequence/1.8.4-1" -> "krthornt/htslib/1.1"
+	"jje/libsequence/test" -> "gcc/4.9.2e"
+	"jje/libsequence/test" -> "krthornt/htslib/1.1"
+	"jje/metassembler/1.4" -> perl
+	"jje/metassembler/1.4" -> "MUMmer/3.23"
+	"jje/metassembler/1.4" -> "bowtie2/2.2.3"
+	"jje/metassembler/1.4" -> "samtools/1.1"
+	"jje/metassembler/1.4" -> "python/2.7.2"
+	"jje/pecnv/20140513" -> "krthornt/libsequence/1.8.0"
+	"jje/pecnv/20140513" -> boost
+	"jje/pecnv/20140513" -> "bwa/0.5.9"
+	"jje/pecnv/20140513" -> samtools
+	"jje/pecnv/20140513" -> perl
+	"jje/pecnv/20140513" -> R
+	"jje/pilon/1.16" -> "java/1.7"
+	"jje/rstudio/#0.98.50_R3.0.1#" -> "R/3.0.1"
+	"jje/rstudio/0.98.50_R3.0.1" -> "R/3.0.1"
+	"jsanjak/disease_sims/dominance" -> "R/3.1.1"
+	"jsanjak/disease_sims/dominance" -> "krthornt/libsequence/1.8.4"
+	"jsanjak/disease_sims/dominance" -> "krthornt/fwdpp/0.2.8"
+	"jsanjak/disease_sims/dominance" -> "krthornt/buRden/master2"
+	"jsanjak/disease_sims/dominance" -> "boost/1.57.0"
+	"jsanjak/disease_sims/haps" -> "R/3.1.1"
+	"jsanjak/disease_sims/haps" -> "krthornt/libsequence/1.8.4"
+	"jsanjak/disease_sims/haps" -> "krthornt/fwdpp/0.2.8"
+	"jsanjak/disease_sims/haps" -> "krthornt/buRden/master2"
+	"jsanjak/disease_sims/haps" -> "boost/1.57.0"
+	"krthornt/disease_sims/dev" -> "R/3.1.1"
+	"krthornt/disease_sims/dev" -> "krthornt/libsequence/1.8.4"
+	"krthornt/disease_sims/dev" -> "krthornt/fwdpp/0.2.8"
+	"krthornt/disease_sims/dev" -> "krthornt/buRden/master"
+	"krthornt/disease_sims/dev" -> "boost/1.57.0"
+	"krthornt/disease_sims/dev4perms" -> "R/3.1.1"
+	"krthornt/disease_sims/dev4perms" -> "krthornt/libsequence/1.8.4"
+	"krthornt/disease_sims/dev4perms" -> "krthornt/fwdpp/0.2.8"
+	"krthornt/disease_sims/dev4perms" -> "krthornt/buRden/master"
+	"krthornt/disease_sims/dev4perms" -> "boost/1.57.0"
+	"krthornt/disease_sims/dev4permsJSS" -> "R/3.1.1"
+	"krthornt/disease_sims/dev4permsJSS" -> "krthornt/libsequence/1.8.4"
+	"krthornt/disease_sims/dev4permsJSS" -> "krthornt/fwdpp/0.2.8"
+	"krthornt/disease_sims/dev4permsJSS" -> "krthornt/buRden/master2"
+	"krthornt/disease_sims/dev4permsJSS" -> "boost/1.57.0"
+	"krthornt/disease_sims/dev_EW" -> "R/3.1.1"
+	"krthornt/disease_sims/dev_EW" -> "krthornt/libsequence/1.8.4"
+	"krthornt/disease_sims/dev_EW" -> "krthornt/fwdpp/0.2.8"
+	"krthornt/disease_sims/dev_EW" -> "krthornt/buRden/master"
+	"krthornt/disease_sims/dev_EW" -> "boost/1.57.0"
+	"krthornt/disease_sims/dev_EW_dbg" -> "R/3.1.1"
+	"krthornt/disease_sims/dev_EW_dbg" -> "krthornt/libsequence/1.8.4"
+	"krthornt/disease_sims/dev_EW_dbg" -> "krthornt/fwdpp/0.2.8"
+	"krthornt/disease_sims/dev_EW_dbg" -> "krthornt/buRden/master"
+	"krthornt/disease_sims/dev_EW_dbg" -> "boost/1.57.0"
+	"krthornt/disease_sims/dev_LargeData2" -> "R/3.1.1"
+	"krthornt/disease_sims/dev_LargeData2" -> "krthornt/libsequence/1.8.4"
+	"krthornt/disease_sims/dev_LargeData2" -> "krthornt/fwdpp/0.2.8"
+	"krthornt/disease_sims/dev_LargeData2" -> "krthornt/buRden/master"
+	"krthornt/disease_sims/dev_LargeData2" -> "boost/1.57.0"
+	"krthornt/foRward/master" -> "R/3.1.3"
+	"krthornt/foRward/master" -> "krthornt/libsequence/1.8.5"
+	"krthornt/foRward/master" -> "boost/1.54.0"
+	"krthornt/fwdpp/0.2.0" -> "krthornt/libsequence/1.7.8"
+	"krthornt/fwdpp/0.2.0" -> "boost/1.53.0"
+	"krthornt/fwdpp/0.2.1" -> "krthornt/libsequence/1.7.8"
+	"krthornt/fwdpp/0.2.1" -> "boost/1.53.0"
+	"krthornt/fwdpp/0.2.2" -> "krthornt/libsequence/1.7.8"
+	"krthornt/fwdpp/0.2.2" -> "boost/1.53.0"
+	"krthornt/fwdpp/0.2.3" -> "krthornt/libsequence/1.8.0"
+	"krthornt/fwdpp/0.2.3" -> "boost/1.53.0"
+	"krthornt/fwdpp/0.2.4" -> "krthornt/libsequence/1.8.0"
+	"krthornt/fwdpp/0.2.4" -> "boost/1.54.0"
+	"krthornt/fwdpp/0.2.4" -> "zlib/1.2.7"
+	"krthornt/fwdpp/0.2.4" -> "gsl/1.16"
+	"krthornt/gperftools/2.4" -> "krthornt/htslib/1.1"
+	"krthornt/hdf5/1.8.15-patch1" -> "zlib/1.2.8"
+	"krthornt/hdf5/1.8.15-patch1_threadsafe" -> "zlib/1.2.8"
+	"krthornt/libsequence/1.7.8" -> "gcc/4.7.3"
+	"krthornt/libsequence/1.7.8" -> "zlib/1.2.7"
+	"krthornt/libsequence/1.8.0" -> "boost/1.54.0"
+	"krthornt/libsequence/1.8.0" -> "zlib/1.2.7"
+	"krthornt/libsequence/1.8.3" -> "krthornt/htslib/1.1"
+	"krthornt/libsequence/1.8.4" -> "krthornt/htslib/1.1"
+	"krthornt/libsequence/1.8.5" -> "krthornt/htslib/1.2.1"
+	"krthornt/libsequence/1.8.5" -> "krthornt/gsl/1.16"
+	"krthornt/libsequence/1.8.7" -> "krthornt/htslib/1.2.1"
+	"krthornt/libsequence/1.8.7" -> "krthornt/gsl/1.16"
+	"krthornt/libsequence/1.8.8" -> "krthornt/htslib/1.2.1"
+	"krthornt/libsequence/1.8.8" -> "krthornt/gsl/1.16"
+	"krthornt/libsequence/1.8.9" -> "krthornt/htslib/1.2.1"
+	"krthornt/libsequence/1.8.9" -> "krthornt/gsl/1.16"
+	"krthornt/libsequence/1.9.0" -> "krthornt/htslib/1.2.1"
+	"krthornt/libsequence/1.9.0" -> "krthornt/gsl/1.16"
+	"krthornt/libsequence/1.9.0_pre" -> "krthornt/htslib/1.2.1"
+	"krthornt/libsequence/1.9.0_pre" -> "krthornt/gsl/1.16"
+	"krthornt/libunwind/1.1" -> "krthornt/htslib/1.1"
+	"krthornt/pecnv/0.1.7" -> "krthornt/libsequence/1.8.4"
+	"krthornt/pecnv/0.1.7" -> "krthornt/htslib/1.1"
+	"krthornt/pecnv/0.1.7" -> "boost/1.57.0"
+	"krthornt/pecnv/0.1.8" -> "krthornt/libsequence/1.8.4"
+	"krthornt/pecnv/0.1.8" -> "krthornt/htslib/1.1"
+	"krthornt/pecnv/0.1.8" -> "boost/1.57.0"
+	"krthornt/pecnv/teclust_performance" -> "jje/libsequence/1.8.4"
+	"krthornt/pecnv/teclust_performance" -> "boost/1.57.0"
+	"krthornt/plink/1.07" -> "gcc/4.9.0"
+	"krthornt/plink/1.07" -> "zlib/1.2.7"
+	"krthornt/python/2.7.10" -> "gcc/4.8.4"
+	"krthornt/qRHH/dev" -> "krthornt/fwdpp/0.2.5"
+	"krthornt/samtools/rocksdb" -> "gsl/1.16"
+	"krthornt/samtools/rocksdb" -> "krthornt/libsnappy/1.1.1"
+	"krthornt/samtools/rocksdb" -> "krthornt/jemalloc/3.5.0"
+	"krthornt/thorntonlab/1.0" -> "krthornt/libunwind/1.1"
+	"krthornt/thorntonlab/1.0" -> "krthornt/gperftools/2.4"
+	"krthornt/thorntonlab/1.0" -> "krthornt/hdf5/1.8.15-patch1"
+	"krthornt/thorntonlab/1.0" -> "krthornt/htslib/1.2.1"
+	"krthornt/thorntonlab/1.0" -> "krthornt/gsl/1.16"
+	"krthornt/thorntonlab/1.0" -> "krthornt/boost/1.59.0"
+	"krthornt/thorntonlab/1.0" -> "krthornt/python/2.7.10"
+	"krthornt/thorntonlab/1.0" -> "krthornt/libsequence/1.9.0"
+	"krthornt/thorntonlab/1.0" -> "krthornt/fwdpp/0.5.4"
+	"krthornt/thorntonlab/1.0" -> "krthornt/msstats/0.3.4"
+	"krthornt/thorntonlab/1.0" -> "krthornt/tbb/4.4_2"
+	"krthornt/thorntonlab/1.0" -> "krthornt/sqlite/313"
+	"krthornt/thorntonlab/1.0" -> "krthornt/neovim"
+	"krthornt/thorntonlab/1.0" -> "gcc/4.8.4"
+	"mchakrab/canu/1.8" -> "perl/5.26.1"
+	"mchakrab/canu/1.8" -> "java/1.8.0.51"
+	"mchakrab/pecnv/20150107" -> "krthornt/libsequence/1.8.0"
+	"mchakrab/pecnv/20150107" -> boost
+	"mchakrab/pecnv/20150107" -> bwa
+	"mchakrab/pecnv/20150107" -> samtools
+	"mchakrab/pecnv/20150107" -> perl
+	"mchakrab/pecnv/20150107" -> R
+	"mchakrab/repeatmasker/4.0.7" -> "recon/1.08"
+	"mchakrab/repeatmasker/4.0.7" -> "repeatscout/1.0.5"
+	"mchakrab/repeatmodeler/1.0.11" -> "mchakrab/repeatmasker"
+	"mchakrab/repeatmodeler/1.0.11" -> trf
+	"mchakrab/repeatmodeler/1.0.11" -> rmblast
+	"solarese/canu/1.8" -> java
+	"wbiesing/MATLAB/r2011b-local" -> java
+	"ytao7/augustus/3.3" -> "gcc/6.4.0"
+	"ytao7/augustus/3.3" -> "perl/5.16.2"
+	subgraph clusterLegend {
+		node [style=filled]
+		edge [style=invis]
+		fontname="Numbus-Roman" fontsize=18 label="Color legend for 'user_contributed_software' modules"
+		color=snow2
+		style=filled
+		"module without logging" [fillcolor=lightsalmon1]
+		"module unused" [fillcolor=lightblue1]
+		A [fillcolor=white]
+		B [fillcolor=white]
+		"module unused" -> "module without logging"
+		A -> B [label="A loads B" style=bold]
+	}
+}
