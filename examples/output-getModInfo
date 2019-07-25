@@ -1,0 +1,311 @@
+
+### Modules in /data/modulefiles/SOFTWARE/: 1083
+    ### Modules without logging: 1
+        Cluster_Defaults
+    ### Modules with inconsistent names: 71
+                             abaqus/6.20:  abaqus/6.14
+                           amber/12-cuda:  amber/amber12-cuda
+                            amber/12-mpi:  amber/amber12-mpi
+                            amber/12-old:  amber/amber12
+                         amber/12-openmp:  amber/amber12-openmp
+                           amber/14-cuda:  amber/amber14-cuda
+                            amber/14-mpi:  amber/amber14-mpi
+                            amber/14-old:  amber/amber14-old
+                         amber/14-openmp:  amber/amber14-openmp
+                         amber/16-serial:  amber/amber16-serial
+                        anaconda/2-2.3.0:  anaconda/2.0.1
+                  ansys-electronics/18.0:  ansys-electronics/17.0
+                              beagle-lib:  beagle-lib/no_version_supplied
+                             Bertini/1.4:  bertini/1.4
+                           bismark/0.2.1:  bismark/0.20.1
+                            boost/1.54.0:  boost/1.54
+                     boost/1.63.0-gcc482:  boost/1.63.0
+                         caffe-ssd/1.0.0:  caffe/1.0.0
+                              CGAL/4.9.0:  CGAL/4.9
+                          cppunit/1.12.1:  cppunit/0.12.1
+                              crest/0.99:  crest/1.0
+                             curl/7.52.1:  curl-utils/7.52.1
+                          espresso/5.3.0:  espresson/5.3.0
+                    fastx_toolkit/0.0.13:  fastx-tools/0.0.13
+                  fastx_toolkit/0.0.13.2:  fastx-tools/0.0.13.2
+                       footprinting/2012:  footprint/2012
+                                      GE:  apps/GE
+                             glib/2.52.3:  glib/2.32
+                       gmap/20141217-amd:  gmap/20141217
+                     gmap/20141217-intel:  gmap/20141217
+                       gromacs/5.0.3/mpi:  gromacs/5.0.3-mpi
+                    gromacs/5.0.3/openmp:  gromacs/5.0.3-openmp
+                       gstreamer/0.10.24:  gstreamer/0.11.99
+                       gstreamer/0.10.36:  gstreamer/0.11.99
+                         hspf-libatc/1.0:  hspf/libatc/1.0
+                             hyphy/2.1.2:  HyPhy/2.1.2
+               hypre/openmpi-1.6.0/2.0.0:  hypre/2.0.0
+              hypre/openmpi-1.8.3/2.11.1:  hypre/2.11.1
+                       libgtextutils/0.7:  libgtextutils/0.6.1
+                         mats-turbo/ucs2:  mats/3.2.5
+                         mats-turbo/ucs4:  mats/3.2.5
+                            MaxBin/2.2.1:  maxbin/2.2.1
+                         module.skeleton:  _APP_/_VER_
+                       NAMD-ibverbs/2.10:  NAMD-ibvers/2.10
+                            netcdf/4.3.2:  netcdf-c/4.3.2
+          netcdf-fortran/4.4.4-gcc-5.3.0:  netcdf-fortran/4.4.4
+          netcdf-fortran/4.4.4-gcc-6.4.0:  netcdf-fortran/4.4.4
+                     OpenFOAM/02.4.0-old:  openfoam/02.4.0-patch
+                          OpenFOAM/2.0.0:  openfoam/2.0.0
+                          OpenFOAM/2.4.0:  openfoam/2.4.0
+                   pemer/module.skeleton:  _APP_/_VER_
+                                perm/0.4:  PerM4/4.0
+                               PETSc/3.4:  PETSc/3.4.2
+                      picard-tools/1.111:  picard-tools/1.11
+                           pindel/0.2.4q:  SRAToolKit/2.3.1
+                       popoolation/1.2.2:  PoPoolation1/1.2.2
+                       popoolation2/1201:  PoPoolation2/1201
+                          qualimap/2.2.1:  qualimap/2.1.3
+                      rnammer/01.2-debug:  rnammer/1.2
+                        rstudio/1.00.135:  rstudio/1.00.136
+                   rstudio/1.00.135-r341:  rstudio/1.00.136
+                       singularity/2.3.1:  singularity/2.2
+                   smrtanalysis/02.3.0p5:  smrtanalysis/2.3.0p5
+                 smrtanalysis/03.0.2beta:  smrtanalysis/3.0.2beta
+                      smrtanalysis/7.0.0:  smrtanalysis/7.0.0.
+                            stata/13dfs2:  stata/13
+                      transdecoder/5.5.0:  TransDecoder/5.5.0
+                     trinity/r2018-2.8.3:  trinity/r2017-2.5.1
+                     trinity/r2019-2.8.4:  trinity/r2017-2.5.1
+                         vcftools/0.1.09:  vcftools/0.1.9
+                         zlib/1.2.8-i686:  zlib/1.2.8
+
+### Modules in /data/modulefiles/BIO/: 0
+    ### Modules without logging: 0
+    ### Modules with inconsistent names: 0
+
+### Modules in /data/modulefiles/COMPILERS/: 130
+    ### Modules without logging: 51
+        acml/gfortran/5.1.0
+        acml/gfortran/mp/5.1.0
+        acml/ifort/5.1.0
+        acml/ifort/mp/5.1.0
+        acml/open64/5.1.0
+        acml/open64/mp/5.1.0
+        acml/pgi/5.1.0
+        acml/pgi/mp/5.1.0
+        binutils/2.22
+        binutils/2.23.1
+        binutils/2.23.2
+        binutils/2.24
+        binutils/2.27
+        binutils/2.28.90-gcc-4.8.2
+        cfe/3.3
+        dragonegg/3.1
+        g95/0.92
+        gcc-libs/4.8.4
+        gcc-libs/4.8.5
+        gcc-libs/4.9.3
+        gcc-libs/5.2.0
+        gcc-libs/5.3.0
+        gcc-libs/6.1.0
+        gdb/7.5
+        gdb/7.5.1
+        gdb/7.8
+        gmp/4.2.2
+        gmp/4.3.2
+        gmp/5.0.2
+        gmp/5.0.5
+        gmp/5.1.1
+        gmp/5.1.2
+        gmp/5.1.3
+        gmp/6.0.0
+        gmp/6.0.0a
+        intel-mkl/12.0.5
+        intel-parallel-studio-xe/15.0.3
+        intel-parallel-studio-xe/2018.3.051
+        intel/12.0.5
+        llvm/3.1
+        llvm/3.8.1
+        llvm/3.9.0
+        mpc/0.9
+        mpc/1.0.1
+        mpc/1.0.2
+        mpc/1.0.3
+        mpfr/3.1.0
+        mpfr/3.1.1
+        mpfr/3.1.2
+        mpfr/3.1.3
+        open64/5.0
+    ### Modules with inconsistent names: 0
+
+### Modules in /data/modulefiles/MPI-MESSAGE_PASSING_INTERFACE/: 23
+    ### Modules without logging: 0
+    ### Modules with inconsistent names: 14
+                 openmpi-1.8.3/gcc-4.7.3:  openmpi_1.8.3/gcc-4.7.3
+                 openmpi-1.8.3/gcc-4.8.2:  openmpi_1.8.3/gcc-4.8.2
+                 openmpi-1.8.3/gcc-4.8.3:  openmpi_1.8.3/gcc-4.8.3
+                 openmpi-1.8.3/gcc-4.9.2:  openmpi_1.8.3/gcc-4.9.2
+                 openmpi-1.8.3/pgi-14.10:  openmpi_1.8.3/pgi-14.10
+                  openmpi-1.8.3/pgi-15.5:  openmpi_1.8.3/pgi-15.5
+                 openmpi-1.8.8/gcc-4.8.4:  openmpi_1.8.8/gcc-4.8.4
+                 openmpi-1.8.8/gcc-4.9.3:  openmpi_1.8.8/gcc-4.9.3
+                 openmpi-1.8.8/gcc-5.2.0:  openmpi_1.8.8/gcc-5.2.0
+                 openmpi-1.8.8/gcc-5.3.0:  openmpi_1.8.8/gcc-5.3.0
+                 openmpi-2.0.2/gcc-6.4.0:  openmpi_2.0.2/gcc-6.4.0
+                 openmpi-2.1.3/gcc-6.4.0:  OpenMPI_2.1.3/gcc-6.4.0
+                 openmpi-3.1.2/gcc-4.8.2:  openmpi_3.1.2/gcc-4.8.2
+                 openmpi-3.1.2/gcc-6.4.0:  openmpi_3.1.2/gcc-6.4.0
+
+### Modules in /data/modulefiles/LINUXBREW/: 74
+    ### Modules without logging: 74
+        brew/a5
+        brew/abyss
+        brew/antlr@2
+        brew/aragorn
+        brew/autoconf
+        brew/automake
+        brew/bamtools
+        brew/barrnap
+        brew/bash
+        brew/bcftools
+        brew/binutils
+        brew/blasr
+        brew/blast
+        brew/blat
+        brew/boost
+        brew/bowtie
+        brew/bowtie2
+        brew/bpipe
+        brew/brew
+        brew/bwa
+        brew/byobu
+        brew/clhep
+        brew/cmake
+        brew/emacs
+        brew/express
+        brew/fastqc
+        brew/fastx_toolkit
+        brew/fish
+        brew/gatb
+        brew/gcc
+        brew/geant4
+        brew/git
+        brew/glibc
+        brew/gmap-gsnap
+        brew/gmp
+        brew/google-sparsehash
+        brew/gsl
+        brew/hdf5
+        brew/hmmer
+        brew/hmmer2
+        brew/hotspot
+        brew/htslib
+        brew/igraph
+        brew/igv
+        brew/igvtools
+        brew/infernal
+        brew/inter-views
+        brew/isl
+        brew/kallisto
+        brew/libmpc
+        brew/mpfr
+        brew/netcdf
+        brew/neuron
+        brew/node
+        brew/parallel
+        brew/patchelf
+        brew/perl
+        brew/phantomjs
+        brew/picard-tools
+        brew/prodigal
+        brew/prokka
+        brew/samtools
+        brew/snpeff
+        brew/tbl2asn
+        brew/texinfo
+        brew/tmux
+        brew/trans-abyss
+        brew/trinity
+        brew/udunits
+        brew/vcftools
+        brew/velvet
+        brew/velvetoptimiser
+        brew/vim
+        brew/zsh
+    ### Modules with inconsistent names: 0
+
+### Modules in /data/modulefiles/PRIVATE_COMMERCIAL_SOFTWARE/: 6
+    ### Modules without logging: 0
+    ### Modules with inconsistent names: 3
+                            MSC/marc2014:  msc/marc2014
+                          MSC/marc2014i8:  msc/marc2014i8
+                          MSC/mentat2014:  msc/mentat2014
+
+### Modules in /data/modulefiles/USER_CONTRIBUTED_SOFTWARE/: 187
+    ### Modules without logging: 25
+        igeorges/acml/5.3.1/gfortran64
+        igeorges/acml/5.3.1/gfortran64_fma4
+        igeorges/acml/5.3.1/gfortran64_fma4_mp
+        igeorges/acml/5.3.1/gfortran64_mp
+        igeorges/all
+        igeorges/armadillo/3.820.1
+        igeorges/armadillo/3.900.6
+        igeorges/git/1.8.3.4
+        igeorges/hdf5/1.8.10-patch1
+        igeorges/intel-parallel-studio-xe/2011
+        igeorges/meld/1.6.1
+        igeorges/meld/1.7.3
+        igeorges/netcdf/4.1.3
+        jbaldwi1/platanus/1.2.1/2015.8.25
+        jbaldwi1/quast/2.3/2015.8.25
+        jbaldwi1/quast/3.0/2015.8.25
+        jje/jjeutils/0.1a
+        jje/kent/2014.02.19
+        jje/lastz/1.02.00
+        jje/metassembler/1.4
+        jje/pecnv/20140513
+        mchakrab/pecnv/20150107
+        nzhao3/SweepFinder/2006.08.14
+        nzhao3/platanus/1.2.4
+        nzhao3/structure/2.3.4
+    ### Modules with inconsistent names: 44
+                   aoliver2/miniconda3/3:  aoliver2/miniconda/3
+                bhjelm/tophat/2.0.12_bjh:  tophat/2.0.12_bjh
+                    erebboah/miniconda/2:  erebboah/miniconda
+                   erebboah/miniconda3/3:  erebboah/miniconda3
+             jje/art-illumina/2014.03.11:  gapcloser/20100125
+                  jje/gapcloser/20100125:  gapcloser/20100125
+                          jje/perl/5.8.8:  perl/5.8.8
+            jje/rstudio/#0.98.50_R3.0.1#:  rstudio/0.98.501
+              jje/rstudio/0.98.50_R3.0.1:  rstudio/0.98.501
+                jje/smrtanalysis/2.2.0p3:  smrtanalysis/2.2.0p3
+                   jje/sparsehash/2.0.2a:  sparsehash/2.0.2a
+                  krthornt/buRden/master:  buRden/master
+                 krthornt/buRden/master2:  buRden/master2
+      krthornt/disease_sims/dev4permsJSS:  krthornt/disease_sims/dev4perms
+                    krthornt/fwdpp/0.2.3:  krthornt/fwdpp/0.2.2
+                 krthornt/gperftools/2.4:  krthornt/gperftools/2.5
+              krthornt/libsequence/1.7.8:  krthornt/libsequence/1.16
+                krthornt/libsnappy/1.1.1:  krthornt/libnappy/1.1.1
+                        mchakrab/2.2.0p3:  smrtanalysis/2.2.0p3
+                       mchakrab/canu/1.8:  canu/1.6
+                    mchakrab/dbg2olc/1.0:  mchakrab/DBG2OLC/1.0
+                  mchakrab/falcon/v0.3.0:  FALCON-integrate
+                 mchakrab/platanus/1.2.1:  platanus
+             mchakrab/repeatmasker/4.0.7:  repeatmasker/4.0.6
+           mchakrab/repeatmodeler/1.0.11:  repeatmodeler/1.0.11
+                     mchakrab/wgs/8.3rc1:  wgs/8.3rc1
+                     mchakrab/wgs/8.3rc2:  wgs/8.3rc2
+               smorabit/cellranger/3.0.2:  smorabit/cellranger-3.0.2
+          smorabit/cellranger-atac/1.1.0:  smorabit/cellranger-atac-1.1.0
+           smorabit/miniconda3/miniconda:  smorabit/miniconda3/bin/
+                         smorabit/picard:  smorabit/picard/
+              smorabit/picardmetrics/0.0:  smorabit/picardmetrics
+                  smorabit/salmon/0.13.1:  smorabit/salmon-latest_linux_x86_64/bin/
+                   smorabit/samtools/1.9:  smorabit/samtools/bin/
+                       smorabit/STAR/2.7:  smorabit/STAR-2.7.0f/bin/Linux_x86_64_static
+              solarese/3d-dna/745779bdf6:  3d-dna/745779bdf6
+                       solarese/canu/1.8:  canu/1.8
+                       solarese/conda3/3:  conda3/3
+                         solarese/kent/1:  kent/1
+                     wbiesing/pypy/2.7.3:  wbiesing/pypy/2.2.1
+                      ytao7/augustus/3.3:  augustus/3.3
+                     ytao7/kentUtils/1.0:  kentUtils/1.0
+                        ytao7/MUMmer/4.0:  MUMmer/4.0
+                  ytao7/ncbi-blast/2.7.1:  ncbi-blast/2.7.1
