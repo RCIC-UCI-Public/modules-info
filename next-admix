@@ -1,0 +1,117 @@
+Information is based on the output of parseMod.
+Cutoff  for usable software is 500. Preliinary break into categories
+
+=========================================================
+Software/version          num used   Action
+=========================================================
+
+------------------ tools and libraries admix ---------------------------
+tcl-tk/8.6.4               281559    NEED  sys RPM is 8.5.13. Major changes from 8.5 
+fftw/3.3.4                 231137    NEED
+curl/7.52.1                173857    NEED  sys RPM is 7.29, find atest
+cuda/5.0                     3186    NEED, add 9 
+     9.0                     1878 
+singularity/3.0.0            1237    NEED latest
+pigz/2.2.4                 113725    NEED  Parallel gzip, only used by tdlong.  Current v.2.4
+boost/1.57.0                 5848    NEED  get latest, Boost provides free peer-reviewed portable C++ source libraries
+
+------------------ statistics  admix---------------------------
+cern_root/5.34.36          145802    NEED  get the latest release  6.18.04
+                                           A modular scientific software toolkit. It provides all the 
+                                           functionalities needed to deal with big data processing, 
+                                           statistical analysis, visualisation and storage. It is mainly 
+stata/14                     5092    NEED, Stata statistical software is a complete, integrated statistical software package
+                                           that provides everything you need for data analysis, data management, and graphics.
+                                           written in C++ but integrated with other languages such as Python and R.
+------------------ lang  admix ---------------------------
+likely matlab as a separate admix.
+
+anaconda/3.6-5.0.1         242222    NEED latest for python2/3
+java/1.8.0.111              25494    NEED latest
+cmake/3.12.3                 2333    ???   sys RPM is 2.8.12
+ruby/2.5.3                   4515    ???   sys RPM is 2.0.0
+MATLAB/r2018a              174356    NEED
+
+------------------ EQ simulation  admix ---------------------------
+opensees/2.5.0             173290    NEED  OpenSees, the Open System for Earthquake Engineering Simulation
+                                           Need to rgister to get the source. Current version 2.5.0 
+------------------ biotools admix ---------------------------
+rsem/1.3.0                  11493    NEED, add to biotools admix. RSEM is a software package for estimating gene 
+                                           and isoform expression levels from RNA-Seq data. 
+vcftools/0.1.15             10652    NEED, add to biotools admix
+fastqc/0.11.7                2539    NEED  make bioinformatics admix, fastqc generate a comprehensive QC report
+meme/4.12.0                  9761    NEED, add latest
+
+------------------ genomics admix ---------------------------
+speedseq                             NEED  speedseq - A flexible framework for rapid genome analysis and interpretation
+bedtools/2.25.0             18593    NEED  tools for a wide-range of genomics analysis. Get latst 2.29
+freebayes/0.9.21             9722    NEED, Bayesian genetic variant detector
+
+------------------ MRI processing ---------------------------
+fsl/5.0.9                   11780    NEED, FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data. 
+freesurfer/6.0dev            9149    NEED,  Freesurfer is a tool to assist in 3D reconstruction of MRIs
+           6.0               3536
+afni/v19.0.01                9420    NEED latest, AFNI (Analysis of Functional NeuroImages) is a set of C programs for 
+                                          processing, analyzing, and displaying functional MRI (FMRI) data
+
+------------------ MD tools ---------------------------
+vmd/1.9.1                   16286    NEED, get the latest
+amber/amber12-mpi               9    NEED, add latest with cuda, mpi
+      amber14-mpi             365
+      amber14-cuda            358
+      amber16-serial           40
+NAMD-multicore/2.13          1203    NEED latest, smp, cuda support
+               2.11          4355
+lammps/Feb2019_p28           4752    NEED latest, LAMMPS is a classical molecular dynamics code, and an acronym for
+                                                 Large-scale Atomic/Molecular Massively Parallel Simulator.
+------------------ file formats ---------------------------
+netcdf-c/4.6.1                221    NEED, get latest
+netcdf-fortran/4.4.4          186    NEED, get latest
+hdf5                                 NEED, get latest
+
+
+-------------------- No need to create ---------------------------------------
+zlib/1.2.8                1647296    sys RPM is 1.2.7
+swig/3.0.12                622670    sys RPM is 2.0.10 and  3.0.12
+bzip2/1.0.6                254751    sys RPM is 1.0.6
+pcre/8.40                  254628    sys RPM is 8.32 loaded by R,swig
+xz-utils/5.2.3             254626    sys RPM is 5.2.2
+enthought_python/7.3.2      86518    
+ncurses/6.1                 24873    sys RPM is 5.9 neeed for biotools
+sqlite/3.7.11                3510    sys RPM is 3.7.17
+gnu_parallel/20170622        2243    GNU parallel is a shell tool for executing jobs in parallel using one or more computers.
+-----------------------------------------------------------
+
+                       To determine
+grace/5.1.22                                         3931
+CNVnator/0.2.7                                       2999
+Xilinx_Vivado/2018.2                                 2188
+SeekDeep/2.6.3_2                                     1858
+         2.2.1                                        833
+plink/1.9.0b4.4                                      1809
+TURBOMOLE/7.02                                       1586
+annovar/2013Jul28                                    1561
+marc/2018                                            1339
+gulp/5.1.1                                           1271
+trimmomatic/0.35                                     1232
+STAR/2.5.1b-static                                   1136
+     2.5.2a-static                                    835
+     2.6.0c                                           778
+     2.5.2a                                           599
+blast/2.8.1                                          1101
+      2.2.30                                          344
+      2.2.31                                          471
+vasp/5.4.1                                            912
+metaphlan2/2.2.0                                      909
+bamtools/2.1.1                                        838
+         2.3.0                                        435
+express/1.4.0                                         837
+BBMap/37.50                                           826
+      35.66                                           312
+hisat2/2.1.0                                          795
+tmux/2.5                                              778
+abaqus/6.14                                           771
+byobu/5.127                                           753
+hmmer/3.1b2                                           720
+MUMmer/4.0.0b                                         586
+homer/4.7                                             552
