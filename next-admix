@@ -5,15 +5,20 @@ Cutoff  for usable software is 500. Preliinary break into categories
 Software/version          num used   Action
 =========================================================
 
+------------------ systools and libraries admix ---------------------------
+singularity/3.0.0            1237    DONE 3.4.1
+
 ------------------ tools and libraries admix ---------------------------
 tcl-tk/8.6.4               281559    NEED  sys RPM is 8.5.13. Major changes from 8.5 
-fftw/3.3.4                 231137    NEED
-curl/7.52.1                173857    NEED  sys RPM is 7.29, find atest
-cuda/5.0                     3186    NEED, add 9 
-     9.0                     1878 
-singularity/3.0.0            1237    NEED latest
-pigz/2.2.4                 113725    NEED  Parallel gzip, only used by tdlong.  Current v.2.4
-boost/1.57.0                 5848    NEED  get latest, Boost provides free peer-reviewed portable C++ source libraries
+fftw/3.3.4                 231137    DONE 3.3.8
+curl/7.52.1                173857    DONE 7.66.0
+cuda/5.0 + 9.0         3186 + 1878   DONE 10.1 
+pigz/2.2.4                 113725    DONE 2.4
+boost/1.57.0                 5848    DONE 1.66.0
+cmake/3.12.3                 2333    DONE 3.12.3
+swig                                 DONE 4.0.1
+git                                  DONE 2.23.0
+java/1.8.0.111              25494    DONE, have system RPMS, created module
 
 ------------------ statistics  admix---------------------------
 cern_root/5.34.36          145802    NEED  get the latest release  6.18.04
@@ -24,11 +29,8 @@ stata/14                     5092    NEED, Stata statistical software is a compl
                                            that provides everything you need for data analysis, data management, and graphics.
                                            written in C++ but integrated with other languages such as Python and R.
 ------------------ lang  admix ---------------------------
-likely matlab as a separate admix.
-
+likely matlab as a separate admix.f
 anaconda/3.6-5.0.1         242222    NEED latest for python2/3
-java/1.8.0.111              25494    NEED latest
-cmake/3.12.3                 2333    ???   sys RPM is 2.8.12
 ruby/2.5.3                   4515    ???   sys RPM is 2.0.0
 MATLAB/r2018a              174356    NEED
 
@@ -64,15 +66,15 @@ NAMD-multicore/2.13          1203    NEED latest, smp, cuda support
                2.11          4355
 lammps/Feb2019_p28           4752    NEED latest, LAMMPS is a classical molecular dynamics code, and an acronym for
                                                  Large-scale Atomic/Molecular Massively Parallel Simulator.
------------------- file formats ---------------------------
-netcdf-c/4.6.1                221    NEED, get latest
+------------------ fileformats admix---------------------------
+netcdf-c/4.6.1                221    DONE 4.7.0
 netcdf-fortran/4.4.4          186    NEED, get latest
-hdf5                                 NEED, get latest
+hdf5                                 DONE 1.10.5
+udunits                              DONE 2.2.26
 
 
 -------------------- No need to create ---------------------------------------
 zlib/1.2.8                1647296    sys RPM is 1.2.7
-swig/3.0.12                622670    sys RPM is 2.0.10 and  3.0.12
 bzip2/1.0.6                254751    sys RPM is 1.0.6
 pcre/8.40                  254628    sys RPM is 8.32 loaded by R,swig
 xz-utils/5.2.3             254626    sys RPM is 5.2.2
