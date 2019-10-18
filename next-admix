@@ -9,7 +9,7 @@ Software/version          num used   Action
 singularity/3.0.0            1237    DONE 3.4.1
 
 ------------------ tools and libraries admix ---------------------------
-tcl-tk/8.6.4               281559    NEED  sys RPM is 8.5.13. Major changes from 8.5 
+tcl-tk/8.6.4               281559    DONE 8.6.9
 fftw/3.3.4                 231137    DONE 3.3.8
 curl/7.52.1                173857    DONE 7.66.0
 cuda/5.0 + 9.0         3186 + 1878   DONE 10.1 
