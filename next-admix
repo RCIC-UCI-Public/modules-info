@@ -9,15 +9,15 @@ Software/version          num used   Action
 singularity/3.0.0            1237    DONE 3.4.1
 
 ------------------ tools and libraries admix ---------------------------
-tcl-tk/8.6.4               281559    DONE 8.6.9
-fftw/3.3.4                 231137    DONE 3.3.8
-curl/7.52.1                173857    DONE 7.66.0
-cuda/5.0 + 9.0         3186 + 1878   DONE 10.1 
-pigz/2.2.4                 113725    DONE 2.4
-boost/1.57.0                 5848    DONE 1.66.0
-cmake/3.12.3                 2333    DONE 3.12.3
-swig                                 DONE 4.0.1
-git                                  DONE 2.23.0
+tcl-tk/8.6.4               281559    DONE 8.6.9   (multiple) BUILDTOOLS 
+fftw/3.3.4                 231137    DONE 3.3.8   (multiple) BUILDTOOLS 
+curl/7.52.1                173857    DONE 7.66.0  (foundation)
+cuda/5.0 + 9.0         3186 + 1878   DONE 10.1    (multiple)  CUDA
+pigz/2.2.4                 113725    DONE 2.4     (multiple)  BUILDTOOLS
+boost/1.57.0                 5848    DONE 1.66.0  (multiple versions)
+cmake/3.12.3                 2333    DONE 3.12.3  (foundation)
+swig                                 DONE 4.0.1   (foundation)
+git                                  DONE 2.23.0  (foundation)
 java/1.8.0.111              25494    DONE, have system RPMS, created module
 
 ------------------ statistics  admix---------------------------
