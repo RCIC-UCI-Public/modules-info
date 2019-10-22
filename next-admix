@@ -1,6 +1,16 @@
 Information is based on the output of parseMod.
 Cutoff  for usable software is 500. Preliinary break into categories
 
+Categories for Modules
+TOOLS
+COMPILERS
+LANGUAGES
+BIOTOOLS
+STATISTICS
+IMAGING
+GENOMICS
+CHEMISTRY
+PHYSICS
 =========================================================
 Software/version          num used   Action
 =========================================================
