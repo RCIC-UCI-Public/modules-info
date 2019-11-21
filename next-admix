@@ -19,17 +19,17 @@ Software/version          num used   Action
 singularity/3.0.0            1237    DONE 3.4.1
 
 ------------------ tools and libraries admix ---------------------------
-tcl-tk/8.6.4               281559    DONE 8.6.9   (multiple) BUILDTOOLS 
-fftw/3.3.4                 231137    DONE 3.3.8   (multiple) BUILDTOOLS 
+tcl-tk/8.6.4               281559    DONE 8.6.9   (multiple) LANGUAGES 
+fftw/3.3.4                 231137    DONE 3.3.8   (multiple) TOOLS 
 curl/7.52.1                173857    DONE 7.66.0  (foundation)
-cuda/5.0 + 9.0         3186 + 1878   DONE 10.1    (multiple)  CUDA
-pigz/2.2.4                 113725    DONE 2.4     (multiple)  BUILDTOOLS
-boost/1.57.0                 5848    DONE 1.66.0  (multiple versions)
+cuda/5.0 + 9.0         3186 + 1878   DONE 10.1    (multiple)   CUDA
+pigz/2.2.4                 113725    DONE 2.4     (foundation)
+boost/1.57.0                 5848    DONE 1.66.0  (multiple) TOOLS
 cmake/3.12.3                 2333    DONE 3.12.3  (foundation)
 swig                                 DONE 4.0.1   (foundation)
 git                                  DONE 2.23.0  (foundation)
-java/1.8.0.111              25494    DONE, have system RPMS, created module
-
+java/1.8.0                  25494    DONE, have system RPMS, created module
+scons                                DONE 3.1.1.  (foundation)
 ------------------ statistics  admix---------------------------
 cern_root/5.34.36          145802    NEED  get the latest release  6.18.04
                                            A modular scientific software toolkit. It provides all the 
@@ -39,7 +39,7 @@ stata/14                     5092    NEED, Stata statistical software is a compl
                                            that provides everything you need for data analysis, data management, and graphics.
                                            written in C++ but integrated with other languages such as Python and R.
 ------------------ lang  admix ---------------------------
-likely matlab as a separate admix.f
+likely matlab as a separate admix
 anaconda/3.6-5.0.1         242222    NEED latest for python2/3
 ruby/2.5.3                   4515    ???   sys RPM is 2.0.0
 MATLAB/r2018a              174356    NEED
@@ -76,11 +76,17 @@ NAMD-multicore/2.13          1203    NEED latest, smp, cuda support
                2.11          4355
 lammps/Feb2019_p28           4752    NEED latest, LAMMPS is a classical molecular dynamics code, and an acronym for
                                                  Large-scale Atomic/Molecular Massively Parallel Simulator.
------------------- fileformats admix---------------------------
-netcdf-c/4.6.1                221    DONE 4.7.0
-netcdf-fortran/4.4.4          186    NEED, get latest
-hdf5                                 DONE 1.10.5
-udunits                              DONE 2.2.26
+------------------ fileformats-admix---------------------------
+netcdf-c/4.6.1                221    DONE 4.7.0   TOOLS
+netcdf-fortran/4.4.4          186    DONE 4.5.2   TOOLS
+hdf5 (plus parallel version          DONE 1.10.5  TOOLS
+udunits                              DONE 2.2.26  TOOLS
+
+------------------ tensorflow-admix---------------------------
+bazel                                DONE 0.26.1  TOOLS
+computeCpp  (multiple versions)      DONE 1.1.6   TOOLS
+tensorRT                             DONE 6.0.1.5 AI-LEARNING
+tensorflow                           DONE 2.0.0   AI-LEARNING
 
 
 -------------------- No need to create ---------------------------------------
