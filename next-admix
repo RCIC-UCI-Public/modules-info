@@ -40,7 +40,7 @@ stata/14                     5092    NEED, Stata statistical software is a compl
                                            written in C++ but integrated with other languages such as Python and R.
 ------------------ lang  admix ---------------------------
 likely matlab as a separate admix
-anaconda/3.6-5.0.1         242222    NEED latest for python2/3
+anaconda/3.6-5.0.1         242222    DONE anaconda 2019.10 with python 3.7.4
 ruby/2.5.3                   4515    ???   sys RPM is 2.0.0
 MATLAB/r2018a              174356    NEED
 
@@ -88,6 +88,8 @@ computeCpp  (multiple versions)      DONE 1.1.6   TOOLS
 tensorRT                             DONE 6.0.1.5 AI-LEARNING
 tensorflow                           DONE 2.0.0   AI-LEARNING
 
+------------------ pytorch-admix---------------------------
+pytorch  (and pytorch-cuda)          DONE 1.4.0.a0 AI-LEARNING 
 
 -------------------- No need to create ---------------------------------------
 zlib/1.2.8                1647296    sys RPM is 1.2.7
