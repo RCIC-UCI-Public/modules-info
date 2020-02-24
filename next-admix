@@ -48,15 +48,15 @@ MATLAB/r2018a              174356    NEED
 opensees/2.5.0             173290    NEED  OpenSees, the Open System for Earthquake Engineering Simulation
                                            Need to rgister to get the source. Current version 2.5.0 
 ------------------ biotools admix ---------------------------
-rsem/1.3.0                  11493    NEED, add to biotools admix. RSEM is a software package for estimating gene 
+rsem/1.3.0                  11493    DONE, add to biotools admix. RSEM is a software package for estimating gene 
                                            and isoform expression levels from RNA-Seq data. 
-vcftools/0.1.15             10652    NEED, add to biotools admix
+vcftools/0.1.15             10652    DONE, add to biotools admix
 fastqc/0.11.7                2539    NEED  make bioinformatics admix, fastqc generate a comprehensive QC report
 meme/4.12.0                  9761    NEED, add latest
 
 ------------------ genomics admix ---------------------------
 speedseq                             NEED  speedseq - A flexible framework for rapid genome analysis and interpretation
-bedtools/2.25.0             18593    NEED  tools for a wide-range of genomics analysis. Get latst 2.29
+bedtools/2.25.0             18593    DONE  tools for a wide-range of genomics analysis. Get latst 2.29
 freebayes/0.9.21             9722    NEED, Bayesian genetic variant detector
 
 ------------------ MRI processing ---------------------------
@@ -90,6 +90,7 @@ tensorflow                           DONE 2.0.0   AI-LEARNING
 
 ------------------ pytorch-admix---------------------------
 pytorch  (and pytorch-cuda)          DONE 1.4.0.a0 AI-LEARNING 
+torchvision                          DONE
 
 -------------------- No need to create ---------------------------------------
 zlib/1.2.8                1647296    sys RPM is 1.2.7
