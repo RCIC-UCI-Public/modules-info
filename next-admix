@@ -92,6 +92,9 @@ tensorflow                           DONE 2.0.0   AI-LEARNING
 pytorch  (and pytorch-cuda)          DONE 1.4.0.a0 AI-LEARNING 
 torchvision                          DONE
 
+------------------ buildtools-admix -----------------------
+xz-utils/5.2.4                       DONE sys RPM is 5.2.2 fomr 2015 - too old
+
 -------------------- No need to create ---------------------------------------
 zlib/1.2.8                1647296    sys RPM is 1.2.7
 bzip2/1.0.6                254751    sys RPM is 1.0.6
