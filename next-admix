@@ -51,7 +51,7 @@ opensees/2.5.0             173290    NEED  OpenSees, the Open System for Earthqu
 rsem/1.3.0                  11493    DONE, add to biotools admix. RSEM is a software package for estimating gene 
                                            and isoform expression levels from RNA-Seq data. 
 vcftools/0.1.15             10652    DONE, add to biotools admix
-fastqc/0.11.7                2539    NEED  make bioinformatics admix, fastqc generate a comprehensive QC report
+fastqc/0.11.7                2539    DONE  0.11.9 fastqc generate a comprehensive QC report
 meme/4.12.0                  9761    NEED, add latest
 
 ------------------ genomics admix ---------------------------
