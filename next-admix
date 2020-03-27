@@ -1,16 +1,11 @@
 Information is based on the output of parseMod.
-Cutoff  for usable software is 500. Preliinary break into categories
+Cutoff  for usable software is 500. Preliminary break into categories
 
-Categories for Modules
-TOOLS
-COMPILERS
-LANGUAGES
-BIOTOOLS
-STATISTICS
-IMAGING
-GENOMICS
-CHEMISTRY
-PHYSICS
+======== Categories for Modules ========================
+BIOTOOLS     GENOMICS     PHYSICS
+CHEMISTRY    IMAGING      STATISTICS
+COMPILERS    LANGUAGES    TOOLS
+
 =========================================================
 Software/version          num used   Action
 =========================================================
@@ -30,14 +25,14 @@ swig                                 DONE 4.0.1   (foundation)
 git                                  DONE 2.23.0  (foundation)
 java/1.8.0                  25494    DONE, have system RPMS, created module
 scons                                DONE 3.1.1.  (foundation)
+qt5                                  NEED module for system RPM
+
 ------------------ statistics  admix---------------------------
-cern_root/5.34.36          145802    NEED  get the latest release  6.18.04
-                                           A modular scientific software toolkit. It provides all the 
-                                           functionalities needed to deal with big data processing, 
-                                           statistical analysis, visualisation and storage. It is mainly 
-stata/14                     5092    NEED, Stata statistical software is a complete, integrated statistical software package
-                                           that provides everything you need for data analysis, data management, and graphics.
-                                           written in C++ but integrated with other languages such as Python and R.
+cern_root/5.34.36          145802    NEED  latest release  6.18.04
+                                           A modular scientific software toolkit needed to deal with big data processing, 
+                                           statistical analysis, visualisation and storage. 
+stata/14                     5092    NEED, Stata provides data analysis, data management, and graphics.
+                                           
 ------------------ lang  admix ---------------------------
 likely matlab as a separate admix
 anaconda/3.6-5.0.1         242222    DONE anaconda 2019.10 with python 3.7.4
@@ -45,7 +40,7 @@ ruby/2.5.3                   4515    NEED  sys RPM is 2.0.0
 MATLAB/r2018a              174356    NEED
 
 ------------------ EQ simulation  admix ---------------------------
-opensees/2.5.0             173290    NEED  OpenSees, the Open System for Earthquake Engineering Simulation
+opensees/2.5.0             173290    DONE  OpenSees, the Open System for Earthquake Engineering Simulation
                                            Need to rgister to get the source. Current version 2.5.0 
 ------------------ biotools admix ---------------------------
 rsem/1.3.0                  11493    DONE, add to biotools admix. RSEM is a software package for estimating gene 
@@ -54,6 +49,7 @@ vcftools/0.1.15             10652    DONE, add to biotools admix
 fastqc/0.11.7                2539    DONE  0.11.9 fastqc generate a comprehensive QC report
 meme/4.12.0                  9761    NEED, add latest
 freebayes/0.9.21             9722    DONE,  v 1.3.2 Bayesian genetic variant detector
+star                                 DONE
 
 ------------------ genomics admix ---------------------------
 plink 2.00a2.3                       DONE 
@@ -62,13 +58,14 @@ bedtools/2.25.0             18593    DONE  tools for a wide-range of genomics an
 
 
 ------------------ MRI processing ---------------------------
-fsl/5.0.9                   11780    NEED, FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data. 
+fsl/5.0.9                   11780    NEED, FSL analysis tools for FMRI/MRI/DTI http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL 
 freesurfer/6.0dev            9149    NEED,  Freesurfer is a tool to assist in 3D reconstruction of MRIs
            6.0               3536
 afni/v19.0.01                9420    NEED latest, AFNI (Analysis of Functional NeuroImages) is a set of C programs for 
                                           processing, analyzing, and displaying functional MRI (FMRI) data
 
 ------------------ MD tools ---------------------------
+gromacs                              DONE
 vmd/1.9.1                   16286    NEED, get the latest
 amber/amber12-mpi               9    NEED, add latest with cuda, mpi
       amber14-mpi             365
@@ -103,32 +100,28 @@ zlib/1.2.8                1647296    sys RPM is 1.2.7
 pcre/8.40                  254628    sys RPM is 8.32 loaded by R,swig
 ncurses/6.1                 24873    sys RPM is 5.9 neeed for biotools
 sqlite/3.7.11                3510    sys RPM is 3.7.17
+
 -----------------------------------------------------------
 
                        To determine
-grace/5.1.22                                         3931
-CNVnator/0.2.7                                       2999
-Xilinx_Vivado/2018.2                                 2188
-SeekDeep/2.6.3_2                                     1858
-         2.2.1                                        833
-TURBOMOLE/7.02                                       1586
-annovar/2013Jul28                                    1561
-marc/2018                                            1339
-gulp/5.1.1                                           1271
-trimmomatic/0.35                                     1232
-STAR/2.5.1b-static                                   1136
-     2.5.2a-static                                    835
-     2.6.0c                                           778
-     2.5.2a                                           599
-vasp/5.4.1                                            912
-metaphlan2/2.2.0                                      909
-express/1.4.0                                         837
-BBMap/37.50                                           826
-      35.66                                           312
-hisat2/2.1.0                                          795
-tmux/2.5                                              778
-abaqus/6.14                                           771
-byobu/5.127                                           753
-MUMmer/4.0.0b                                         586
+connectome_workbench/1.3.2 4238
+grace/5.1.22              3931
+CNVnator/0.2.7            2999
+Xilinx_Vivado/2018.2      2188
+SeekDeep/2.6.3_2          1858
+TURBOMOLE/7.02            1586
+annovar/2013Jul28         1561
+marc/2018                 1339
+gulp/5.1.1                1271
+trimmomatic/0.35          1232
+vasp/5.4.1                 912
+metaphlan2/2.2.0           909
+express/1.4.0              837
+BBMap/37.50               3978  NEED
+hisat2/2.1.0               795
+tmux/2.5                   778
+abaqus/6.14                771
+byobu/5.127                753
+MUMmer/4.0.0b              586
 
-homer/4.7           NOOOOOOOO!!!!!!!                  552
+homer/4.7                  552 NO NOT EVER !!!!!!!   
