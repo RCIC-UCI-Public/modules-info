@@ -21,20 +21,15 @@ class ModType:
                            # and values are module names claimed on logger line
 
     def addModule(self, line):
-        items = line.split()
-        if len(items) == 3:
-            newmodule = [items[0], items[1] + " " + items[2]]
-        else:
-            newmodule = [items[0], items[2] + " " + items[3]]
-
+        newmodule = [line]
         self.modules.append(newmodule)
         self.count += 1
 
     def readModFile(self, mod):
         fname = self.path + mod[0]
         if not os.path.isfile(fname):
-            print("ERROR")
-            return []
+            print("ERROR in file: ", fname)
+            return ""
         f = open(fname)
         txt = f.read()
         f.close()
@@ -65,13 +60,11 @@ class ModType:
 
     def checkLoad(self,txt):
         load = []
-        lookup = "module load "
+        lookup = "prereq	"
         lines = txt.splitlines()
         for l in lines:
             if l.find(lookup) == 0:
-                str1 = l.split('#')[0]        # remove comments if any
-                str2 = str1.split(lookup)[1]  # remove 'module load '
-                load += str2.split()          # account for possible multiple modules on a single line
+                load.append (l.split(lookup)[1])  # remove 'prereq '
         self.loaded += load
         return (load)
 
@@ -98,19 +91,20 @@ class ModType:
             print (mod)
 
     def printStats(self):
-        print ("\n### Modules in %s: %d" % (self.path, self.count))
-        print ("    ### Modules without logging: %d" % len(self.nologger))
-        for mod in self.nologger:
-            print ("        %s" % mod)
-        print ("    ### Modules with inconsistent names: %d" % len(self.names))
-        for mod in self.names.items():
-            print ("%40s:  %s" % mod)
-
+        print ("Modules in %s: %d" % (self.path[:-1], self.count))
+        if len(self.nologger):
+            print ("    Modules without logging: %d" % len(self.nologger))
+            for mod in self.nologger:
+                print ("        %s" % mod)
+        if len(self.names):
+            print ("    Modules with inconsistent names: %d" % len(self.names))
+            for mod in self.names.items():
+                print ("        in file %s:  the name is %s" % mod)
 
 class ModInfo:
     def __init__(self, args=None):
         self.args = args
-        self.cmd = ['/data/apps/modules/Modules/%s/bin/modulecmd' % os.environ['MODULE_VERSION'],'python', 'avail', '-lv']
+        self.cmd = ['/usr/bin/modulecmd', 'python', 'avail', '-tv']
         self.modtypes = [] # list of ModType instances, one per module type: software, bio, mpi, compielrs, etc
         self.nologger = [] # list of modules that have no logging across all module types
         self.loaded = []   # list of loaded modules across all module types
@@ -146,23 +140,35 @@ class ModInfo:
         '''Parse the output of the 'module avail' command and create a list of ModType instances'''
         p = subprocess.Popen( self.cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         (output, error) = p.communicate()
-
-        # split string into lines and remove first header line
-        self.lines = error.decode('utf-8').splitlines()[1:]
+        
+        # split string into lines 
+        self.lines = error.decode('utf-8').splitlines()
 
         for l in self.lines:
-            if match(r'^\s*$', l): 
-                continue # skip empty lines
-            if "modulefiles" in l: # add module type
+            if match(r'^\s*$', l):              # skip empty lines
+                continue 
+            if l[-1] == ":" :                   # add module type
                 name = l.split("/")[-1][:-1].lower()
                 path = l[:-1] + "/"
                 newModType = ModType(name, path)
                 self.modtypes.append(newModType)
             else: 
-                newModType.addModule(l)  # add module name for the type
+                newModType.addModule(l)        # add module name for the type
 
     def runCheck(self):
         '''For each ModType instance, parse all modules files and check for logging and loaded modules info'''
+        # these path are installed with environment-modules RPM
+        SYSRPM = ["/usr/share/Modules/modulefiles", "/etc/modulefiles"]
+        savemod = []
+        for item in self.modtypes:
+            if item.path[:-1] in SYSRPM:  # skip files installed by enrionment-modules RPM
+                continue
+            elif "home" in item.path:             # skip user modules
+                continue
+            else:
+                savemod.append(item)
+        self.modtypes = savemod
+
         for item in self.modtypes:
             item.verifyModule()
             self.loaded += item.listLoaded()

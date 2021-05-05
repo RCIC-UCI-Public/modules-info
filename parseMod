@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 
-# Parse files created from /var/log/messages files and count what modules
-# were called per parsing lines with 'module-hpc'. 
-# Arguments:  list of files to process, if empty use all /var/log/messages* files
-# NOTE: using unprocessed /var/log/messages files is slow, extract needed lines by 
-# running 'xmodl' script on /var/log/messages first then use processsed files.
+# Parse module load log files created and count what modules
+# were called via parsing lines with 'module-hpc'.
+# Arguments:  list of files to process, if empty use all /var/log/module-hpc* files
 
 import sys
 import os
@@ -15,20 +13,25 @@ class  FileParser:
     def __init__(self, args):
         self.prog = os.path.basename(args[0])
         self.args = args[1:]          # command line arguments
-        self.basedir = "/var/log/"    # default directory for system messages files
+        self.basedir = "/var/log/"    # default directory for log files
         self.files = []               # file names to parse
+        self.filelogname = "module-hpc"
 
         self.parseArgs()
+        if self.files == []:
+            str = "\nThere are no module log files to parse.\n" \
+                + "Files must be provided on a command line \n" \
+                + "if defualt files /var/log/%s* don't exist." % self.filelogname
+            print (str)
+            sys.exit(0)
 
     def exitHelp(self):
         helpstr = "NAME\n        %s - parse log files and count how often modules were loaded\n" % self.prog \
                 + "\nSYNOPSIS\n        %s [OPTION] [FILE]...\n" % self.prog \
                 + "\nDESCRIPTION\n        Parse FILEs provided on a command line and find how many times modules were loaded.\n" \
-                + "        If none provided, will parse /var/log/messages* files. The output contains per each used\n" \
+                + "        If none provided, will parse /var/log/module-hpc* files. The output contains per each used\n" \
                 + "        module a module name and a count of times loaded and a list of modules that were not loaded.\n\n" \
-                + "        NOTE: using unprocessed /var/log/messages files can be slow. Process them first\n" \
-                + "        with 'xmodl' and then run this program on processsed files.\n\n" \
-                + "        -h, --h, --help, help\n              Print usage info.\n" 
+                + "        -h, --h, --help, help\n              Print usage info.\n"
         print (helpstr)
         sys.exit(0)
 
@@ -54,7 +57,7 @@ class  FileParser:
                 self.exitError()
 
             for i in all:
-                if i.find("messages") == 0:
+                if i.find(self.filelogname) == 0:
                     self.files.append(self.basedir + i)
 
     def countTimesLoaded(self):
@@ -82,6 +85,7 @@ class  FileParser:
 
     def getUnusedModules(self):
         self.modinfo = ModInfo()
+        self.modinfo.runCheck()
         alist = sorted(self.modinfo.getModNameList())
         blist = set(sorted(self.count.keys()))
         self.unused = [i for i in alist if i not in blist]
@@ -95,7 +99,7 @@ class  FileParser:
     def printUnusedModules(self):
         self.getUnusedModules()
         print ("\n===== Total unique unused modules: %d" % len(self.unused))
-        for i in self.unused: 
+        for i in self.unused:
             print (i)
 
     def run(self):
