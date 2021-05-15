@@ -26,16 +26,55 @@ class  ModGraph:
         self.unused = []         # list of unused modules, get from the input file
         self.gdir = "dot-graphs" # directory for saving  graphviz source and figure files
         self.render = 'png'      # rendering output format
-        self.nologger = []       # list of modules that do not call logger
         self.deps = {}           # dependency dictionary, where key is a module and a value
                                  # is a dictionary of modules that depend on it, i.e.1
                                  # python/2.7.17 : {'biotools': ['bowtie2/2.4.1'], 'genomics': ['rMATS/4.0.2']}
+        self.categories = []     # list of modules categories
+        self.modules = {}        # key is module name, value is its category index from self.categories
 
-        self.colorNode = 'white'             # regular node 
-        self.colorUnused = 'lightsteelblue1' # unused  node 
-        self.fontLegend = 'royalblue3'       # legend font
-        self.colorLegend = 'royalblue3'      # legend color
-        self.colorBackground = 'ghostwhite'  # legend background
+        # graph attributes
+        self.graphDir = 'LR'     # edge direction from L to R
+
+        # legend attributes
+        self.legendFontName = "Numbus-Roman" # font name
+        self.legendFontColor = 'royalblue3'  # font color
+        self.legendFontSize = '16'           # font size
+        self.legendColorNode = 'aliceblue'       # regular node 
+
+        # subgraph attributes 
+        self.subgraphColorBg = 'ghostwhite'    # background color
+        self.subgraphFontName = "Numbus-Roman" # font name
+        self.subgraphFontColor = 'royalblue3'  # font color
+        self.subgraphFontSize = '14'           # font size
+
+        # node attributes
+        self.colorUnused = 'orangered' # unused node 
+        self.colorInvis = 'invis'      # for invisible color, balnd into background
+        self.penWidth = '2'            # node border width
+        self.nodeShape = 'record'      # node shape
+        self.nodeStyle = 'filled'      # fill node with color
+
+        # edge attributes 
+        self.edgeArrowSize = '0.5'
+        self.edgeArrowHead = 'vee'
+        self.edgeColor = 'royalblue3'
+
+        # CATEGOTIRES ['ai-learning', 'biotools', 'chemistry', 
+        #              'compilers', 'engineering', 'genomics',
+        #              'imaging', 'languages', 'libraries',
+        #              'physics', 'statistics', 'tools']
+
+        self.colors = ['skyblue1', 'slategray1', 'powderblue',
+                       'turquoise3', 'seagreen2', 'palegreen2',
+                       'deepskyblue', 'darkslategray2', 'darkturquoise',
+                       'darkorchid1', 'palegreen', 'olivedrab2'
+                      ]
+
+        self.colors = ['turquoise3', 'cadetblue2', 'lightskyblue',
+                       'slategray1', 'lavender', 'deepskyblue',
+                       'darkseagreen1', 'lightsteelblue', 'plum',
+                       'thistle', 'olivedrab2', 'wheat'
+                      ]
 
         self.parseArgs()
 
@@ -56,17 +95,15 @@ class  ModGraph:
         sys.exit(0)
 
     def parseArgs(self):
-        if self.args == []:
-            self.file = None
-        elif self.args[0] in ["-h","--h","help","-help","--help"]:
+        if self.args[0] in ["-h","--h","help","-help","--help"]:
             self.exitHelp()
-        else:
-            if os.path.isfile(self.args[0]):
-                self.file = self.args[0]
-                self.checkUnused()
+        if self.args == []:
+            return
+        if os.path.isfile(self.args[0]):
+            self.getUnusedModules(self.args[0])
 
-    def checkUnused(self):
-        f = open(self.file)
+    def getUnusedModules(self, fname):
+        f = open(fname)
         txt = f.read()
         f.close()
         self.unused = txt.split()
@@ -75,19 +112,21 @@ class  ModGraph:
     def getInfo(self):
         self.modinfo = ModInfo()
         self.modinfo.runCheck()
-        self.nologger = self.modinfo.allModNologger()
+#        for item in self.modinfo.modtypes:
+#            category = item.modTypeName()
+#            print("MOD", category, item.modules)
 
     def findNodesEdges(self, mtype):
         havenodes = False
         self.nodes = [] # graph node names list
         self.edges = [] # graph edges from->to
 
-        # mod is an array ['name/version', 'logging as True|False', [dependend modules if any]]
+        # mod is an array ['name/version',  [prereq modules if any]]
         for mod in mtype.modules:
             self.nodes.append(mod[0])
-            if len(mod[2]):
-                self.nodes += mod[2]
-                for i in mod[2]:
+            if len(mod[1]):
+                self.nodes += mod[1]
+                for i in mod[1]:
                     self.edges.append([mod[0],i])
 
         # found no dependendcies, don't build graph
@@ -111,85 +150,182 @@ class  ModGraph:
         # modules that load another module or are loaded by another module
         endpoints = set(list(itertools.chain(*self.edges)))
         solitary = []
-
         for n in self.nodes:
             if n in endpoints:
+                ncolor = self.colors[self.modules[n]]  # node color from its category
                 if n in self.unused:
-                    self.g.node(n, fillcolor=self.colorUnused, color=self.colorUnused, style='filled')
+                    self.addNode(self.g, n, fillcolor=ncolor, color=self.colorUnused)
                 else:
-                    self.g.node(n)
+                    self.addNode(self.g, n, fillcolor=ncolor, color=ncolor)
             else:
                 solitary.append(n)
-        self.addSolitaryNodes(solitary) 
+        self.addSolitaryNodes(self.g, solitary) 
 
-    def addSolitaryNodes(self, names):
-        """ This adds standalone modules (not loading others and not loaded by others)
-            Make an artifical grouping and edges  so that  the resulting graph
-            has 3 such modules per row, sinmply to make the graph a bit more dense
+    def addSolitaryNodes(self, g, names):
+        """ use invisible edges to make graph more readable,
+            resulting graph has 4 modules per row to keep nodes aligned.
         """
-        n = 3
+        n = 4
         args = [iter(names)] * n
+        # an array of tuples size 4, non-node values are None
         nargs = itertools.zip_longest(*args, fillvalue=None)
         for i in nargs:
             if i[1]:
-                self.g.edge(i[0],i[1], style="invis")
+                self.addEdge(g, i[0], i[1], style=self.colorInvis)
             if i[2]:
-                self.g.edge(i[1],i[2], style="invis")
+                self.addEdge(g, i[1], i[2], style=self.colorInvis)
+            if i[3]:
+                self.addEdge(g, i[2], i[3], style=self.colorInvis)
             for j in i:
+                if not j: continue # empty value
+                ncolor = self.colors[self.modules[j]]
                 if j in self.unused:
-                    self.g.node(j, fillcolor=self.colorUnused, color=self.colorUnused, style='filled')
-
+                    self.addNode(g, j, fillcolor=ncolor, color=self.colorUnused)
+                else:
+                    self.addNode(g, j, fillcolor=ncolor, color=ncolor )
 
     def addEdges(self):
         # add graph edges per loaded modules dependencies 
         for e in self.edges:
-            self.g.edge(e[0], e[1])
+            self.addEdge(self.g, e[0], e[1])
 
-    def addLoadLegend(self, name):
-        # legend subgraph
-        self.c = Digraph('clusterLegend')
-        self.c.attr(label="Legend for %s modules" % name.upper())
-        self.c.attr(fontsize='18', fontname="Numbus-Roman", fontcolor=self.fontLegend)
-        self.c.attr(color=self.colorBackground)
-        self.c.attr(style='filled')
+    def addNode(self, G, nlabel, **kwargs):
+        """add node to the graph
+           G - graph object
+           nlabel - node label
+           **kwargs - additional attributes
+        """
+        G.node(nlabel, **kwargs)
 
-        # use colored box for the node
-        self.c.node_attr['style'] = 'filled'
+    def addEdge(self, G, start, end, **kwargs):
+        """add edge to the graph
+           G - graph object
+           start - edge start
+           end   - edge end
+           **kwargs - additional attributes
+        """
+        G.edge(start, end, **kwargs)
 
-        # legend nodes and edges
-        self.c.node("A", fillcolor=self.colorNode)
-        self.c.node("B", fillcolor=self.colorNode)
-        self.c.edge("A","B", label="A loads  B")
+    def initLegend(self, name, reqstr):
+        """ create and return legend subgraph object
+            name - legend label
+            reqstr - string for the requirements edge
+        """
+        c = Digraph('clusterLegend')
+        c.attr(label=name)
+        c.attr(fontsize=self.legendFontSize, fontname=self.legendFontName, fontcolor=self.legendFontColor)
+        c.attr(color=self.legendFontColor)
+        
+        # module dependency info 
+        # left hand nodes
+        s0 = Digraph('struct0', node_attr={'shape': 'plaintext', 'color':'white'})
+        s0.node('struct0', '''<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="%s">A</TD></TR>
+          <TR><TD bgcolor="%s">%s</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="%s">C</TD></TR>
+          <TR><TD bgcolor="%s">Users don't use C</TD></TR>
+        </TABLE>>''' % (self.legendColorNode, self.colorInvis, reqstr, self.legendColorNode, self.colorInvis ))
+        c.subgraph(s0)
 
-        self.c.node("C", fillcolor=self.colorUnused, color=self.colorUnused)
-        self.c.node("D", label="", style="", shape="none")
-        self.c.edge("C","D",style="", label="unused module")
+        # right hand nodes
+        s1 = Digraph('struct1', node_attr={'shape': 'plaintext', 'color':'white'})
+        s1.node('struct1', '''<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="%s">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="%s">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="%s">   </TD></TR>
+          <TR><TD bgcolor="%s">   </TD></TR>
+        </TABLE>>''' % (self.legendColorNode, self.colorInvis, self.colorInvis, self.colorInvis, ))
+        c.subgraph(s1)
 
-        # self.c.edge_attr['style'] = 'invis' # dont draw lines between nodes
+        # add edge 
+        self.addEdge(c, 'struct0:p0', 'struct1:p0')
 
-        # add legend as a subgraph
-        self.g.subgraph(self.c)
+        # module categories info as 2 tables
+        s2 = Digraph('struct2', node_attr={'shape': 'plaintext', 'color':'white'})
+        table = self.makeTableStr(0)
+        s2.node('struct2', table)
+        c.subgraph(s2)
+
+        s3 = Digraph('struct3', node_attr={'shape': 'plaintext', 'color':'white'})
+        table = self.makeTableStr(1)
+        s3.node('struct3', table)
+        c.subgraph(s3)
+
+        # edge beteen two tables, just to line up things
+        self.addEdge(c, 'struct2:p0', 'struct3:p0', style="", color=self.colorInvis)
+
+        return c
+
+    def makeTableStr(self, n):
+        """ create HTML style table for categories 
+            n=0 - first half of categoreis
+            n=1 - second half of available categories
+        """
+        x = int(len(self.categories)/2) 
+        head = "<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"5\">\n"
+        tail = "        </TABLE>>"
+        middle = ""
+
+        if n:
+           names = self.categories[x:]
+           colors = self.colors[x:]
+        else:
+           names = self.categories[0:x]
+           colors = self.colors[0:x]
+           # add title to table start
+           middle += "          <TR><TD colspan='2'><FONT COLOR=\"%s\">Modules Categories:</FONT></TD></TR>\n" % self.legendFontColor
+
+        for i in range(0, int(x/2)):
+           vals = (i, colors[i], names[i].upper(), colors[i+3], names[i+3].upper())
+           middle  += "          <TR><TD PORT=\"p%d\" bgcolor=\"%s\">%s</TD><TD bgcolor=\"%s\">%s</TD></TR>\n" % vals
+        table = head + middle + tail
+
+        return table
+
+    def initGraph(self, name):
+        """ start graph and initialize its basic attribures"""
+        self.g = Digraph(filename=name, directory=self.gdir, format=self.render)
+        self.addGraphAttr('rankdir', self.graphDir)
+        self.addGraphAttr('center', 'true')
+        
+        # arrows attributes
+        self.addEdgeAttr('arrowsize', self.edgeArrowSize)
+        self.addEdgeAttr('arrowhead', self.edgeArrowHead)
+        self.addEdgeAttr('color', self.edgeColor)
+
+        # nodes attributes
+        self.addNodeAttr(self.g, 'shape', self.nodeShape)
+        self.addNodeAttr(self.g, 'style', self.nodeStyle)
+        self.addNodeAttr(self.g, 'penwidth', self.penWidth)
+
+    def addGraphAttr(self, key, val):
+        if self.g:
+            self.g.graph_attr[key] = val
+
+    def addEdgeAttr(self, key, val):
+        if self.g:
+            self.g.edge_attr[key] = val
+
+    def addNodeAttr(self, g, key, val):
+        if g:
+            g.node_attr[key] = val
 
     def writeLoadGraph(self, mtype):
         if not self.findNodesEdges(mtype):
             return
-        print ("Processing %s modules" % mtype.modTypeName())
+        #print ("Processing %s modules" % mtype.modTypeName())
         # create a graph object for saving in files per modules type
-        self.g = Digraph(filename=mtype.name, directory=self.gdir, format=self.render)
-        self.g.graph_attr['rankdir'] = 'LR'
-        self.g.graph_attr['center'] = 'true'
-        
-        self.g.edge_attr['arrowsize'] = '0.5'
-        self.g.edge_attr['arrowhead'] = 'vee'
-        self.g.node_attr['shape'] = 'record'
-        self.g.node_attr['color'] = self.colorUnused
+        self.initGraph("modules-" + mtype.name)
 
         # add nodes and edges
         self.addNodes()
         self.addEdges()
 
         # create legend subgraph 
-        self.addLoadLegend(mtype.modTypeName())
+        l = self.initLegend("%s modules" % mtype.modTypeName().upper(), "A requires B")
+        self.g.subgraph(l)
 
         # output graph source  and figure  files
         self.g.render(view=False) 
@@ -206,41 +342,42 @@ class  ModGraph:
         if not self.deps:
             return  # no info about modules
 
-        # ordered dict:
-        # key - module X name, value - number of categories where modules depend on module X
+        # dict1: key - module name N, value - number of categories where modules depend on module N 
         temp={}
         for key,val in self.deps.items():
             temp[key] = len(val)
-        orderDict = {k: v for k, v in sorted(temp.items(), key=lambda item: item[1], reverse=True)}
+        dict1 = {k: v for k, v in sorted(temp.items(), key=lambda item: item[1], reverse=True)}
 
-        # reverse of ordered dict:
-        # key - number of categories where modules depend on a module X, value - module X name
-        reverseDict = {}
-        for key, value in orderDict.items():
-            if value not in reverseDict:
-                reverseDict[value] = [key]
+        # dict2:
+        # key - number of categories where modules depend on a specific module X, 
+        # value - list of specific modules 
+        dict2 = {}
+        for key, value in dict1.items():
+            if value not in dict2:
+                dict2[value] = [key]
             else:
-                reverseDict[value].append(key)
-        # create graphs
-        for num, modnames in reverseDict.items():
+                dict2[value].append(key)
+
+        # create graphs by number of categories for module dependencies
+        for num, modnames in dict2.items():
             self.writeDependGraph(num, modnames)
 
     def writeDependGraph(self, num, modnames):
-        print ("Processing modules with dependencies in %d categories" % num)
-        # create a graph object 
-        self.g = Digraph(filename="dependency-%s" % num, directory=self.gdir, format=self.render)
-        self.g.graph_attr['rankdir'] = 'LR'
-        self.g.graph_attr['center'] = 'true'
-        self.g.node_attr['shape'] = 'none'
-
-        self.g.edge_attr['arrowsize'] = '0.5'
-        self.g.edge_attr['arrowhead'] = 'vee'
+        # create a graph object and set properties
+        #print ("Processing modules with dependencies in %d categories" % num)
+        self.initGraph("dependency-%s" % num)
+        self.addGraphAttr('compound', 'true')
+        self.addGraphAttr('concentrate', 'true')
+        self.addEdgeAttr('dir', 'back')
 
         # add subgraphs by category
+
+        print ("%d modules are required by others in %d categories" % (len(modnames),num))
         self.addDependSubGraph(modnames)
 
         # create legend subgraph 
-        self.addDependLegend(num)
+        l = self.initLegend("Modules dependency","A is required by B")
+        self.g.subgraph(l)
 
         # output graph source and image files
         self.g.render(view=False) 
@@ -248,8 +385,12 @@ class  ModGraph:
     def addDependSubGraph(self, modnames):
         cats = {} # dict of modules by categories for all modules in modnames
         # add nodes and edges
+        num = len(modnames)
         for mod in modnames:
-            # find nodes
+            # add modules that a loaded by other modules
+            ncolor = self.colors[self.modules[mod]]
+            self.addNode(self.g, mod, fillcolor=ncolor, color=ncolor)
+            # find loading modules
             dictdeps = self.deps[mod]
             nodes = []
             for key, val in dictdeps.items():
@@ -259,54 +400,44 @@ class  ModGraph:
                     cats[key] += val
                 else:
                     cats[key] = val
-            # find edges
             for n in nodes:
-                self.g.edge(mod, n)
+                self.addEdge(self.g, mod, n)
 
-        # add categories as subgraphs
-        i = 0  # counter, need for naming subgraphs
+        # add categories subgraphs
+        i = 0  # counter for naming subgraphs
         for key, val in cats.items():
             subG = Digraph("cluster%s" % i)
             subG.attr(label= key.upper())
-            subG.attr(fontsize='16', fontname="Numbus-Roman", fontcolor=self.fontLegend)
-            subG.attr(color=self.colorBackground)
-            subG.attr(style='filled')
-            for n in val: 
-                if n in self.unused:
-                    subG.node(n, fillcolor=self.colorUnused, color=self.colorUnused, style='filled')
-                else:
-                    subG.node(n)
+            subG.attr(fontsize=self.subgraphFontSize, fontname=self.subgraphFontName, fontcolor=self.subgraphFontColor)
+            subG.attr(color=self.subgraphFontColor)
+
+            # remove duplicate node reference
+            val_flat = list(set(val))
+            if num < 3:
+                self.addSolitaryNodes(subG, val_flat)
+            else:
+                for n in val_flat: 
+                    ncolor = self.colors[self.modules[n]]
+                    if n in self.unused:
+                        self.addNode(subG, n, fillcolor=ncolor, color=self.colorUnused)
+                    else:
+                        self.addNode(subG, n, fillcolor=ncolor, color=ncolor)
             i += 1
             self.g.subgraph(subG)
-
-    def addDependLegend(self, num):
-        self.c = Digraph('clusterLegend')
-        # legend title
-        self.c.attr(label="Modules dependency")
-        self.c.attr(fontsize='18', fontname="Numbus-Roman", fontcolor=self.fontLegend)
-        self.c.attr(color=self.fontLegend)
-
-        # legend nodes and edges
-        self.c.node("A")
-        self.c.node("B")
-        self.c.node("C")
-        self.c.node("D", fillcolor=self.colorUnused, color=self.colorUnused, style="filled")
-        self.c.edge("A","B", label="A is required for B")
-        self.c.edge("C","D",style="", label="C is requred by an unused module D")
-
-        # add legend as a subgraph
-        self.g.subgraph(self.c)
 
     def getGraphDependency(self):
         if not self.modinfo:
             return  # no info about modules
 
         isdep = {}
+        i = 0 # category position index
         for item in self.modinfo.modtypes:
             category = item.modTypeName()
+            self.categories.append(category)
             for mod in item.modules:
-                if mod[2]: 
-                    for modName in mod[2]:
+                self.modules[mod[0]] = i
+                if mod[1]: 
+                    for modName in mod[1]:
                         if isdep.get(modName):
                             if isdep[modName].get(category):
                                 isdep[modName][category].append(mod[0])
@@ -315,12 +446,16 @@ class  ModGraph:
                         else:
                             newCatDict = {category : [mod[0]]}
                             isdep[modName] = newCatDict
+            i += 1  # increase category position index
+
         self.deps = isdep
 
     def run(self):
         self.getInfo()
-        self.makeLoadGraph()
         self.getGraphDependency()
+        print ("Building graphs for modules by categories...")
+        self.makeLoadGraph()
+        print ("Building graphs for modules dependencies...")
         self.makeDependGraph()
 
 ##### Run from a command line #####
