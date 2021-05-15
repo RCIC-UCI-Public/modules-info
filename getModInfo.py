@@ -15,7 +15,6 @@ class ModType:
         self.path = path
         self.modules = []
         self.count = 0
-        self.nologger = [] # list of modules that have no logging
         self.loaded = []   # list of loaded modules 
         self.names = {}    # dictionary  where keys are module names per module filenames
                            # and values are module names claimed on logger line
@@ -41,15 +40,6 @@ class ModType:
             listmn.append(i[0])
         return listmn
 
-    def checkLogging(self,txt, name):
-        index = txt.find("/bin/logger")
-        if index > -1 :
-            self.checkName(txt[index:], name)
-            return "True"
-        else:
-            self.nologger.append(name)
-            return "False"
-
     def checkName(self, txt, name):
         line = txt.splitlines()[0]
         line = line.replace('"','',2) # rm quotes if module name was surrounded by by them
@@ -71,16 +61,11 @@ class ModType:
     def verifyModule(self):
         for i in self.modules:
            txt = self.readModFile(i)
-           i.append(self.checkLogging(txt, i[0]))
            i.append(self.checkLoad(txt))
         self.loaded = list(set(self.loaded))
-        self.nologger = sorted(list(set(self.nologger)))
 
     def listLoaded(self):
         return self.loaded 
-
-    def listNologger(self):
-        return self.nologger
 
     def modTypeName(self):
         return self.name
@@ -92,10 +77,6 @@ class ModType:
 
     def printStats(self):
         print ("Modules in %s: %d" % (self.path[:-1], self.count))
-        if len(self.nologger):
-            print ("    Modules without logging: %d" % len(self.nologger))
-            for mod in self.nologger:
-                print ("        %s" % mod)
         if len(self.names):
             print ("    Modules with inconsistent names: %d" % len(self.names))
             for mod in self.names.items():
@@ -106,7 +87,6 @@ class ModInfo:
         self.args = args
         self.cmd = ['/usr/bin/modulecmd', 'python', 'avail', '-tv']
         self.modtypes = [] # list of ModType instances, one per module type: software, bio, mpi, compielrs, etc
-        self.nologger = [] # list of modules that have no logging across all module types
         self.loaded = []   # list of loaded modules across all module types
 
         self.parseArgs()
@@ -172,15 +152,10 @@ class ModInfo:
         for item in self.modtypes:
             item.verifyModule()
             self.loaded += item.listLoaded()
-            self.nologger += item.listNologger()
 
     def allModLoaded(self):
         '''Return a list of modules that are loaded by any other module'''
         return self.loaded 
-
-    def allModNologger(self):
-        '''Return a list of modules that have no logger enabled'''
-        return self.nologger
 
     def printTypes(self):
         '''print info for each ModType'''
