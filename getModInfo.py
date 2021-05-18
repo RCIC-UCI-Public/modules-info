@@ -16,8 +16,9 @@ class ModType:
         self.modules = []
         self.count = 0
         self.loaded = []   # list of loaded modules 
-        self.names = {}    # dictionary  where keys are module names per module filenames
+        self.names = {}    # dictionary where keys are module names per module filenames
                            # and values are module names claimed on logger line
+        self.load_distribution = [] # number of prereq modules for each module in self.modules
 
     def addModule(self, line):
         newmodule = [line]
@@ -70,8 +71,15 @@ class ModType:
     def modTypeName(self):
         return self.name
  
+    def findStats(self):
+        for mod in self.modules:
+            self.load_distribution.append(len(mod[1]))
+
+    def getStats(self):
+        return self.load_distribution
+
     def printInfo(self):
-        print (self.name, self.path, self.count)
+        print (self.name, self.path[:-1], self.count)
         for mod in self.modules:
             print (mod)
 
@@ -86,7 +94,7 @@ class ModInfo:
     def __init__(self, args=None):
         self.args = args
         self.cmd = ['/usr/bin/modulecmd', 'python', 'avail', '-tv']
-        self.modtypes = [] # list of ModType instances, one per module type: software, bio, mpi, compielrs, etc
+        self.modtypes = [] # list of ModType instances, one per module type: biotools, compielrs, etc
         self.loaded = []   # list of loaded modules across all module types
 
         self.parseArgs()
@@ -157,6 +165,7 @@ class ModInfo:
         '''Return a list of modules that are loaded by any other module'''
         return self.loaded 
 
+
     def printTypes(self):
         '''print info for each ModType'''
         for item in self.modtypes:
@@ -182,4 +191,3 @@ class ModInfo:
 if __name__ == "__main__":
     app = ModInfo(sys.argv)
     app.run()
-
