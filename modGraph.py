@@ -31,6 +31,7 @@ class  ModGraph:
                                  # python/2.7.17 : {'biotools': ['bowtie2/2.4.1'], 'genomics': ['rMATS/4.0.2']}
         self.categories = []     # list of modules categories
         self.modules = {}        # key is module name, value is its category index from self.categories
+        self.statsByLoad = []    # number of prereq modules for each avail module
 
         # graph attributes
         self.graphDir = 'LR'     # edge direction from L to R
@@ -335,22 +336,22 @@ class  ModGraph:
             return  # no info about modules
 
         for item in self.modinfo.modtypes:
+            #item.printInfo() # DEBUG 
             self.writeLoadGraph(item)
-            #item.printInfo() # for debugging
 
     def makeDependGraph(self):
         if not self.deps:
             return  # no info about modules
 
-        # dict1: key - module name N, value - number of categories where modules depend on module N 
+        # dict1: key - module name N, 
+        #        val - number of categories where modules depend on module N 
         temp={}
         for key,val in self.deps.items():
             temp[key] = len(val)
         dict1 = {k: v for k, v in sorted(temp.items(), key=lambda item: item[1], reverse=True)}
 
-        # dict2:
-        # key - number of categories where modules depend on a specific module X, 
-        # value - list of specific modules 
+        # dict2: key - number of categories where modules depend on a specific module X, 
+        #        val - list of specific modules 
         dict2 = {}
         for key, value in dict1.items():
             if value not in dict2:
@@ -358,9 +359,19 @@ class  ModGraph:
             else:
                 dict2[value].append(key)
 
+        # get stats for categories 
+        self.findCategoryStats(dict2)
+
         # create graphs by number of categories for module dependencies
         for num, modnames in dict2.items():
             self.writeDependGraph(num, modnames)
+
+    def findCategoryStats(self, d):
+        # self.stats1: [0] - number of categories where modules depend on a specific module X, 
+        #              [1] - number of X modules 
+        self.statsByCategory = []
+        for num, modnames in d.items():
+            self.statsByCategory.append([len(modnames), num])
 
     def writeDependGraph(self, num, modnames):
         # create a graph object and set properties
@@ -371,8 +382,6 @@ class  ModGraph:
         self.addEdgeAttr('dir', 'back')
 
         # add subgraphs by category
-
-        print ("%d modules are required by others in %d categories" % (len(modnames),num))
         self.addDependSubGraph(modnames)
 
         # create legend subgraph 
@@ -449,6 +458,35 @@ class  ModGraph:
             i += 1  # increase category position index
 
         self.deps = isdep
+        # DEBUG
+        #for k,v in self.deps.items():
+        #    print ("DEBUG", k,v)
+
+    def getModStats(self):
+        import numpy as np
+        import matplotlib.pyplot as plt
+
+        print ("Building stats graph")
+        name = "%s/loadStats" % self.gdir
+
+        for item in self.modinfo.modtypes:
+            item.findStats()
+            self.statsByLoad += item.getStats()
+        array = np.asarray(self.statsByLoad)
+        bins = range(min(array), max(array)+2)
+        ans = plt.hist(array, bins=bins, rwidth=0.8, align='left' )
+        plt.xticks(range(max(array)+1))
+        yticks = range(int(max(ans[0])/10+2))
+        yticks = np.asarray(yticks)
+        yticks  = yticks * 10
+        plt.yticks(yticks)
+        plt.xlim(bins[0]-1, bins[-1])
+        
+        plt.grid(axis='y', alpha=1.0)
+        plt.xlabel('Number of prerequisite modules')
+        plt.ylabel('Counts')
+        plt.show()
+        plt.savefig("%s.png" % name)
 
     def run(self):
         self.getInfo()
@@ -457,6 +495,9 @@ class  ModGraph:
         self.makeLoadGraph()
         print ("Building graphs for modules dependencies...")
         self.makeDependGraph()
+        for i in self.statsByCategory:
+            print ("%d modules are required by others in %d categories" % (i[0], i[1]))
+        self.getModStats()
 
 ##### Run from a command line #####
 if __name__ == "__main__":
