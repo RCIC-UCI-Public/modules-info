@@ -17,6 +17,8 @@ if sys.version_info.major < 3:
 
 import itertools
 from graphviz import Digraph
+import numpy as np
+import matplotlib.pyplot as plt
 
 class  ModGraph:
     def __init__(self, args):
@@ -31,7 +33,7 @@ class  ModGraph:
                                  # python/2.7.17 : {'biotools': ['bowtie2/2.4.1'], 'genomics': ['rMATS/4.0.2']}
         self.categories = []     # list of modules categories
         self.modules = {}        # key is module name, value is its category index from self.categories
-        self.statsByLoad = []    # number of prereq modules for each avail module
+        self.statsPrereqs = []    # number of prereq modules for each avail module
 
         # graph attributes
         self.graphDir = 'LR'     # edge direction from L to R
@@ -65,17 +67,17 @@ class  ModGraph:
         #              'imaging', 'languages', 'libraries',
         #              'physics', 'statistics', 'tools']
 
-        self.colors = ['skyblue1', 'slategray1', 'powderblue',
-                       'turquoise3', 'seagreen2', 'palegreen2',
-                       'deepskyblue', 'darkslategray2', 'darkturquoise',
-                       'darkorchid1', 'palegreen', 'olivedrab2'
-                      ]
-
+        # colors for dot graphs
         self.colors = ['turquoise3', 'cadetblue2', 'lightskyblue',
                        'slategray1', 'lavender', 'deepskyblue',
                        'darkseagreen1', 'lightsteelblue', 'plum',
                        'thistle', 'olivedrab2', 'wheat'
                       ]
+        self.pltColors = ['SteelBlue', 'LightSteelBlue', 'RoyalBlue',
+                          'LIghtSkyblue', 'SlateGray','Gainsboro',
+                          'MediumBlue', 'LightCyan', 'Blue',
+                          'Lavender', 'Crimson', 'Gold'
+                         ]
 
         self.parseArgs()
 
@@ -444,8 +446,8 @@ class  ModGraph:
             category = item.modTypeName()
             self.categories.append(category)
             for mod in item.modules:
-                self.modules[mod[0]] = i
-                if mod[1]: 
+                self.modules[mod[0]] = i # module category index
+                if mod[1]:
                     for modName in mod[1]:
                         if isdep.get(modName):
                             if isdep[modName].get(category):
@@ -462,17 +464,63 @@ class  ModGraph:
         #for k,v in self.deps.items():
         #    print ("DEBUG", k,v)
 
-    def getModStats(self):
-        import numpy as np
-        import matplotlib.pyplot as plt
-
-        print ("Building stats graph")
+    def makeLoadedStatsGraph(self):
+        print ("Building load stats graph")
         name = "%s/loadStats" % self.gdir
+        plt.figure(2)
+
+        d = {}
+        for key in self.modules.keys():
+            d[key] = 0
+
+        for item in self.modinfo.modtypes:
+            for mod in item.modules:
+                if mod[1]:
+                    for modName in mod[1]:
+                        d[modName] += 1
+
+        # create data and labels for pie plot
+        vals = list(d.values())
+        array = np.asarray(vals)
+        bins = list(set(vals))
+        bins.sort()
+        bins.append(bins[-1]+1)
+        ans = np.histogram(array,bins)
+        y = ans[0]
+        x = ans[1][:-1]
+        # create wedge explode for data value "1"
+        z = x * 0.0
+        index = np.where(x == 1)
+        z[index] = 0.05
+        p = plt.pie(y, pctdistance=1.1, startangle=45, colors=self.pltColors, explode=z)
+
+        # creatl legend labels
+        labels = ['%3s (%2.1f%%)' % (l, s) for l, s in zip(x, y*1.0/len(vals)*100)]
+        plt.legend(p[0], labels, loc="best")
+
+        # plor properties
+        plt.title("Loading distribution for %s modules" % len(vals))
+        plt.axis('equal')         # set equal ratio for the axes
+        plt.tight_layout()        # paddingf between subplots if any
+
+        # make white background nontransparent, legend 5% transparent
+        plt.rcParams.update({ "figure.facecolor": (1.0, 1.0, 1.0, 1.0), "axes.facecolor":(1.0, 1.0, 1.0, 0.95)})
+
+        # add annotation
+        plt.text(0.2,-0.4,"%d modules (%2.1f%%)\nare loaded by\n%d other module" % (y[index], y[index]*1.0/len(vals)*100,x[index] ))
+
+        plt.show()
+        plt.savefig("%s.png" % name)
+
+    def makePrereqStatsGraph(self):
+        print ("Building prereq stats graph")
+        name = "%s/prereqStats" % self.gdir
+        plt.figure(1)
 
         for item in self.modinfo.modtypes:
             item.findStats()
-            self.statsByLoad += item.getStats()
-        array = np.asarray(self.statsByLoad)
+            self.statsPrereqs += item.getStats()
+        array = np.asarray(self.statsPrereqs)
         bins = range(min(array), max(array)+2)
         ans = plt.hist(array, bins=bins, rwidth=0.8, align='left' )
         plt.xticks(range(max(array)+1))
@@ -483,8 +531,8 @@ class  ModGraph:
         plt.xlim(bins[0]-1, bins[-1])
         
         plt.grid(axis='y', alpha=1.0)
-        plt.xlabel('Number of prerequisite modules')
-        plt.ylabel('Counts')
+        plt.xlabel('Number of prerequisite modules loaded')
+        plt.ylabel('Modules Counts')
         plt.show()
         plt.savefig("%s.png" % name)
 
@@ -495,9 +543,10 @@ class  ModGraph:
         self.makeLoadGraph()
         print ("Building graphs for modules dependencies...")
         self.makeDependGraph()
-        for i in self.statsByCategory:
-            print ("%d modules are required by others in %d categories" % (i[0], i[1]))
-        self.getModStats()
+        #for i in self.statsByCategory:
+        #    print ("%d modules are required by others in %d categories" % (i[0], i[1]))
+        self.makePrereqStatsGraph()
+        self.makeLoadedStatsGraph()
 
 ##### Run from a command line #####
 if __name__ == "__main__":
