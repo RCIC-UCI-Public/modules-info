@@ -16,8 +16,9 @@ class ModType:
         self.modules = []
         self.count = 0
         self.loaded = []   # list of loaded modules 
-        self.names = {}    # dictionary where keys are module names per module filenames
+        self.badnames = {} # dictionary where keys are module names per module filenames
                            # and values are module names claimed on logger line
+        self.names = []    # modules names
         self.load_distribution = [] # number of prereq modules for each module in self.modules
 
     def addModule(self, line):
@@ -46,8 +47,9 @@ class ModType:
         line = line.replace('"','',2) # rm quotes if module name was surrounded by by them
         claimedName = line.split()[-1]
         if claimedName == name:
-            return
-        self.names[name] = claimedName
+            self.names.append(name)
+        else:
+            self.badnames[name] = claimedName
 
     def checkLoad(self,txt):
         load = []
@@ -85,9 +87,9 @@ class ModType:
 
     def printStats(self):
         print ("Modules in %s: %d" % (self.path[:-1], self.count))
-        if len(self.names):
-            print ("    Modules with inconsistent names: %d" % len(self.names))
-            for mod in self.names.items():
+        if len(self.badnames):
+            print ("    Modules with inconsistent names: %d" % len(self.badnames))
+            for mod in self.badnames.items():
                 print ("        in file %s:  the name is %s" % mod)
 
 class ModInfo:
@@ -96,6 +98,7 @@ class ModInfo:
         self.cmd = ['/usr/bin/modulecmd', 'python', 'avail', '-tv']
         self.modtypes = [] # list of ModType instances, one per module type: biotools, compielrs, etc
         self.loaded = []   # list of loaded modules across all module types
+        self.defaultDir = "/opt/rcic/Modules/modulefiles"
 
         self.parseArgs()
         self.readInfo()
@@ -149,12 +152,15 @@ class ModInfo:
         SYSRPM = ["/usr/share/Modules/modulefiles", "/etc/modulefiles"]
         savemod = []
         for item in self.modtypes:
-            if item.path[:-1] in SYSRPM:  # skip files installed by enrionment-modules RPM
-                continue
-            elif "home" in item.path:             # skip user modules
-                continue
-            else:
+            #if item.path[:-1] in SYSRPM:  # skip files installed by enrionment-modules RPM
+            #    continue
+            #elif "home" in item.path:             # skip user modules
+            #    continue
+            #else:
+            #    savemod.append(item)
+            if self.defaultDir in item.path:
                 savemod.append(item)
+
         self.modtypes = savemod
 
         for item in self.modtypes:
