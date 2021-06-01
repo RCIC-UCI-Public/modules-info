@@ -8,6 +8,9 @@ import sys
 import os
 from collections import defaultdict
 from getModInfo import ModInfo
+from datetime import datetime
+import numpy as np
+import matplotlib.pyplot as plt
 
 class  FileParser:
     def __init__(self, args):
@@ -15,16 +18,33 @@ class  FileParser:
         self.args = args[1:]          # command line arguments
         self.basedir = "/var/log/"    # default directory for log files
         self.files = []               # file names to parse
+        self.output = []              # output gtext
         self.filelogname = "module-hpc"
         self.modlist = []             # installed modules names list
+        # we renamed some modules or we dont install some on all nodes
+        # key - name to map, val - name to map to
+        self.mapping = {"fftw/3.3.8":"fftw/3.3.8/gcc.4.8.5",
+             "pytorch-cuda/1.5.1":"pytorch/1.5.1",
+             "gromacs/2020.4/gcc.8.4.0-cuda.10.1.243":"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243",
+             "gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3":"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3",
+             "gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1":"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1",
+             "plumed/2.6.1/gcc.8.4.0-openmpi.4.0.3":"plumed/2.6.1/gcc.8.4.0-openmpi.4.0.3",
+             "rustc/1.50.0/gcc.8.4.0":"rustc/1.50.0"
+             }
 
         self.parseArgs()
+
         if self.files == []:
             str = "\nThere are no module log files to parse.\n" \
                 + "Files must be provided on a command line \n" \
                 + "if defualt files /var/log/%s* don't exist." % self.filelogname
             print (str)
             sys.exit(0)
+
+        self.runtime = datetime.now().strftime("%Y%m%d")
+        self.output.append("Processed files on %s:\n" % self.runtime)
+        for f in self.files:
+            self.output.append("    %s\n" % f)
 
     def exitHelp(self):
         helpstr = "NAME\n        %s - parse log files and count how often modules were loaded\n" % self.prog \
@@ -63,16 +83,20 @@ class  FileParser:
 
     def countTimesLoaded(self):
         self.maxl = 0 
+        oldnames = self.mapping.keys()
+
         # create dictionary with key:value as modulename:number_times_called
         self.count = defaultdict(int)
         self.usermod = defaultdict(int)
         for log in self.files:
+            print ("Processing file: ", log)
             f =  open(log) 
             for i, line in enumerate(f):
-                #if line.find("module-hpc") < 0: continue
                 module = line.split()[-1]
                 if module in self.modlist:
                     self.count[module] += 1
+                elif module in oldnames:
+                    self.count[self.mapping[module]] += 1
                 else:
                     self.usermod[module] += 1
                 ll = len(module)
@@ -92,59 +116,70 @@ class  FileParser:
         blist = set(sorted(self.count.keys()))
         self.unused = [i for i in self.modlist if i not in blist]
 
+    def writeOutput(self):
+        fname = "out-parsemod-%s" % self.runtime
+        self.printUsedModules()
+        self.printUnusedModules()
+        self.printUserModules()
+        f = open(fname, "w")
+        f.writelines(self.output)
+        f.close()
+
     def printUsedModules(self):
         self.getUsedModules()
-        print ("========== Total unique used modules: %d ==========" % self.countTotal)
+        self.output.append ("========== Total unique used modules: %d ==========\n" % self.countTotal)
         for i in self.used:
-            print ('{sw:{width}s} {num:12d}'.format(sw=i[0], num=i[1], width=self.maxl))
+            self.output.append('{sw:{width}s} {num:12d}\n'.format(sw=i[0], num=i[1], width=self.maxl))
 
     def printUnusedModules(self):
         self.getUnusedModules()
-        print ("========== Total unique unused modules: %d ==========" % len(self.unused))
+        self.output.append("========== Total unique unused modules: %d ==========\n" % len(self.unused))
         for i in self.unused: 
-            print (i)
+            self.output.append("%s\n" % i)
 
     def printUserModules(self):
-        print ("========== Total unique user or removed modules: %d ==========" % len(self.usermod))
+        self.output.append("========== Total unique user or removed modules: %d ==========\n" % len(self.usermod))
         user = sorted(self.usermod.items(), key=lambda x: x[1], reverse=True)
         for i in user: 
-            print ('{sw:{width}s} {num:12d}'.format(sw=i[0], num=i[1], width=self.maxl))
+            self.output.append('{sw:{width}s} {num:12d}\n'.format(sw=i[0], num=i[1], width=self.maxl))
 
-    def GraphUsage(self):
-        import numpy as np
-        import matplotlib.pyplot as plt
+    def usageGraph(self):
         name = "dot-graphs/usageStats"
 
+        # get counts for used modules
         data = []
-        f =  open("now") 
-        for i, line in enumerate(f):
-            data.append(int(line[:-1]))
-        #print (data)
+        for i in self.used:
+            data.append(i[1])
 
-        #array = np.asarray(self.statsPrereqs)
-        #ans = plt.hist(array, rwidth=0.8, align='left' )
+        # add unused counts initialized to 0.1 so that can use log10
+        data += [0.1] * len(self.unused)
+
+        # DEBUG shortcut
+        #data = []
+        #f =  open("now")
+        #for i, line in enumerate(f):
+        #    data.append(int(line[:-1]))
+        #data += [0.1] * 40 
 
         x = data
         ylog = np.log10(data)
+        print (data)
+        print (ylog)
 
-        #plt.plot(data)
-        #ax = plt.gca()
-        #ax.set_yscale('log')
-        #plt.show()
-
-        bins=[0,1,2,3,4,5,6]
+        bins=[-1,0,1,2,3,4,5,6]
         plt.figure(1)
         ans=plt.hist(ylog, bins=bins,rwidth=0.8, align='left' )
-        cols = ['LightSteelBlue', 'LightSkyblue', 'LightBlue', 'Gold', 'Orange','OrangeRed']
+        cols = ['gainsboro', 'LightSteelBlue', 'LightSkyblue', 'LightBlue', 'Gold', 'Orange','OrangeRed']
         y = ans[0]
         x = ans[1][:-1]
-        yy=y/len(data)*100
-        labels = ['log10=%d' % (l) for l in x]
+        #labels = ['log10=%d' % (l) for l in x]
+        labels = ['no usage', "1(s)", "10(s)", "100(s)", "1,000(s)", "10,000(s)", "100,000(s)"]
         plt.figure(2)
-        p = plt.pie(yy, pctdistance=0.7,autopct='%1.1f%%',labeldistance=1.05, startangle=0,labels=labels,colors=cols)
+        #p = plt.pie(y, pctdistance=0.7,autopct='%1.1f%%',labeldistance=1.05, startangle=0,labels=labels,colors=cols)
+        p = plt.pie(y, pctdistance=0.7,autopct=lambda pct: self.func(pct, y),labeldistance=1.05, startangle=0,labels=labels,colors=cols)
         plt.axis('equal')  
         plt.rcParams.update({"figure.facecolor": (1.0, 1.0, 1.0, 1.0), "axes.facecolor":(1.0, 1.0, 1.0, 0.95)})
-        plt.title("Modules usage (counts are in log10)")
+        plt.title("Usage for %d modules " % len(data))
         plt.show()
         plt.savefig("%s.png" % name)
 
@@ -158,20 +193,17 @@ class  FileParser:
         #plt.plot(x, y, color = 'black', linestyle = 'dashed')
         #plt.scatter( x, y, marker = 'o', s = 25, color = 'red')
 
+    def func(self, pct, allvals):
+        absolute = int(round(pct/100. * np.sum(allvals)))
+        return "{:.2f}%\n({:d})".format(pct, absolute)
 
     def run(self):
-        self.GraphUsage()
-        return
         self.modinfo = ModInfo()
         self.modinfo.runCheck()
         self.modlist = sorted(self.modinfo.getModNameList())
-        self.printUsedModules()
-        self.printUnusedModules()
-        self.printUserModules()
-        # DEBUG
-        #print ("MOD", len(self.modlist))
-        #print ("used=%s unused=%s rm=%s" % (len(self.used),len(self.unused),len(self.usermod)))
-
+        self.writeOutput()
+        self.usageGraph()
+        
 ##### Run from a command line #####
 if __name__ == "__main__":
     app = FileParser(sys.argv)
