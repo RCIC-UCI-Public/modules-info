@@ -154,17 +154,8 @@ class  FileParser:
         # add unused counts initialized to 0.1 so that can use log10
         data += [0.1] * len(self.unused)
 
-        # DEBUG shortcut
-        #data = []
-        #f =  open("now")
-        #for i, line in enumerate(f):
-        #    data.append(int(line[:-1]))
-        #data += [0.1] * 40 
-
         x = data
         ylog = np.log10(data)
-        print (data)
-        print (ylog)
 
         bins=[-1,0,1,2,3,4,5,6]
         plt.figure(1)
@@ -172,10 +163,8 @@ class  FileParser:
         cols = ['gainsboro', 'LightSteelBlue', 'LightSkyblue', 'LightBlue', 'Gold', 'Orange','OrangeRed']
         y = ans[0]
         x = ans[1][:-1]
-        #labels = ['log10=%d' % (l) for l in x]
         labels = ['no usage', "1(s)", "10(s)", "100(s)", "1,000(s)", "10,000(s)", "100,000(s)"]
         plt.figure(2)
-        #p = plt.pie(y, pctdistance=0.7,autopct='%1.1f%%',labeldistance=1.05, startangle=0,labels=labels,colors=cols)
         p = plt.pie(y, pctdistance=0.7,autopct=lambda pct: self.func(pct, y),labeldistance=1.05, startangle=0,labels=labels,colors=cols)
         plt.axis('equal')  
         plt.rcParams.update({"figure.facecolor": (1.0, 1.0, 1.0, 1.0), "axes.facecolor":(1.0, 1.0, 1.0, 0.95)})
@@ -183,15 +172,6 @@ class  FileParser:
         plt.show()
         plt.savefig("%s.png" % name)
 
-        #x = np.log10(data)
-        #mean = np.mean(x)
-        #std = np.std(x)
-        #y = 1/(std * np.sqrt(2 * np.pi)) * np.exp( - (x - mean)**2 / (2 * std**2))
-        #y = norm.pdf(x,mean,std)
-        #plt.style.use('seaborn')
-        #plt.figure(figsize = (6, 6))
-        #plt.plot(x, y, color = 'black', linestyle = 'dashed')
-        #plt.scatter( x, y, marker = 'o', s = 25, color = 'red')
 
     def func(self, pct, allvals):
         absolute = int(round(pct/100. * np.sum(allvals)))
