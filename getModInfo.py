@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-# For all the modules check (1) which ones use logger and 
+# For all the modules check
+# (1) which ones use logger and 
 # (2) which ones load other modules 
 
 from collections import defaultdict
@@ -86,7 +87,7 @@ class ModType:
             print (mod)
 
     def printStats(self):
-        print ("Modules in %s: %d" % (self.path[:-1], self.count))
+        print ("%-41s: %3d" % (self.path[:-1], self.count))
         if len(self.badnames):
             print ("    Modules with inconsistent names: %d" % len(self.badnames))
             for mod in self.badnames.items():
@@ -99,6 +100,7 @@ class ModInfo:
         self.modtypes = [] # list of ModType instances, one per module type: biotools, compielrs, etc
         self.loaded = []   # list of loaded modules across all module types
         self.defaultDir = "/opt/rcic/Modules/modulefiles"
+        self.total = 0     # number of total modules installed, without user's $HOME 
 
         self.parseArgs()
         self.readInfo()
@@ -120,8 +122,8 @@ class ModInfo:
                 + "\nDESCRIPTION\n" \
                 + "        Collect informtion about modules installed on the host using 'modules avail'. Checks available\n" \
                 + "        modules, parses their modulefiles, extracts info about logging, name and loaded modules for each\n" \
-                + "        category of modules (per MODULEPATH entries). Called as a python module from parseMod or modGraph.\n" \
-                + "        When executing on a command line, outputs collected info on stdout.\n\n" \
+                + "        category of modules (per MODULEPATH entries). Called as a python module from parseMod and modGraph.\n" \
+                + "        When run on a command line, just prints number of modules by category and total number on stdout.\n\n" \
                 + "        -h, --h, --help, help\n              Print usage info.\n\n" 
 
         print (helpstr)
@@ -148,16 +150,8 @@ class ModInfo:
 
     def runCheck(self):
         '''For each ModType instance, parse all modules files and check for logging and loaded modules info'''
-        # these path are installed with environment-modules RPM
-        SYSRPM = ["/usr/share/Modules/modulefiles", "/etc/modulefiles"]
         savemod = []
         for item in self.modtypes:
-            #if item.path[:-1] in SYSRPM:  # skip files installed by enrionment-modules RPM
-            #    continue
-            #elif "home" in item.path:             # skip user modules
-            #    continue
-            #else:
-            #    savemod.append(item)
             if self.defaultDir in item.path:
                 savemod.append(item)
 
@@ -166,16 +160,18 @@ class ModInfo:
         for item in self.modtypes:
             item.verifyModule()
             self.loaded += item.listLoaded()
+            self.total += item.count
 
     def allModLoaded(self):
         '''Return a list of modules that are loaded by any other module'''
         return self.loaded 
 
-
-    def printTypes(self):
+    def printModInfo(self):
         '''print info for each ModType'''
+        print ("Modules by catgory")
         for item in self.modtypes:
             item.printStats()
+        print ("%41s: %3d" % ("Total", self.total))
 
     def getModNameList(self):
         '''return a list of all modules names'''
@@ -191,7 +187,7 @@ class ModInfo:
 
     def run(self):
         self.runCheck()
-        self.printTypes()
+        self.printModInfo()
 
 ##### Run from a command line #####
 if __name__ == "__main__":
