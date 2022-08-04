@@ -68,10 +68,10 @@ class  ModGraph:
         #              'physics', 'statistics', 'tools']
 
         # colors for dot graphs
-        self.colors = ['turquoise3', 'cadetblue2', 'lightskyblue',
-                       'slategray1', 'lavender', 'deepskyblue',
-                       'darkseagreen1', 'lightsteelblue', 'plum',
-                       'thistle', 'olivedrab2', 'wheat'
+        self.colors = ['snow2', 'lavenderblush2', 'linen',
+                       'slategray1', 'cornsilk', 'gainsboro',
+                       'azure2', 'honeydew2', 'lavender',
+                       'powderblue','oldlace', 'wheat'
                       ]
         self.pltColors = ['SteelBlue', 'LightSteelBlue', 'RoyalBlue',
                           'LIghtSkyblue', 'SlateGray','Gainsboro',
@@ -98,10 +98,10 @@ class  ModGraph:
         sys.exit(0)
 
     def parseArgs(self):
-        if self.args[0] in ["-h","--h","help","-help","--help"]:
-            self.exitHelp()
         if self.args == []:
             return
+        if self.args[0] in ["-h","--h","help","-help","--help"]:
+            self.exitHelp()
         if os.path.isfile(self.args[0]):
             self.getUnusedModules(self.args[0])
 
@@ -115,9 +115,6 @@ class  ModGraph:
     def getInfo(self):
         self.modinfo = ModInfo()
         self.modinfo.runCheck()
-#        for item in self.modinfo.modtypes:
-#            category = item.modTypeName()
-#            print("MOD", category, item.modules)
 
     def findNodesEdges(self, mtype):
         havenodes = False
@@ -414,10 +411,18 @@ class  ModGraph:
             for n in nodes:
                 self.addEdge(self.g, mod, n)
 
-        # add categories subgraphs
+        # create subgraph  cluster names
+        subGraphs = cats.keys()
+        subGraphsNames = {}
         i = 0  # counter for naming subgraphs
-        for key, val in cats.items():
-            subG = Digraph("cluster%s" % i)
+        for s in subGraphs:
+            subGraphsNames[s] = ("cluster%s" % i)
+            i += 1
+
+        # add categories subgraphs
+        for key in subGraphs:
+            val = cats[key]
+            subG = Digraph(subGraphsNames[key])
             subG.attr(label= key.upper())
             subG.attr(fontsize=self.subgraphFontSize, fontname=self.subgraphFontName, fontcolor=self.subgraphFontColor)
             subG.attr(color=self.subgraphFontColor)
@@ -433,7 +438,6 @@ class  ModGraph:
                         self.addNode(subG, n, fillcolor=ncolor, color=self.colorUnused)
                     else:
                         self.addNode(subG, n, fillcolor=ncolor, color=ncolor)
-            i += 1
             self.g.subgraph(subG)
 
     def getGraphDependency(self):
@@ -486,8 +490,16 @@ class  ModGraph:
         bins.sort()
         bins.append(bins[-1]+1)
         ans = np.histogram(array,bins)
+
         y = ans[0]
         x = ans[1][:-1]
+        let = []
+        for i in y:
+            if i > 1: 
+                let.append("s")
+            else:
+                let.append("")
+ 
         # create wedge explode for data value "1"
         z = x * 0.0
         index = np.where(x == 1)
@@ -495,7 +507,7 @@ class  ModGraph:
         p = plt.pie(y, pctdistance=1.1, startangle=45, colors=self.pltColors, explode=z)
 
         # creatl legend labels
-        labels = ['%3s (%2.1f%%)' % (l, s) for l, s in zip(x, y*1.0/len(vals)*100)]
+        labels = ['%4d (%2.1f%% or %d module%s)' % (l1, l2, l3, l4) for l1, l2, l3, l4 in zip(x, y*1.0/len(vals)*100,y,let)]
         plt.legend(p[0], labels, loc="best")
 
         # plor properties
