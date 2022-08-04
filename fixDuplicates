@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+
+# Parse module load log files and remove every second (duplicate) line
+# Arguments:  list of files to process
+# Duplicates were due to an error in syslog was recording things twice.
+# affected dates in module-hpc.log=* files are through 2021-05-23 
+# no need to use for files created after that.
+
+import sys
+import os
+from collections import defaultdict
+from getModInfo import ModInfo
+
+class  FileParser:
+    def __init__(self, args):
+        self.prog = os.path.basename(args[0])
+        self.args = args[1:]          # command line arguments
+        self.basedir = "/var/log/"    # default directory for log files
+        self.files = []               # file names to parse
+        self.filelogname = "module-hpc"
+
+        self.parseArgs()
+        if self.files == []:
+            str = "\nThere are no module log files to parse.\n" \
+                + "Files must be provided on a command line \n" \
+                + "if defualt files /var/log/%s* don't exist." % self.filelogname
+            print (str)
+            sys.exit(0)
+
+    def exitHelp(self):
+        helpstr = "NAME\n        %s - parse log files and count how often modules were loaded\n" % self.prog \
+                + "\nSYNOPSIS\n        %s [OPTION] [FILE]...\n" % self.prog \
+                + "\nDESCRIPTION\n        Parse FILEs provided on a command line and find how many times modules were loaded.\n" \
+                + "        If none provided, will parse /var/log/module-hpc* files. The output contains per each used\n" \
+                + "        module a module name and a count of times loaded and a list of modules that were not loaded.\n\n" \
+                + "        -h, --h, --help, help\n              Print usage info.\n" 
+        print (helpstr)
+        sys.exit(0)
+
+    def exitError(self):
+        print (self.errmsg)
+        sys.exit(1)
+
+    def parseArgs(self):
+        if self.args == []:
+            self.getDefaultFiles()
+        elif self.args[0] in ["-h","--h","help","-help","--help"]:
+            self.exitHelp()
+        else:
+            for i in self.args:
+                if os.path.isfile(i):
+                    self.files.append(i)
+
+    def getDefaultFiles(self):
+            try:
+                all = os.listdir(self.basedir)
+            except OSError as err:
+                self.errmsg = "Error code %d: %s: '%s'" % (err.errno, err.strerror, err.filename)
+                self.exitError()
+
+            for i in all:
+                if i.find(self.filelogname) == 0:
+                    self.files.append(self.basedir + i)
+
+    def countLines(self):
+        for log in self.files:
+            self.lines = []
+            before = 0
+            f =  open(log) 
+            for i, line in enumerate(f):
+                if i % 2: # save odd lines
+                    self.lines.append (line)
+                    before += 1
+                else:     # ignore duplicate even lines
+                    before += 1
+            f.close()
+
+            after = len(self.lines)
+            print ("File %s   before=%d   after=%d   check=%s" % (log, before, after, before/2 == after))
+            newname = os.path.join(os.path.dirname(log), "edited", os.path.basename(log))
+            f = open("%s" % newname, "w")
+            f.writelines(self.lines)
+            f.close()
+       
+    def run(self):
+        self.countLines()
+
+##### Run from a command line #####
+if __name__ == "__main__":
+    app = FileParser(sys.argv)
+    app.run()
+
