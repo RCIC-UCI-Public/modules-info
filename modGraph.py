@@ -90,7 +90,7 @@ class  ModGraph:
                 + "\nSYNOPSIS\n        %s [OPTION] [FILE]\n" % self.prog \
                 + "\nDESCRIPTION\n        Parse FILE provided on a command line to get unused modules, if none\n" \
                 + "        provided assumes none were unused. Checks available modules, parse their modulefiles\n" \
-                + "        using info about logging and loaded modules and build a dependecy graph for each\n" \
+                + "        using info about logging and loaded modules and build a dependency graph for each\n" \
                 + "        category of modules (per MODULEPATH entries).\n\n" \
                 + "        -h, --h, --help, help\n              Print usage info.\n\n" \
                 + "        NOTE: this program requires python module graphviz and RPM graphviz (for dot) to be installed.\n "
