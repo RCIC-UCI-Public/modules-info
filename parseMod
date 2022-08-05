@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Parse module load log files created and count what modules
 # were called via parsing lines with 'module-hpc'. 

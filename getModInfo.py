@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # For all the modules check
 # (1) which ones use logger and 
@@ -120,8 +120,8 @@ class ModInfo:
         helpstr = "NAME\n        %s - collect module info\n" % self.prog \
                 + "\nSYNOPSIS\n        %s [OPTION]\n" % self.prog \
                 + "\nDESCRIPTION\n" \
-                + "        Collect informtion about modules installed on the host using 'modules avail'. Checks available\n" \
-                + "        modules, parses their modulefiles, extracts info about logging, name and loaded modules for each\n" \
+                + "        Collect information about modules installed on the host using 'modules avail'. Checks available\n" \
+                + "        modules, parses their module files, extracts info about logging, name and loaded modules for each\n" \
                 + "        category of modules (per MODULEPATH entries). Called as a python module from parseMod and modGraph.\n" \
                 + "        When run on a command line, just prints number of modules by category and total number on stdout.\n\n" \
                 + "        -h, --h, --help, help\n              Print usage info.\n\n" 

@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-
-# For all the modules check (1) which ones use logger and 
-# (2) which ones load other modules 
+#!/usr/bin/env python3
 
 from collections import defaultdict
 import sys
@@ -106,8 +103,8 @@ class ModInfo:
                 + "\nSYNOPSIS\n        %s FILE1 [FILE2] \n" % self.prog \
                 + "\nDESCRIPTION\n" \
                 + "        Process one or two files with info about modules usage and print a line by line comparison.\n" \
-                + "        Files are the output of parseMod. Mark modules used <50 times for removal. Print result on stdout\n" \
-                + "        When executing on a command line, outputs collected info on stdout.\n\n" \
+                + "        Files are the output of parseMod (only lines with module name and module count). Mark modules\n" \
+                + "        used < 50 times for removal. When executing on a command line, outputs collected info on stdout.\n\n" \
                 + "        -h, --h, -help, --help, help\n              Print usage info.\n\n" 
 
         print (helpstr)
