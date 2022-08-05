@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-# Make a graph of module dependencies , one per module type
-# which corresponseds to entries in MODULEPATH
+# Make  4 types of graphs 
 
 import os
 import sys
@@ -90,8 +89,11 @@ class  ModGraph:
                 + "\nSYNOPSIS\n        %s [OPTION] [FILE]\n" % self.prog \
                 + "\nDESCRIPTION\n        Parse FILE provided on a command line to get unused modules, if none\n" \
                 + "        provided assumes none were unused. Checks available modules, parse their modulefiles\n" \
-                + "        using info about logging and loaded modules and build a dependency graph for each\n" \
-                + "        category of modules (per MODULEPATH entries).\n\n" \
+                + "        using info about logging and loaded modules and builds 4 types of plots:\n" \
+                + "        (1) graphs for modules by category (module-CATEGORY-NAME)\n" \
+                + "        (2) graphs for number of prereq modules loaded (dependency-n)\n" \
+                + "        (3) graph prereq stats (prereqStats.png)\n" \
+                + "        (4) graph loading stats (loadqStats.png)\n" \
                 + "        -h, --h, --help, help\n              Print usage info.\n\n" \
                 + "        NOTE: this program requires python module graphviz and RPM graphviz (for dot) to be installed.\n "
         print (helpstr)
