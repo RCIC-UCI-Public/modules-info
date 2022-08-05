@@ -51,7 +51,8 @@ class  FileParser:
                 + "\nSYNOPSIS\n        %s [OPTION] [FILE]...\n" % self.prog \
                 + "\nDESCRIPTION\n        Parse FILEs provided on a command line and find how many times modules were loaded.\n" \
                 + "        If none provided, will parse /var/log/module-hpc* files. The output contains per each used\n" \
-                + "        module a module name and a count of times loaded and a list of modules that were not loaded.\n\n" \
+                + "        module a module name and a count of times loaded and a list of modules that were not loaded.\n" \
+                + "        Creates a pie-chart of modules usage as dot-graphs/usageStats.png.\n\n" \
                 + "        -h, --h, --help, help\n              Print usage info.\n" 
         print (helpstr)
         sys.exit(0)
