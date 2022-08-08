@@ -26,10 +26,10 @@ params = {"axes.titleweight":"bold",
           "figure.facecolor": (1.0, 1.0, 1.0, 1.0),
           "axes.facecolor":(1.0, 1.0, 1.0, 1.0),
           "axes.titlepad": 18,              # vertical space for plot title
-          'axes.titlecolor':'blue',         # title color
+          'axes.titlecolor':'royalblue',    # title color
           'axes.titleweight': 'bold',       # title weight
           'axes.titlesize': 'large',        # title size
-          "axes.labelcolor":'blue',         # x,y-axes titles color
+          "axes.labelcolor":'royalblue',    # x,y-axes titles color
           "axes.labelsize" : "12",          # x,y-axes size
 		  'figure.subplot.bottom': 0.18,    # space below x-axis title
 }
@@ -69,7 +69,7 @@ def printAllRequests():
 
     # set symbols and lines 
     c1 = 'crimson'
-    c2 = 'blue'  
+    c2 = 'royalblue'
     alpha = 0.4    # alpha
     marker = 'o'   # marker type circle
     msize = 5      # marker size
