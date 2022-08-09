@@ -21,6 +21,7 @@ class  FileParser:
         self.output = []              # output gtext
         self.filelogname = "module-hpc"
         self.modlist = []             # installed modules names list
+        self.outdir = "dot-graphs"
         # we renamed some modules or we dont install some on all nodes
         # key - name to map, val - name to map to
         self.mapping = {"fftw/3.3.8":"fftw/3.3.8/gcc.4.8.5",
@@ -145,7 +146,9 @@ class  FileParser:
             self.output.append('{sw:{width}s} {num:12d}\n'.format(sw=i[0], num=i[1], width=self.maxl))
 
     def usageGraph(self):
-        name = "dot-graphs/usageStats"
+        if not os.path.isdir(self.outdir):
+            os.mkdir(self.outdir)
+        name = os.path.join(self.outdir ,"usageStats")
 
         # get counts for used modules
         data = []
