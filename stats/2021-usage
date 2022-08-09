@@ -1,0 +1,345 @@
+Processed files on 20220113:
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210110
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210117
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210124
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210131
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210207
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210214
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210221
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210228
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210307
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210314
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210321
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210328
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210404
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210411
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210418
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210425
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210502
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210509
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210516
+    /share/crsp/lab/npw/share/hpc3-logs/2021/edited/module-hpc.log-20210523
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210530
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210606
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210613
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210620
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210627
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210704
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210711
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210718
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210725
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210801
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210808
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210815
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210822
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210829
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210905
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210912
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210919
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20210926
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211003
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211010
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211017
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211024
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211031
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211107
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211114
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211121
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211128
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211205
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211212
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211219
+    /share/crsp/lab/npw/share/hpc3-logs/2021/module-hpc.log-20211226
+========== Total unique used modules: 245 ==========
+gcc/8.4.0                                                              1269648
+python/3.8.0                                                            835296
+java/1.8.0                                                              527397
+openmpi/4.0.3/gcc.8.4.0                                                 470977
+mkl/2019.5.281                                                          347747
+charm/6.10.1/gcc.8.4.0                                                  330502
+OpenBLAS/0.3.6                                                          320327
+MATLAB/R2020a                                                           283151
+anaconda/2020.07                                                        271094
+julia/1.6.0                                                             265084
+namd/2.14b2/gcc.8.4.0-openmpi.4.0.3                                     263580
+samtools/1.10                                                           243946
+R/4.0.4                                                                 231715
+intel/2020u1                                                            217388
+vasp/6.1.2                                                              212301
+openmpi/4.0.3/intel.2020u1                                              188844
+netcdf-c/4.7.0/intel.2020u1                                             177925
+ioapi/3.2/intel.2020u1                                                  175649
+hdf5/1.10.5/intel.2020u1                                                173367
+mpich/3.4/gcc.8.4.0                                                     144149
+tcl/8.6.9                                                               118341
+opensees/3.3.0                                                          114862
+singularity/3.4.1                                                       109588
+cuda/10.1.243                                                            98876
+htslib/1.10.2                                                            94997
+icu/65.1                                                                 89895
+R/3.6.2                                                                  78835
+namd/2.14b2/gcc.8.4.0                                                    75883
+gromacs/2020.4/gcc.8.4.0                                                 73827
+freesurfer/6.0.1                                                         55049
+perl/5.30.0                                                              52983
+intel-tbb/20190605                                                       50062
+bowtie2/2.4.1                                                            49897
+R/4.0.2                                                                  42968
+fftw/3.3.8/gcc.4.8.5                                                     37207
+fsl/6.0.4                                                                32458
+gcc/6.5.0                                                                32198
+gdal/3.1.0                                                               32048
+proj/6.3.2                                                               31275
+openmpi/4.0.3/gcc.6.5.0                                                  31046
+bedtools2/2.29.2                                                         30730
+sqlite3/3.32.3                                                           30663
+geos/3.8.1                                                               30408
+udunits/2.2.26/intel.2020u1                                              28995
+foundation                                                               28730
+likwid/5.0.1                                                             27610
+bionetgen/2.5.1                                                          24519
+vcftools/0.1.16                                                          20969
+tensorflow/2.0.0                                                         20747
+ffmpeg/4.1.3                                                             18504
+gsl/2.6/gcc.8.4.0                                                        17778
+bbmap/38.87                                                              17747
+ucsc-tools/v393                                                          17638
+pytorch/1.5.1                                                            16403
+fftw/3.3.8/gcc.8.4.0                                                     15992
+fastqc/0.11.9                                                            14183
+zlib/1.2.11                                                              14127
+bcftools/1.10.2                                                          14030
+python/2.7.17                                                            11958
+gatk/4.1.9.0                                                             10702
+bwa/0.7.8                                                                10555
+singularity/3.7.2                                                        10171
+freesurfer/7.1.1                                                          9249
+meme/5.2.0                                                                8521
+MATLAB/R2020b                                                             7311
+turbomole-smp/7.5                                                         7072
+hdf5/1.10.5/gcc.8.4.0                                                     7043
+gcc/4.8.5                                                                 6337
+bwa/0.7.17                                                                6171
+MATLAB/R2021b                                                             5347
+picard-tools/1.87                                                         5169
+gromacs/2020.4/gcc.8.4.0-cuda.10.1.243                                    5058
+gaussian/16                                                               4776
+sra-tools/2.10.9                                                          4705
+mpich/3.4/intel.2020u1                                                    4614
+hisat2/2.2.1                                                              4606
+openmpi/1.10.7/gcc.4.8.5                                                  4569
+vasp/5.4.4                                                                4508
+ncbi-blast/2.10.0                                                         3995
+bioconda/4.8.3                                                            3839
+deeptools/3.5.0                                                           3805
+star/2.7.3a                                                               3738
+julia/1.5.1                                                               3280
+picard-tools/2.24.1                                                       2991
+lammps/3Mar2020/gcc.8.4.0                                                 2868
+boost/1.71.0/gcc.8.4.0                                                    2787
+netcdf-c/4.7.0/gcc.8.4.0                                                  2762
+rsem/1.3.3                                                                2712
+udunits/2.2.26/gcc.8.4.0                                                  2556
+turbomole/7.5                                                             2540
+stata/16                                                                  2390
+bowtie/1.2.3                                                              2242
+cutadapt/2.10                                                             1948
+nco/4.9.6/gcc.8.4.0                                                       1909
+boost/1.66.0/gcc.8.4.0                                                    1839
+fftw/3.3.8/gcc.8.4.0-openmpi.4.0.3                                        1828
+minimap2/2.17                                                             1766
+mpich/3.3.2/gcc.8.4.0                                                     1754
+bamtools/2.5.1                                                            1624
+gromacs/2021.2/gcc.8.4.0-openmpi.4.0.3                                    1545
+bismark/0.22.3                                                            1543
+edirect/1.0                                                               1498
+kallisto/0.46.2                                                           1447
+mrtrix3/3.0.2                                                             1401
+prodigal/2.6.3                                                            1400
+subread/2.0.1                                                             1395
+imagemagick/7.0.10.26                                                     1323
+star/2.7.8a                                                               1285
+cellranger/3.1.0                                                          1245
+rstudio/1.4.1106                                                          1229
+namd/2.14b2/gcc.8.4.0-cuda.10.1.243                                       1200
+plinkseq/0.08                                                             1155
+java/11                                                                   1117
+SPAdes/3.14.0                                                              976
+macs/2.2.7.1                                                               967
+megahit/1.2.9                                                              908
+protobuf/2.4.1                                                             868
+fastp/0.20.0                                                               703
+bowtie2/2.4.4                                                              645
+cuda/11.4.0                                                                627
+miniconda3/4.8.5                                                           614
+jsoncpp/1.9.4                                                              600
+salmon/1.2.1                                                               536
+pilon/1.23                                                                 490
+unicycler/0.4.8                                                            470
+racon/1.4.13                                                               466
+velocyto/0.17.17                                                           436
+llvm/9.0.1                                                                 391
+amber/19.11/gcc.8.4.0                                                      375
+ants/2.2.0                                                                 361
+mdtraj/1.9.3                                                               343
+cufflinks/2.2.1                                                            333
+eigen/3.3.7                                                                328
+qiime2/2020.8                                                              312
+marc/2020                                                                  289
+freebayes/1.3.2                                                            282
+ncl/6.6.2                                                                  277
+libpng/1.6.37                                                              275
+midas/1.3.2                                                                275
+bustools/0.40.0                                                            272
+afni/20.3.01                                                               263
+szip/2.1.1                                                                 260
+mentat/2020                                                                253
+boost/1.50.0/gcc.8.4.0                                                     246
+libjpeg/9d                                                                 243
+hdf4/4.2.15                                                                243
+freetype/2.10.2                                                            242
+tophat/2.1.1                                                               235
+llvm/10.0.0                                                                211
+hdf5/1.10.5/gcc.8.4.0-openmpi.4.0.3                                        195
+trimgalore/0.6.6                                                           194
+lapack/3.9.0                                                               185
+gromacs/2021.2/gcc.8.4.0                                                   181
+jags/4.3.0                                                                 173
+repeatmasker/4.1.0                                                         166
+ansys/2019R2                                                               156
+clang/10.0.0                                                               149
+hmmer/3.3                                                                  144
+mafft/7.471                                                                140
+bowtie2-python2/2.4.1                                                      136
+igv/2.8.9                                                                  130
+scons/3.1.1                                                                130
+kraken2/2.1.1                                                              124
+bracken/2.6.0                                                              122
+trf/4.0.9                                                                  118
+protobuf/3.11.4                                                            118
+fasttree/2.1.11                                                            114
+roary/3.13.0                                                               110
+hdf5/1.10.5/intel.2020u1-openmpi.4.0.3                                     109
+plink/2.00a2.3                                                             108
+cdhit/4.8.1                                                                107
+mcl/14.137                                                                 106
+prank/170427                                                               106
+mpich/3.3.2/intel.2020u1                                                   105
+rstudio/1.3.1073                                                           104
+spaceranger/1.1.0                                                          104
+comsol/5.6.0                                                                97
+rMATS/4.1.0                                                                 94
+java/1.7.0                                                                  92
+gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3                        90
+gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1           75
+trinity/2.8.6                                                               72
+plumed/2.6.1/gcc.8.4.0-openmpi.4.0.3                                        71
+parallel/20200222                                                           67
+stringtie/2.1.4                                                             66
+openfoam/7                                                                  65
+gromacs/2020.4/gcc.8.4.0-openmpi.4.0.3                                      60
+paraview/5.8.0                                                              58
+canu/2.0                                                                    58
+ashs/2.0.0                                                                  57
+scotch/6.0.9                                                                56
+cgal/5.0.2                                                                  56
+rMATS/4.1.1                                                                 56
+minimap2/2.23                                                               52
+Jellyfish/2.3.0                                                             47
+raxml/8.2.12                                                                44
+cellranger/3.0.2                                                            44
+fastqtl/2.184                                                               43
+diamond/2.0.4                                                               42
+sra-tools/2.10.4                                                            42
+scalapack/2.1.0                                                             41
+abaqus/2019                                                                 41
+breseq/0.35.7                                                               38
+go/1.13                                                                     34
+mummer/4.0.0                                                                30
+bedops/2.4.39                                                               28
+hdf5/1.10.5/gcc.4.8.5                                                       26
+cudasdk/20.7                                                                26
+qiime2/2021.2                                                               18
+schrodinger/2020.1                                                          17
+pratt/2.1                                                                   16
+gromacs/2021.2/gcc.8.4.0-cuda.10.1.243                                      14
+gffread/0.12.4                                                              12
+ansys/2020R2                                                                11
+wxWidgets/3.1.3                                                             11
+openbabel/3.0.0                                                             11
+slim/3.6                                                                     9
+usearch/11.0.667                                                             8
+rMATS/4.0.2                                                                  7
+rustc/1.50.0                                                                 7
+dream3d/6.5.141                                                              7
+transdecoder/5.5.0                                                           7
+udunits/2.2.26/gcc.4.8.5                                                     6
+clang/9.0.1                                                                  6
+loompy/3.0.6                                                                 5
+plinkseq/0.10                                                                4
+turbomole-mpi/7.5                                                            4
+gromacs/2021.2/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3                         4
+OpenCL/2.2                                                                   3
+netcdf-c/4.7.0/gcc.4.8.5                                                     2
+tk/8.6.9                                                                     2
+xerces-c/3.2.3                                                               2
+computecpp/1.3.0                                                             2
+ncbi-ngs/2.10.2                                                              2
+ffmpeg/1.2.12                                                                1
+ffmpeg/0.10.16                                                               1
+cistem/1.0.0                                                                 1
+oneAPI/2021.1_beta05                                                         1
+qtltools/1.3                                                                 1
+ioapi/3.2/gcc.8.4.0                                                          1
+sambamba/0.8.0                                                               1
+fastmitocalc/1.0                                                             1
+ncbi-vdb/2.10.2                                                              1
+plumed/2.6.1/gcc.8.4.0                                                       1
+bandage/0.8.1                                                                1
+========== Total unique unused modules: 29 ==========
+bazel/0.26.1
+boost/1.78.0/gcc.8.4.0
+charm/6.10.1/gcc.8.4.0-openmpi.4.0.3
+chimera/1.15
+flye/2.7.1
+gatk/2.4
+hdf5/1.10.5/gcc.4.8.5-openmpi.1.10.7
+hisat-genotype/1.3.2
+ioapi/3.2/gcc.4.8.5
+mapDamage/2.2.0
+mdanalysis/0.20.1
+numba/0.50.1
+openeye-toolkits/2019.10.2
+openmm/7.4.1
+openmoltools/0.8.6
+pyemma/2.5.7
+relion/3.1.0
+scHLAcount/0.1.1
+smoldyn/2.61
+stitch/1.6.3
+suitesparse/5.7.1
+sundials/5.6.1
+tensorRT/6.0.1.5
+vcell/7.2.0.39
+vcflib/1.0.1
+vg/1.23.0
+viennarna/2.4.17/gcc.8.4.0
+vtk/9.0.1
+xz/5.2.4
+========== Total unique user or removed modules: 16 ==========
+epoch/4.17.12                                                              163
+opensees/3.1.0                                                             162
+freesurfer-test-6.0.1                                                      151
+julia/1.4.2                                                                 82
+lammps-31Aug2021                                                            74
+spaceranger/1.3.0                                                           58
+gsutil/4.53                                                                 16
+cmake/3.20                                                                   6
+freesurfer-test-7.1.1                                                        6
+Mathematica/12.3                                                             5
+repeatmasker-add/4.1.0                                                       3
+gcc/8.3.0                                                                    3
+gromacs/2019.4/gcc.8.4.0-openmpi.4.0.3                                       1
+pytorch/1.4.0.a0                                                             1
+gromacs/2019.4/gcc.8.4.0                                                     1
+anaconda/2019.10                                                             1

@@ -1,0 +1,280 @@
+digraph {
+	graph [center=true compound=true concentrate=true rankdir=LR]
+	node [penwidth=2 shape=record style=filled]
+	edge [arrowhead=vee arrowsize=0.5 color=royalblue3 dir=back]
+	"fftw/3.3.8/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"fftw/3.3.8/gcc.8.4.0" -> "pytorch/1.5.1"
+	"fftw/3.3.8/gcc.8.4.0" -> "cistem/1.0.0"
+	"fftw/3.3.8/gcc.8.4.0" -> "mrtrix3/3.0.2"
+	"cuda/10.1.243" [color=wheat fillcolor=wheat]
+	"cuda/10.1.243" -> "tensorflow/2.0.0"
+	"cuda/10.1.243" -> "tensorRT/6.0.1.5"
+	"cuda/10.1.243" -> "gromacs/2020.4/gcc.8.4.0-cuda.10.1.243"
+	"cuda/10.1.243" -> "gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3"
+	"cuda/10.1.243" -> "gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1"
+	"cuda/10.1.243" -> "gromacs/2021.2/gcc.8.4.0-cuda.10.1.243"
+	"cuda/10.1.243" -> "gromacs/2021.2/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3"
+	"cuda/10.1.243" -> "namd/2.14b2/gcc.8.4.0-cuda.10.1.243"
+	"intel-tbb/20190605" [color=slategray1 fillcolor=slategray1]
+	"intel-tbb/20190605" -> "bowtie/1.2.3"
+	"intel-tbb/20190605" -> "bowtie2/2.4.1"
+	"intel-tbb/20190605" -> "bowtie2-python2/2.4.1"
+	"intel-tbb/20190605" -> "paraview/5.8.0"
+	"perl/5.30.0" [color=honeydew2 fillcolor=honeydew2]
+	"perl/5.30.0" -> "bowtie2/2.4.1"
+	"perl/5.30.0" -> "bowtie2/2.4.4"
+	"perl/5.30.0" -> "bowtie2-python2/2.4.1"
+	"perl/5.30.0" -> "meme/5.2.0"
+	"perl/5.30.0" -> "repeatmasker/4.1.0"
+	"perl/5.30.0" -> "rsem/1.3.3"
+	"perl/5.30.0" -> "transdecoder/5.5.0"
+	"perl/5.30.0" -> "trinity/2.8.6"
+	"perl/5.30.0" -> "bismark/0.22.3"
+	"perl/5.30.0" -> "cdhit/4.8.1"
+	"perl/5.30.0" -> "roary/3.13.0"
+	"python/2.7.17" [color=honeydew2 fillcolor=honeydew2]
+	"python/2.7.17" -> "bowtie2-python2/2.4.1"
+	"python/2.7.17" -> "rMATS/4.0.2"
+	"bowtie2/2.4.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bowtie2/2.4.1" -> "breseq/0.35.7"
+	"bowtie2/2.4.1" -> "trinity/2.8.6"
+	"bowtie2/2.4.1" -> "unicycler/0.4.8"
+	"bowtie2/2.4.1" -> "bismark/0.22.3"
+	"bowtie2/2.4.1" -> "humann/3.0.1"
+	"bowtie2/2.4.1" -> "kneaddata/0.10.0"
+	"bowtie2/2.4.1" -> "metaphlan/3.0.14"
+	"bowtie2/2.4.1" -> "midas/1.3.2"
+	"samtools/1.10" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"samtools/1.10" -> "cufflinks/2.2.1"
+	"samtools/1.10" -> "Jellyfish/2.3.0"
+	"samtools/1.10" -> "trinity/2.8.6"
+	"samtools/1.10" -> "unicycler/0.4.8"
+	"samtools/1.10" -> "bismark/0.22.3"
+	"samtools/1.10" -> "cmseq/1.0.4"
+	"samtools/1.10" -> "kneaddata/0.10.0"
+	"samtools/1.10" -> "midas/1.3.2"
+	"samtools/1.10" -> "rMATS/4.0.2"
+	"samtools/1.10" -> "rMATS/4.1.0"
+	"samtools/1.10" -> "rMATS/4.1.1"
+	foundation [color=wheat fillcolor=wheat]
+	foundation -> "Jellyfish/2.3.0"
+	foundation -> "trinity/2.8.6"
+	foundation -> "ncl/6.6.2"
+	"trf/4.0.9" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"trf/4.0.9" -> "repeatmasker/4.1.0"
+	"trf/4.0.9" -> "kneaddata/0.10.0"
+	"ncbi-blast/2.10.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"ncbi-blast/2.10.0" -> "repeatmasker/4.1.0"
+	"ncbi-blast/2.10.0" -> "unicycler/0.4.8"
+	"ncbi-blast/2.10.0" -> "roary/3.13.0"
+	"fastqc/0.11.9" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"fastqc/0.11.9" -> "trimgalore/0.6.6"
+	"fastqc/0.11.9" -> "kneaddata/0.10.0"
+	"wxWidgets/3.1.3" [color=wheat fillcolor=wheat]
+	"wxWidgets/3.1.3" -> "openbabel/3.0.0"
+	"wxWidgets/3.1.3" -> "cistem/1.0.0"
+	"llvm/9.0.1" [color=slategray1 fillcolor=slategray1]
+	"llvm/9.0.1" -> "clang/9.0.1"
+	"llvm/9.0.1" -> "loompy/3.0.6"
+	"llvm/9.0.1" -> "velocyto/0.17.17"
+	"intel/2020u1" [color=slategray1 fillcolor=slategray1]
+	"intel/2020u1" -> "mpich/3.3.2/intel.2020u1"
+	"intel/2020u1" -> "mpich/3.4/intel.2020u1"
+	"intel/2020u1" -> "openmpi/4.0.3/intel.2020u1"
+	"intel/2020u1" -> "hdf5/1.10.5/intel.2020u1"
+	"intel/2020u1" -> "ioapi/3.2/intel.2020u1"
+	"intel/2020u1" -> "netcdf-c/4.7.0/intel.2020u1"
+	"intel/2020u1" -> "udunits/2.2.26/intel.2020u1"
+	"openmpi/1.10.7/gcc.4.8.5" [color=slategray1 fillcolor=slategray1]
+	"openmpi/1.10.7/gcc.4.8.5" -> "vasp/5.4.4"
+	"openmpi/1.10.7/gcc.4.8.5" -> "hdf5/1.10.5/gcc.4.8.5-openmpi.1.10.7"
+	"OpenBLAS/0.3.6" [color=lavender fillcolor=lavender]
+	"OpenBLAS/0.3.6" -> "fsl/6.0.4"
+	"OpenBLAS/0.3.6" -> "R/3.6.2"
+	"OpenBLAS/0.3.6" -> "R/4.0.2"
+	"OpenBLAS/0.3.6" -> "R/4.0.4"
+	"OpenBLAS/0.3.6" -> "R/4.1.2"
+	"sqlite3/3.32.3" [color=lavender fillcolor=lavender]
+	"sqlite3/3.32.3" -> "gdal/3.1.0"
+	"sqlite3/3.32.3" -> "proj/6.3.2"
+	"sqlite3/3.32.3" -> "aria2/1.36.0"
+	"szip/2.1.1" [color=lavender fillcolor=lavender]
+	"szip/2.1.1" -> "hdf4/4.2.15"
+	"szip/2.1.1" -> "ncl/6.6.2"
+	"zlib/1.2.11" [color=lavender fillcolor=lavender]
+	"zlib/1.2.11" -> "hdf4/4.2.15"
+	"zlib/1.2.11" -> "ncl/6.6.2"
+	"libjpeg/9d" [color=lavender fillcolor=lavender]
+	"libjpeg/9d" -> "hdf4/4.2.15"
+	"libjpeg/9d" -> "ncl/6.6.2"
+	"netcdf-c/4.7.0/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"netcdf-c/4.7.0/gcc.8.4.0" -> "windninja/3.7.3"
+	"netcdf-c/4.7.0/gcc.8.4.0" -> "ioapi/3.2/gcc.8.4.0"
+	"netcdf-c/4.7.0/gcc.8.4.0" -> "ncl/6.6.2"
+	"netcdf-c/4.7.0/gcc.8.4.0" -> "nco/4.9.6/gcc.8.4.0"
+	"gdal/3.1.0" [color=lavender fillcolor=lavender]
+	"gdal/3.1.0" -> "windninja/3.7.3"
+	"gdal/3.1.0" -> "paraview/5.8.0"
+	subgraph cluster0 {
+		label="AI-LEARNING"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"tensorflow/2.0.0" [color=snow2 fillcolor=snow2]
+		"tensorRT/6.0.1.5" [color=snow2 fillcolor=snow2]
+		"pytorch/1.5.1" [color=snow2 fillcolor=snow2]
+	}
+	subgraph cluster1 {
+		label=IMAGING
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"fsl/6.0.4" [color=azure2 fillcolor=azure2]
+		"mrtrix3/3.0.2" [color=azure2 fillcolor=azure2]
+		"cistem/1.0.0" [color=orangered fillcolor=azure2]
+	}
+	subgraph cluster2 {
+		label=CHEMISTRY
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" [color=linen fillcolor=linen]
+		"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+		"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" [color=linen fillcolor=linen]
+		"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+		"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1" [color=linen fillcolor=linen]
+		"openbabel/3.0.0" [color=linen fillcolor=linen]
+		"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+	}
+	subgraph cluster3 {
+		label=BIOTOOLS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"repeatmasker/4.1.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"meme/5.2.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"bowtie2/2.4.4" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"bowtie2/2.4.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"breseq/0.35.7" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"trinity/2.8.6" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"bowtie/1.2.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"transdecoder/5.5.0" [color=orangered fillcolor=lavenderblush2]
+		"bowtie2-python2/2.4.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"rsem/1.3.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"cufflinks/2.2.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"unicycler/0.4.8" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"trimgalore/0.6.6" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"Jellyfish/2.3.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	}
+	subgraph cluster4 {
+		label=PHYSICS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"paraview/5.8.0" [color=orangered fillcolor=powderblue]
+	}
+	subgraph cluster5 {
+		label=GENOMICS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"humann/3.0.1" [color=gainsboro fillcolor=gainsboro]
+		"rMATS/4.0.2" [color=orangered fillcolor=gainsboro]
+		"cdhit/4.8.1" [color=gainsboro fillcolor=gainsboro]
+		"roary/3.13.0" [color=gainsboro fillcolor=gainsboro]
+		"midas/1.3.2" [color=gainsboro fillcolor=gainsboro]
+		"metaphlan/3.0.14" [color=gainsboro fillcolor=gainsboro]
+		"kneaddata/0.10.0" [color=gainsboro fillcolor=gainsboro]
+		"rMATS/4.1.0" [color=gainsboro fillcolor=gainsboro]
+		"velocyto/0.17.17" [color=gainsboro fillcolor=gainsboro]
+		"cmseq/1.0.4" [color=gainsboro fillcolor=gainsboro]
+		"rMATS/4.1.1" [color=gainsboro fillcolor=gainsboro]
+		"loompy/3.0.6" [color=orangered fillcolor=gainsboro]
+		"bismark/0.22.3" [color=gainsboro fillcolor=gainsboro]
+	}
+	subgraph cluster6 {
+		label=TOOLS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"ncl/6.6.2" [color=wheat fillcolor=wheat]
+		"netcdf-c/4.7.0/intel.2020u1" [color=wheat fillcolor=wheat]
+		"hdf5/1.10.5/gcc.4.8.5-openmpi.1.10.7" [color=orangered fillcolor=wheat]
+		"udunits/2.2.26/intel.2020u1" [color=wheat fillcolor=wheat]
+		"aria2/1.36.0" [color=wheat fillcolor=wheat]
+		"hdf5/1.10.5/intel.2020u1" [color=wheat fillcolor=wheat]
+		"ioapi/3.2/intel.2020u1" [color=wheat fillcolor=wheat]
+		"ioapi/3.2/gcc.8.4.0" [color=orangered fillcolor=wheat]
+		"nco/4.9.6/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	}
+	subgraph cluster7 {
+		label=COMPILERS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"mpich/3.3.2/intel.2020u1" [color=slategray1 fillcolor=slategray1]
+		"mpich/3.4/intel.2020u1" [color=slategray1 fillcolor=slategray1]
+		"clang/9.0.1" [color=slategray1 fillcolor=slategray1]
+		"openmpi/4.0.3/intel.2020u1" [color=slategray1 fillcolor=slategray1]
+	}
+	subgraph cluster8 {
+		label=ENGINEERING
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"vasp/5.4.4" [color=cornsilk fillcolor=cornsilk]
+	}
+	subgraph cluster9 {
+		label=LANGUAGES
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"R/4.0.4" [color=honeydew2 fillcolor=honeydew2]
+		"R/3.6.2" [color=honeydew2 fillcolor=honeydew2]
+		"R/4.1.2" [color=honeydew2 fillcolor=honeydew2]
+		"R/4.0.2" [color=honeydew2 fillcolor=honeydew2]
+	}
+	subgraph cluster10 {
+		label=LIBRARIES
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"proj/6.3.2" [color=lavender fillcolor=lavender]
+		"hdf4/4.2.15" [color=lavender fillcolor=lavender]
+		"windninja/3.7.3" [color=lavender fillcolor=lavender]
+		"gdal/3.1.0" [color=lavender fillcolor=lavender]
+	}
+	subgraph clusterLegend {
+		label="Modules dependency"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=16
+		color=royalblue3
+		subgraph struct0 {
+			node [color=white shape=plaintext]
+			struct0 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">A</TD></TR>
+          <TR><TD bgcolor="invis">A is required by B</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="aliceblue">C</TD></TR>
+          <TR><TD bgcolor="invis">Users don't use C</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct1 {
+			node [color=white shape=plaintext]
+			struct1 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="invis">   </TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+        </TABLE>>]
+		}
+		struct0:p0 -> struct1:p0
+		subgraph struct2 {
+			node [color=white shape=plaintext]
+			struct2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD colspan='2'><FONT COLOR="royalblue3">Modules Categories:</FONT></TD></TR>
+          <TR><TD PORT="p0" bgcolor="snow2">AI-LEARNING</TD><TD bgcolor="slategray1">COMPILERS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="lavenderblush2">BIOTOOLS</TD><TD bgcolor="cornsilk">ENGINEERING</TD></TR>
+          <TR><TD PORT="p2" bgcolor="linen">CHEMISTRY</TD><TD bgcolor="gainsboro">GENOMICS</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct3 {
+			node [color=white shape=plaintext]
+			struct3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="azure2">IMAGING</TD><TD bgcolor="powderblue">PHYSICS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="honeydew2">LANGUAGES</TD><TD bgcolor="oldlace">STATISTICS</TD></TR>
+          <TR><TD PORT="p2" bgcolor="lavender">LIBRARIES</TD><TD bgcolor="wheat">TOOLS</TD></TR>
+        </TABLE>>]
+		}
+		struct2:p0 -> struct3:p0 [color=invis style=""]
+	}
+}

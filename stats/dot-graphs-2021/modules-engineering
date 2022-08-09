@@ -1,0 +1,68 @@
+digraph {
+	graph [center=true rankdir=LR]
+	node [penwidth=2 shape=record style=filled]
+	edge [arrowhead=vee arrowsize=0.5 color=royalblue3]
+	"fftw/3.3.8/gcc.4.8.5" [color=wheat fillcolor=wheat]
+	"openmpi/1.10.7/gcc.4.8.5" [color=slategray1 fillcolor=slategray1]
+	"openmpi/4.0.3/gcc.6.5.0" [color=slategray1 fillcolor=slategray1]
+	"vasp/5.4.4" [color=cornsilk fillcolor=cornsilk]
+	"vasp/6.1.2" [color=cornsilk fillcolor=cornsilk]
+	"abaqus/2019" -> "ansys/2019R2" [style=invis]
+	"ansys/2019R2" -> "ansys/2020R2" [style=invis]
+	"ansys/2020R2" -> "comsol/5.6.0" [style=invis]
+	"abaqus/2019" [color=orangered fillcolor=cornsilk]
+	"ansys/2019R2" [color=cornsilk fillcolor=cornsilk]
+	"ansys/2020R2" [color=cornsilk fillcolor=cornsilk]
+	"comsol/5.6.0" [color=orangered fillcolor=cornsilk]
+	"gaussian/16" -> "sas/94M7" [style=invis]
+	"gaussian/16" [color=cornsilk fillcolor=cornsilk]
+	"sas/94M7" [color=cornsilk fillcolor=cornsilk]
+	"vasp/5.4.4" -> "openmpi/1.10.7/gcc.4.8.5"
+	"vasp/5.4.4" -> "fftw/3.3.8/gcc.4.8.5"
+	"vasp/6.1.2" -> "openmpi/4.0.3/gcc.6.5.0"
+	"vasp/6.1.2" -> "fftw/3.3.8/gcc.4.8.5"
+	subgraph clusterLegend {
+		label="ENGINEERING modules"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=16
+		color=royalblue3
+		subgraph struct0 {
+			node [color=white shape=plaintext]
+			struct0 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">A</TD></TR>
+          <TR><TD bgcolor="invis">A requires B</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="aliceblue">C</TD></TR>
+          <TR><TD bgcolor="invis">Users don't use C</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct1 {
+			node [color=white shape=plaintext]
+			struct1 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="invis">   </TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+        </TABLE>>]
+		}
+		struct0:p0 -> struct1:p0
+		subgraph struct2 {
+			node [color=white shape=plaintext]
+			struct2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD colspan='2'><FONT COLOR="royalblue3">Modules Categories:</FONT></TD></TR>
+          <TR><TD PORT="p0" bgcolor="snow2">AI-LEARNING</TD><TD bgcolor="slategray1">COMPILERS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="lavenderblush2">BIOTOOLS</TD><TD bgcolor="cornsilk">ENGINEERING</TD></TR>
+          <TR><TD PORT="p2" bgcolor="linen">CHEMISTRY</TD><TD bgcolor="gainsboro">GENOMICS</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct3 {
+			node [color=white shape=plaintext]
+			struct3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="azure2">IMAGING</TD><TD bgcolor="powderblue">PHYSICS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="honeydew2">LANGUAGES</TD><TD bgcolor="oldlace">STATISTICS</TD></TR>
+          <TR><TD PORT="p2" bgcolor="lavender">LIBRARIES</TD><TD bgcolor="wheat">TOOLS</TD></TR>
+        </TABLE>>]
+		}
+		struct2:p0 -> struct3:p0 [color=invis style=""]
+	}
+}

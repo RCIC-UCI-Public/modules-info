@@ -1,0 +1,262 @@
+digraph {
+	graph [center=true rankdir=LR]
+	node [penwidth=2 shape=record style=filled]
+	edge [arrowhead=vee arrowsize=0.5 color=royalblue3]
+	"Jellyfish/2.3.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"R/3.6.2" [color=honeydew2 fillcolor=honeydew2]
+	"R/4.0.4" [color=honeydew2 fillcolor=honeydew2]
+	"SPAdes/3.14.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bamtools/2.5.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bandage/0.8.1" [color=orangered fillcolor=lavenderblush2]
+	"bcftools/1.10.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bedtools2/2.29.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"boost/1.50.0/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"boost/1.66.0/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"bowtie/1.2.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bowtie2-python2/2.4.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bowtie2/2.4.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bowtie2/2.4.4" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"breseq/0.35.7" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bustools/0.40.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bwa/0.7.17" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bwa/0.7.8" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"cufflinks/2.2.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"cutadapt/2.10" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"deeptools/3.5.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"edirect/1.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"eigen/3.3.7" [color=lavender fillcolor=lavender]
+	"fastp/0.20.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"fastqc/0.11.9" [color=lavenderblush2 fillcolor=lavenderblush2]
+	foundation [color=wheat fillcolor=wheat]
+	"freebayes/1.3.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"gatk/2.4" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"gatk/4.1.9.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"gcc/8.4.0" [color=slategray1 fillcolor=slategray1]
+	"gsl/2.6/gcc.8.4.0" [color=lavender fillcolor=lavender]
+	"hdf5/1.10.5/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"hmmer/3.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"htslib/1.10.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"intel-tbb/20190605" [color=slategray1 fillcolor=slategray1]
+	"java/1.7.0" [color=honeydew2 fillcolor=honeydew2]
+	"java/1.8.0" [color=honeydew2 fillcolor=honeydew2]
+	"jsoncpp/1.9.4" [color=lavender fillcolor=lavender]
+	"kallisto/0.46.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"macs/2.2.7.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"mapDamage/2.2.0" [color=orangered fillcolor=lavenderblush2]
+	"meme/5.2.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"minimap2/2.17" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"minimap2/2.23" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"mkl/2019.5.281" [color=lavender fillcolor=lavender]
+	"ncbi-blast/2.10.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"ncbi-ngs/2.10.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"ncbi-vdb/2.10.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"openmpi/4.0.3/gcc.8.4.0" [color=slategray1 fillcolor=slategray1]
+	"perl/5.30.0" [color=honeydew2 fillcolor=honeydew2]
+	"picard-tools/1.87" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"picard-tools/2.26.10" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"pilon/1.23" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"python/2.7.17" [color=honeydew2 fillcolor=honeydew2]
+	"python/3.8.0" [color=honeydew2 fillcolor=honeydew2]
+	"qtltools/1.3" [color=orangered fillcolor=lavenderblush2]
+	"racon/1.4.13" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"relion/3.1.0" [color=orangered fillcolor=lavenderblush2]
+	"repeatmasker/4.1.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"rsem/1.3.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"salmon/1.2.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"samtools/1.10" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"smoldyn/2.61" [color=orangered fillcolor=lavenderblush2]
+	"sra-tools/2.10.4" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"star/2.7.3a" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"star/2.7.8a" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"stitch/1.6.3" [color=orangered fillcolor=lavenderblush2]
+	"tophat/2.1.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"transdecoder/5.5.0" [color=orangered fillcolor=lavenderblush2]
+	"trf/4.0.9" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"trimgalore/0.6.6" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"trinity/2.8.6" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"ucsc-tools/v393" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"unicycler/0.4.8" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"vcflib/1.0.1" [color=orangered fillcolor=lavenderblush2]
+	"vcftools/0.1.16" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"vg/1.23.0" [color=orangered fillcolor=lavenderblush2]
+	"fastmitocalc/1.0" -> "gffread/0.12.4" [style=invis]
+	"gffread/0.12.4" -> "qiime2/2020.8" [style=invis]
+	"qiime2/2020.8" -> "qiime2/2021.2" [style=invis]
+	"fastmitocalc/1.0" [color=orangered fillcolor=lavenderblush2]
+	"gffread/0.12.4" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"qiime2/2020.8" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"qiime2/2021.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"sambamba/0.8.0" -> "sra-tools/2.10.9" [style=invis]
+	"sra-tools/2.10.9" -> "subread/2.0.1" [style=invis]
+	"sambamba/0.8.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"sra-tools/2.10.9" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"subread/2.0.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bamtools/2.5.1" -> "jsoncpp/1.9.4"
+	"bamtools/2.5.1" -> "gcc/8.4.0"
+	"bandage/0.8.1" -> "gcc/8.4.0"
+	"bcftools/1.10.2" -> "gsl/2.6/gcc.8.4.0"
+	"bcftools/1.10.2" -> "gcc/8.4.0"
+	"bedtools2/2.29.2" -> "gcc/8.4.0"
+	"bowtie/1.2.3" -> "intel-tbb/20190605"
+	"bowtie/1.2.3" -> "gcc/8.4.0"
+	"bowtie2/2.4.1" -> "python/3.8.0"
+	"bowtie2/2.4.1" -> "perl/5.30.0"
+	"bowtie2/2.4.1" -> "intel-tbb/20190605"
+	"bowtie2/2.4.1" -> "gcc/8.4.0"
+	"bowtie2/2.4.4" -> "gcc/8.4.0"
+	"bowtie2/2.4.4" -> "python/3.8.0"
+	"bowtie2/2.4.4" -> "perl/5.30.0"
+	"bowtie2-python2/2.4.1" -> "python/2.7.17"
+	"bowtie2-python2/2.4.1" -> "perl/5.30.0"
+	"bowtie2-python2/2.4.1" -> "intel-tbb/20190605"
+	"bowtie2-python2/2.4.1" -> "gcc/8.4.0"
+	"breseq/0.35.7" -> "gcc/8.4.0"
+	"breseq/0.35.7" -> "bowtie2/2.4.1"
+	"breseq/0.35.7" -> "R/4.0.4"
+	"bustools/0.40.0" -> "gcc/8.4.0"
+	"bwa/0.7.17" -> "gcc/8.4.0"
+	"bwa/0.7.8" -> "gcc/8.4.0"
+	"cufflinks/2.2.1" -> "samtools/1.10"
+	"cufflinks/2.2.1" -> "eigen/3.3.7"
+	"cufflinks/2.2.1" -> "htslib/1.10.2"
+	"cufflinks/2.2.1" -> "boost/1.50.0/gcc.8.4.0"
+	"cufflinks/2.2.1" -> "gcc/8.4.0"
+	"cutadapt/2.10" -> "gcc/8.4.0"
+	"cutadapt/2.10" -> "python/3.8.0"
+	"deeptools/3.5.0" -> "python/3.8.0"
+	"fastp/0.20.0" -> "gcc/8.4.0"
+	"fastqc/0.11.9" -> "java/1.8.0"
+	"freebayes/1.3.2" -> "gcc/8.4.0"
+	"gatk/2.4" -> "java/1.7.0"
+	"gatk/4.1.9.0" -> "java/1.8.0"
+	"hmmer/3.3" -> "gcc/8.4.0"
+	"htslib/1.10.2" -> "gcc/8.4.0"
+	"Jellyfish/2.3.0" -> "gcc/8.4.0"
+	"Jellyfish/2.3.0" -> "htslib/1.10.2"
+	"Jellyfish/2.3.0" -> "samtools/1.10"
+	"Jellyfish/2.3.0" -> "python/3.8.0"
+	"Jellyfish/2.3.0" -> foundation
+	"kallisto/0.46.2" -> "hdf5/1.10.5/gcc.8.4.0"
+	"kallisto/0.46.2" -> "java/1.8.0"
+	"kallisto/0.46.2" -> "gcc/8.4.0"
+	"macs/2.2.7.1" -> "python/3.8.0"
+	"mapDamage/2.2.0" -> "python/3.8.0"
+	"mapDamage/2.2.0" -> "R/3.6.2"
+	"mapDamage/2.2.0" -> "gcc/8.4.0"
+	"meme/5.2.0" -> "openmpi/4.0.3/gcc.8.4.0"
+	"meme/5.2.0" -> "perl/5.30.0"
+	"minimap2/2.17" -> "gcc/8.4.0"
+	"minimap2/2.17" -> "python/3.8.0"
+	"minimap2/2.23" -> "gcc/8.4.0"
+	"minimap2/2.23" -> "python/3.8.0"
+	"ncbi-blast/2.10.0" -> "boost/1.66.0/gcc.8.4.0"
+	"ncbi-blast/2.10.0" -> "edirect/1.0"
+	"ncbi-ngs/2.10.2" -> "python/3.8.0"
+	"ncbi-ngs/2.10.2" -> "java/1.8.0"
+	"ncbi-ngs/2.10.2" -> "gcc/8.4.0"
+	"ncbi-vdb/2.10.2" -> "gcc/8.4.0"
+	"picard-tools/1.87" -> "java/1.8.0"
+	"picard-tools/2.26.10" -> "java/1.8.0"
+	"pilon/1.23" -> "java/1.8.0"
+	"qtltools/1.3" -> "htslib/1.10.2"
+	"qtltools/1.3" -> "R/3.6.2"
+	"qtltools/1.3" -> "boost/1.66.0/gcc.8.4.0"
+	"qtltools/1.3" -> "gcc/8.4.0"
+	"racon/1.4.13" -> "gcc/8.4.0"
+	"relion/3.1.0" -> "openmpi/4.0.3/gcc.8.4.0"
+	"relion/3.1.0" -> "mkl/2019.5.281"
+	"repeatmasker/4.1.0" -> "perl/5.30.0"
+	"repeatmasker/4.1.0" -> "python/3.8.0"
+	"repeatmasker/4.1.0" -> "trf/4.0.9"
+	"repeatmasker/4.1.0" -> "ncbi-blast/2.10.0"
+	"repeatmasker/4.1.0" -> "hmmer/3.3"
+	"rsem/1.3.3" -> "perl/5.30.0"
+	"rsem/1.3.3" -> "python/3.8.0"
+	"rsem/1.3.3" -> "R/3.6.2"
+	"rsem/1.3.3" -> "gcc/8.4.0"
+	"salmon/1.2.1" -> "boost/1.66.0/gcc.8.4.0"
+	"samtools/1.10" -> "htslib/1.10.2"
+	"samtools/1.10" -> "gcc/8.4.0"
+	"smoldyn/2.61" -> "gcc/8.4.0"
+	"SPAdes/3.14.0" -> "python/3.8.0"
+	"SPAdes/3.14.0" -> "gcc/8.4.0"
+	"sra-tools/2.10.4" -> "gcc/8.4.0"
+	"star/2.7.3a" -> "gcc/8.4.0"
+	"star/2.7.8a" -> "gcc/8.4.0"
+	"stitch/1.6.3" -> "R/3.6.2"
+	"stitch/1.6.3" -> "htslib/1.10.2"
+	"tophat/2.1.1" -> "gcc/8.4.0"
+	"transdecoder/5.5.0" -> "perl/5.30.0"
+	"trimgalore/0.6.6" -> "fastqc/0.11.9"
+	"trimgalore/0.6.6" -> "cutadapt/2.10"
+	"trinity/2.8.6" -> "java/1.8.0"
+	"trinity/2.8.6" -> "python/3.8.0"
+	"trinity/2.8.6" -> "bowtie/1.2.3"
+	"trinity/2.8.6" -> "bowtie2/2.4.1"
+	"trinity/2.8.6" -> "gatk/4.1.9.0"
+	"trinity/2.8.6" -> "Jellyfish/2.3.0"
+	"trinity/2.8.6" -> "kallisto/0.46.2"
+	"trinity/2.8.6" -> "salmon/1.2.1"
+	"trinity/2.8.6" -> "samtools/1.10"
+	"trinity/2.8.6" -> "gcc/8.4.0"
+	"trinity/2.8.6" -> "perl/5.30.0"
+	"trinity/2.8.6" -> foundation
+	"ucsc-tools/v393" -> "gcc/8.4.0"
+	"unicycler/0.4.8" -> "python/3.8.0"
+	"unicycler/0.4.8" -> "SPAdes/3.14.0"
+	"unicycler/0.4.8" -> "racon/1.4.13"
+	"unicycler/0.4.8" -> "pilon/1.23"
+	"unicycler/0.4.8" -> "java/1.8.0"
+	"unicycler/0.4.8" -> "bowtie2/2.4.1"
+	"unicycler/0.4.8" -> "ncbi-blast/2.10.0"
+	"unicycler/0.4.8" -> "samtools/1.10"
+	"unicycler/0.4.8" -> "bcftools/1.10.2"
+	"unicycler/0.4.8" -> "gcc/8.4.0"
+	"vcflib/1.0.1" -> "gcc/8.4.0"
+	"vcftools/0.1.16" -> "gcc/8.4.0"
+	"vg/1.23.0" -> "gcc/8.4.0"
+	subgraph clusterLegend {
+		label="BIOTOOLS modules"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=16
+		color=royalblue3
+		subgraph struct0 {
+			node [color=white shape=plaintext]
+			struct0 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">A</TD></TR>
+          <TR><TD bgcolor="invis">A requires B</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="aliceblue">C</TD></TR>
+          <TR><TD bgcolor="invis">Users don't use C</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct1 {
+			node [color=white shape=plaintext]
+			struct1 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="invis">   </TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+        </TABLE>>]
+		}
+		struct0:p0 -> struct1:p0
+		subgraph struct2 {
+			node [color=white shape=plaintext]
+			struct2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD colspan='2'><FONT COLOR="royalblue3">Modules Categories:</FONT></TD></TR>
+          <TR><TD PORT="p0" bgcolor="snow2">AI-LEARNING</TD><TD bgcolor="slategray1">COMPILERS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="lavenderblush2">BIOTOOLS</TD><TD bgcolor="cornsilk">ENGINEERING</TD></TR>
+          <TR><TD PORT="p2" bgcolor="linen">CHEMISTRY</TD><TD bgcolor="gainsboro">GENOMICS</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct3 {
+			node [color=white shape=plaintext]
+			struct3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="azure2">IMAGING</TD><TD bgcolor="powderblue">PHYSICS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="honeydew2">LANGUAGES</TD><TD bgcolor="oldlace">STATISTICS</TD></TR>
+          <TR><TD PORT="p2" bgcolor="lavender">LIBRARIES</TD><TD bgcolor="wheat">TOOLS</TD></TR>
+        </TABLE>>]
+		}
+		struct2:p0 -> struct3:p0 [color=invis style=""]
+	}
+}

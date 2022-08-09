@@ -1,0 +1,292 @@
+digraph {
+	graph [center=true compound=true concentrate=true rankdir=LR]
+	node [penwidth=2 shape=record style=filled]
+	edge [arrowhead=vee arrowsize=0.5 color=royalblue3 dir=back]
+	"jsoncpp/1.9.4" [color=lavender fillcolor=lavender]
+	"jsoncpp/1.9.4" -> "bamtools/2.5.1"
+	"R/4.0.4" [color=honeydew2 fillcolor=honeydew2]
+	"R/4.0.4" -> "breseq/0.35.7"
+	"eigen/3.3.7" [color=lavender fillcolor=lavender]
+	"eigen/3.3.7" -> "cufflinks/2.2.1"
+	"htslib/1.10.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"htslib/1.10.2" -> "cufflinks/2.2.1"
+	"htslib/1.10.2" -> "Jellyfish/2.3.0"
+	"htslib/1.10.2" -> "qtltools/1.3"
+	"htslib/1.10.2" -> "samtools/1.10"
+	"htslib/1.10.2" -> "stitch/1.6.3"
+	"boost/1.50.0/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"boost/1.50.0/gcc.8.4.0" -> "cufflinks/2.2.1"
+	"java/1.7.0" [color=honeydew2 fillcolor=honeydew2]
+	"java/1.7.0" -> "gatk/2.4"
+	"R/3.6.2" [color=honeydew2 fillcolor=honeydew2]
+	"R/3.6.2" -> "mapDamage/2.2.0"
+	"R/3.6.2" -> "qtltools/1.3"
+	"R/3.6.2" -> "rsem/1.3.3"
+	"R/3.6.2" -> "stitch/1.6.3"
+	"edirect/1.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"edirect/1.0" -> "ncbi-blast/2.10.0"
+	"hmmer/3.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"hmmer/3.3" -> "repeatmasker/4.1.0"
+	"cutadapt/2.10" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"cutadapt/2.10" -> "trimgalore/0.6.6"
+	"bowtie/1.2.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bowtie/1.2.3" -> "trinity/2.8.6"
+	"gatk/4.1.9.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"gatk/4.1.9.0" -> "trinity/2.8.6"
+	"Jellyfish/2.3.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"Jellyfish/2.3.0" -> "trinity/2.8.6"
+	"kallisto/0.46.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"kallisto/0.46.2" -> "trinity/2.8.6"
+	"salmon/1.2.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"salmon/1.2.1" -> "trinity/2.8.6"
+	"SPAdes/3.14.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"SPAdes/3.14.0" -> "unicycler/0.4.8"
+	"racon/1.4.13" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"racon/1.4.13" -> "unicycler/0.4.8"
+	"pilon/1.23" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"pilon/1.23" -> "unicycler/0.4.8"
+	"bcftools/1.10.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bcftools/1.10.2" -> "unicycler/0.4.8"
+	"plumed/2.6.1/gcc.8.4.0-openmpi.4.0.3" [color=wheat fillcolor=wheat]
+	"plumed/2.6.1/gcc.8.4.0-openmpi.4.0.3" -> "gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1"
+	"charm/6.10.1/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"charm/6.10.1/gcc.8.4.0" -> "namd/2.14b2/gcc.8.4.0"
+	"charm/6.10.1/gcc.8.4.0" -> "namd/2.14b2/gcc.8.4.0-cuda.10.1.243"
+	"charm/6.10.1/gcc.8.4.0" -> "namd/2.14b2/gcc.8.4.0-openmpi.4.0.3"
+	"amber/19.11/gcc.8.4.0" [color=linen fillcolor=linen]
+	"amber/19.11/gcc.8.4.0" -> "openmoltools/0.8.6"
+	"llvm/10.0.0" [color=slategray1 fillcolor=slategray1]
+	"llvm/10.0.0" -> "clang/10.0.0"
+	"llvm/10.0.0" -> "rustc/1.50.0"
+	"gcc/6.5.0" [color=slategray1 fillcolor=slategray1]
+	"gcc/6.5.0" -> "openmpi/4.0.3/gcc.6.5.0"
+	"fftw/3.3.8/gcc.4.8.5" [color=wheat fillcolor=wheat]
+	"fftw/3.3.8/gcc.4.8.5" -> "vasp/5.4.4"
+	"fftw/3.3.8/gcc.4.8.5" -> "vasp/6.1.2"
+	"openmpi/4.0.3/gcc.6.5.0" [color=slategray1 fillcolor=slategray1]
+	"openmpi/4.0.3/gcc.6.5.0" -> "vasp/6.1.2"
+	"hisat2/2.2.1" [color=gainsboro fillcolor=gainsboro]
+	"hisat2/2.2.1" -> "bismark/0.22.3"
+	"hisat2/2.2.1" -> "hisat-genotype/1.3.2"
+	"kraken2/2.1.1" [color=gainsboro fillcolor=gainsboro]
+	"kraken2/2.1.1" -> "bracken/2.6.0"
+	"imagemagick/7.0.10.26" [color=wheat fillcolor=wheat]
+	"imagemagick/7.0.10.26" -> "cdhit/4.8.1"
+	"glpk/5.0" [color=gainsboro fillcolor=gainsboro]
+	"glpk/5.0" -> "humann/3.0.1"
+	"diamond/2.0.4" [color=gainsboro fillcolor=gainsboro]
+	"diamond/2.0.4" -> "humann/3.0.1"
+	"trimmomatic/0.39" [color=gainsboro fillcolor=gainsboro]
+	"trimmomatic/0.39" -> "kneaddata/0.10.0"
+	"phylophlan/3.0.2" [color=gainsboro fillcolor=gainsboro]
+	"phylophlan/3.0.2" -> "metaphlan/3.0.14"
+	"biom-format/2.1.12" [color=gainsboro fillcolor=gainsboro]
+	"biom-format/2.1.12" -> "metaphlan/3.0.14"
+	"dendropy/4.5.2" [color=gainsboro fillcolor=gainsboro]
+	"dendropy/4.5.2" -> "metaphlan/3.0.14"
+	"cmseq/1.0.4" [color=gainsboro fillcolor=gainsboro]
+	"cmseq/1.0.4" -> "metaphlan/3.0.14"
+	"hclust2/1.0.0" [color=gainsboro fillcolor=gainsboro]
+	"hclust2/1.0.0" -> "metaphlan/3.0.14"
+	"protobuf/2.4.1" [color=wheat fillcolor=wheat]
+	"protobuf/2.4.1" -> "plinkseq/0.08"
+	"star/2.7.3a" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"star/2.7.3a" -> "rMATS/4.0.2"
+	"star/2.7.3a" -> "rMATS/4.1.0"
+	"star/2.7.3a" -> "rMATS/4.1.1"
+	"cdhit/4.8.1" [color=gainsboro fillcolor=gainsboro]
+	"cdhit/4.8.1" -> "roary/3.13.0"
+	"fasttree/2.1.11" [color=gainsboro fillcolor=gainsboro]
+	"fasttree/2.1.11" -> "roary/3.13.0"
+	"mcl/14.137" [color=gainsboro fillcolor=gainsboro]
+	"mcl/14.137" -> "roary/3.13.0"
+	"mafft/7.471" [color=gainsboro fillcolor=gainsboro]
+	"mafft/7.471" -> "roary/3.13.0"
+	"prank/170427" [color=gainsboro fillcolor=gainsboro]
+	"prank/170427" -> "roary/3.13.0"
+	"bedtools2/2.29.2" [color=lavenderblush2 fillcolor=lavenderblush2]
+	"bedtools2/2.29.2" -> "roary/3.13.0"
+	"parallel/20200222" [color=wheat fillcolor=wheat]
+	"parallel/20200222" -> "roary/3.13.0"
+	"icu/65.1" [color=wheat fillcolor=wheat]
+	"icu/65.1" -> "R/3.6.2"
+	"icu/65.1" -> "R/4.0.2"
+	"proj/6.3.2" [color=lavender fillcolor=lavender]
+	"proj/6.3.2" -> "gdal/3.1.0"
+	"geos/3.8.1" [color=wheat fillcolor=wheat]
+	"geos/3.8.1" -> "gdal/3.1.0"
+	"scotch/6.0.9" [color=powderblue fillcolor=powderblue]
+	"scotch/6.0.9" -> "openfoam/7"
+	"cgal/5.0.2" [color=lavender fillcolor=lavender]
+	"cgal/5.0.2" -> "openfoam/7"
+	"paraview/5.8.0" [color=powderblue fillcolor=powderblue]
+	"paraview/5.8.0" -> "openfoam/7"
+	"OpenCL/2.2" [color=lavender fillcolor=lavender]
+	"OpenCL/2.2" -> "computecpp/1.3.0"
+	"gcc/4.8.5" [color=slategray1 fillcolor=slategray1]
+	"gcc/4.8.5" -> "fftw/3.3.8/gcc.4.8.5"
+	"gcc/4.8.5" -> "hdf5/1.10.5/gcc.4.8.5"
+	"gcc/4.8.5" -> "ioapi/3.2/gcc.4.8.5"
+	"gcc/4.8.5" -> "netcdf-c/4.7.0/gcc.4.8.5"
+	"gcc/4.8.5" -> "udunits/2.2.26/gcc.4.8.5"
+	"openmpi/4.0.3/intel.2020u1" [color=slategray1 fillcolor=slategray1]
+	"openmpi/4.0.3/intel.2020u1" -> "hdf5/1.10.5/intel.2020u1-openmpi.4.0.3"
+	"netcdf-c/4.7.0/gcc.4.8.5" [color=wheat fillcolor=wheat]
+	"netcdf-c/4.7.0/gcc.4.8.5" -> "ioapi/3.2/gcc.4.8.5"
+	"netcdf-c/4.7.0/intel.2020u1" [color=wheat fillcolor=wheat]
+	"netcdf-c/4.7.0/intel.2020u1" -> "ioapi/3.2/intel.2020u1"
+	"libpng/1.6.37" [color=lavender fillcolor=lavender]
+	"libpng/1.6.37" -> "ncl/6.6.2"
+	"hdf4/4.2.15" [color=lavender fillcolor=lavender]
+	"hdf4/4.2.15" -> "ncl/6.6.2"
+	"freetype/2.10.2" [color=lavender fillcolor=lavender]
+	"freetype/2.10.2" -> "ncl/6.6.2"
+	"udunits/2.2.26/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"udunits/2.2.26/gcc.8.4.0" -> "ncl/6.6.2"
+	"udunits/2.2.26/gcc.8.4.0" -> "nco/4.9.6/gcc.8.4.0"
+	"hdf5/1.10.5/gcc.4.8.5" [color=wheat fillcolor=wheat]
+	"hdf5/1.10.5/gcc.4.8.5" -> "netcdf-c/4.7.0/gcc.4.8.5"
+	"hdf5/1.10.5/intel.2020u1" [color=wheat fillcolor=wheat]
+	"hdf5/1.10.5/intel.2020u1" -> "netcdf-c/4.7.0/intel.2020u1"
+	subgraph cluster0 {
+		label=BIOTOOLS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"repeatmasker/4.1.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"gatk/2.4" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"stitch/1.6.3" [color=orangered fillcolor=lavenderblush2]
+		"breseq/0.35.7" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"rsem/1.3.3" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"trinity/2.8.6" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"bamtools/2.5.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"samtools/1.10" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"mapDamage/2.2.0" [color=orangered fillcolor=lavenderblush2]
+		"qtltools/1.3" [color=orangered fillcolor=lavenderblush2]
+		"cufflinks/2.2.1" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"unicycler/0.4.8" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"trimgalore/0.6.6" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"Jellyfish/2.3.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+		"ncbi-blast/2.10.0" [color=lavenderblush2 fillcolor=lavenderblush2]
+	}
+	subgraph cluster1 {
+		label=CHEMISTRY
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"namd/2.14b2/gcc.8.4.0-openmpi.4.0.3" [color=linen fillcolor=linen]
+		"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+		"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1" [color=linen fillcolor=linen]
+		"namd/2.14b2/gcc.8.4.0" [color=linen fillcolor=linen]
+		"openmoltools/0.8.6" [color=orangered fillcolor=linen]
+	}
+	subgraph cluster2 {
+		label=COMPILERS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"openmpi/4.0.3/gcc.6.5.0" [color=slategray1 fillcolor=slategray1]
+		"rustc/1.50.0" [color=orangered fillcolor=slategray1]
+		"clang/10.0.0" [color=slategray1 fillcolor=slategray1]
+	}
+	subgraph cluster3 {
+		label=ENGINEERING
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"vasp/6.1.2" [color=cornsilk fillcolor=cornsilk]
+		"vasp/5.4.4" [color=cornsilk fillcolor=cornsilk]
+	}
+	subgraph cluster4 {
+		label=GENOMICS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"humann/3.0.1" [color=gainsboro fillcolor=gainsboro]
+		"hisat-genotype/1.3.2" [color=orangered fillcolor=gainsboro]
+		"rMATS/4.0.2" [color=orangered fillcolor=gainsboro]
+		"cdhit/4.8.1" [color=gainsboro fillcolor=gainsboro]
+		"roary/3.13.0" [color=gainsboro fillcolor=gainsboro]
+		"metaphlan/3.0.14" [color=gainsboro fillcolor=gainsboro]
+		"kneaddata/0.10.0" [color=gainsboro fillcolor=gainsboro]
+		"rMATS/4.1.0" [color=gainsboro fillcolor=gainsboro]
+		"plinkseq/0.08" [color=gainsboro fillcolor=gainsboro]
+		"rMATS/4.1.1" [color=gainsboro fillcolor=gainsboro]
+		"bracken/2.6.0" [color=orangered fillcolor=gainsboro]
+		"bismark/0.22.3" [color=gainsboro fillcolor=gainsboro]
+	}
+	subgraph cluster5 {
+		label=LANGUAGES
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"R/3.6.2" [color=honeydew2 fillcolor=honeydew2]
+		"R/4.0.2" [color=honeydew2 fillcolor=honeydew2]
+	}
+	subgraph cluster6 {
+		label=LIBRARIES
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"gdal/3.1.0" [color=lavender fillcolor=lavender]
+	}
+	subgraph cluster7 {
+		label=PHYSICS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"openfoam/7" [color=orangered fillcolor=powderblue]
+	}
+	subgraph cluster8 {
+		label=TOOLS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"ioapi/3.2/gcc.4.8.5" [color=orangered fillcolor=wheat]
+		"ncl/6.6.2" [color=wheat fillcolor=wheat]
+		"netcdf-c/4.7.0/intel.2020u1" [color=wheat fillcolor=wheat]
+		"udunits/2.2.26/gcc.4.8.5" [color=wheat fillcolor=wheat]
+		"fftw/3.3.8/gcc.4.8.5" [color=wheat fillcolor=wheat]
+		"hdf5/1.10.5/intel.2020u1-openmpi.4.0.3" [color=wheat fillcolor=wheat]
+		"ioapi/3.2/intel.2020u1" [color=wheat fillcolor=wheat]
+		"computecpp/1.3.0" [color=orangered fillcolor=wheat]
+		"netcdf-c/4.7.0/gcc.4.8.5" [color=wheat fillcolor=wheat]
+		"hdf5/1.10.5/gcc.4.8.5" [color=wheat fillcolor=wheat]
+		"nco/4.9.6/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	}
+	subgraph clusterLegend {
+		label="Modules dependency"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=16
+		color=royalblue3
+		subgraph struct0 {
+			node [color=white shape=plaintext]
+			struct0 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">A</TD></TR>
+          <TR><TD bgcolor="invis">A is required by B</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="aliceblue">C</TD></TR>
+          <TR><TD bgcolor="invis">Users don't use C</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct1 {
+			node [color=white shape=plaintext]
+			struct1 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="invis">   </TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+        </TABLE>>]
+		}
+		struct0:p0 -> struct1:p0
+		subgraph struct2 {
+			node [color=white shape=plaintext]
+			struct2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD colspan='2'><FONT COLOR="royalblue3">Modules Categories:</FONT></TD></TR>
+          <TR><TD PORT="p0" bgcolor="snow2">AI-LEARNING</TD><TD bgcolor="slategray1">COMPILERS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="lavenderblush2">BIOTOOLS</TD><TD bgcolor="cornsilk">ENGINEERING</TD></TR>
+          <TR><TD PORT="p2" bgcolor="linen">CHEMISTRY</TD><TD bgcolor="gainsboro">GENOMICS</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct3 {
+			node [color=white shape=plaintext]
+			struct3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="azure2">IMAGING</TD><TD bgcolor="powderblue">PHYSICS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="honeydew2">LANGUAGES</TD><TD bgcolor="oldlace">STATISTICS</TD></TR>
+          <TR><TD PORT="p2" bgcolor="lavender">LIBRARIES</TD><TD bgcolor="wheat">TOOLS</TD></TR>
+        </TABLE>>]
+		}
+		struct2:p0 -> struct3:p0 [color=invis style=""]
+	}
+}

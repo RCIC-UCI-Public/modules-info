@@ -1,0 +1,98 @@
+digraph {
+	graph [center=true compound=true concentrate=true rankdir=LR]
+	node [penwidth=2 shape=record style=filled]
+	edge [arrowhead=vee arrowsize=0.5 color=royalblue3 dir=back]
+	"mkl/2019.5.281" [color=lavender fillcolor=lavender]
+	"mkl/2019.5.281" -> "pytorch/1.5.1"
+	"mkl/2019.5.281" -> "relion/3.1.0"
+	"mkl/2019.5.281" -> "namd/2.14b2/gcc.8.4.0"
+	"mkl/2019.5.281" -> "namd/2.14b2/gcc.8.4.0-cuda.10.1.243"
+	"mkl/2019.5.281" -> "namd/2.14b2/gcc.8.4.0-openmpi.4.0.3"
+	"mkl/2019.5.281" -> "plink/2.00a2.3"
+	"mkl/2019.5.281" -> "cistem/1.0.0"
+	"mkl/2019.5.281" -> "suitesparse/5.7.1"
+	subgraph cluster0 {
+		label="AI-LEARNING"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"pytorch/1.5.1" [color=snow2 fillcolor=snow2]
+	}
+	subgraph cluster1 {
+		label=BIOTOOLS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"relion/3.1.0" [color=orangered fillcolor=lavenderblush2]
+	}
+	subgraph cluster2 {
+		label=CHEMISTRY
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"namd/2.14b2/gcc.8.4.0" -> "namd/2.14b2/gcc.8.4.0-cuda.10.1.243" [style=invis]
+		"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" -> "namd/2.14b2/gcc.8.4.0-openmpi.4.0.3" [style=invis]
+		"namd/2.14b2/gcc.8.4.0" [color=linen fillcolor=linen]
+		"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+		"namd/2.14b2/gcc.8.4.0-openmpi.4.0.3" [color=linen fillcolor=linen]
+	}
+	subgraph cluster3 {
+		label=GENOMICS
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"plink/2.00a2.3" [color=gainsboro fillcolor=gainsboro]
+	}
+	subgraph cluster4 {
+		label=IMAGING
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"cistem/1.0.0" [color=orangered fillcolor=azure2]
+	}
+	subgraph cluster5 {
+		label=LIBRARIES
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=14
+		color=royalblue3
+		"suitesparse/5.7.1" [color=orangered fillcolor=lavender]
+	}
+	subgraph clusterLegend {
+		label="Modules dependency"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=16
+		color=royalblue3
+		subgraph struct0 {
+			node [color=white shape=plaintext]
+			struct0 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">A</TD></TR>
+          <TR><TD bgcolor="invis">A is required by B</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="aliceblue">C</TD></TR>
+          <TR><TD bgcolor="invis">Users don't use C</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct1 {
+			node [color=white shape=plaintext]
+			struct1 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="invis">   </TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+        </TABLE>>]
+		}
+		struct0:p0 -> struct1:p0
+		subgraph struct2 {
+			node [color=white shape=plaintext]
+			struct2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD colspan='2'><FONT COLOR="royalblue3">Modules Categories:</FONT></TD></TR>
+          <TR><TD PORT="p0" bgcolor="snow2">AI-LEARNING</TD><TD bgcolor="slategray1">COMPILERS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="lavenderblush2">BIOTOOLS</TD><TD bgcolor="cornsilk">ENGINEERING</TD></TR>
+          <TR><TD PORT="p2" bgcolor="linen">CHEMISTRY</TD><TD bgcolor="gainsboro">GENOMICS</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct3 {
+			node [color=white shape=plaintext]
+			struct3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="azure2">IMAGING</TD><TD bgcolor="powderblue">PHYSICS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="honeydew2">LANGUAGES</TD><TD bgcolor="oldlace">STATISTICS</TD></TR>
+          <TR><TD PORT="p2" bgcolor="lavender">LIBRARIES</TD><TD bgcolor="wheat">TOOLS</TD></TR>
+        </TABLE>>]
+		}
+		struct2:p0 -> struct3:p0 [color=invis style=""]
+	}
+}

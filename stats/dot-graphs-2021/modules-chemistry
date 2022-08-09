@@ -1,0 +1,139 @@
+digraph {
+	graph [center=true rankdir=LR]
+	node [penwidth=2 shape=record style=filled]
+	edge [arrowhead=vee arrowsize=0.5 color=royalblue3]
+	"amber/19.11/gcc.8.4.0" [color=linen fillcolor=linen]
+	"boost/1.66.0/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"charm/6.10.1/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"cuda/10.1.243" [color=wheat fillcolor=wheat]
+	"ffmpeg/4.1.3" [color=lavender fillcolor=lavender]
+	"gcc/8.4.0" [color=slategray1 fillcolor=slategray1]
+	"gromacs/2020.4/gcc.8.4.0" [color=linen fillcolor=linen]
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" [color=linen fillcolor=linen]
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1" [color=linen fillcolor=linen]
+	"gromacs/2020.4/gcc.8.4.0-openmpi.4.0.3" [color=linen fillcolor=linen]
+	"gromacs/2021.2/gcc.8.4.0" [color=linen fillcolor=linen]
+	"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+	"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" [color=linen fillcolor=linen]
+	"gromacs/2021.2/gcc.8.4.0-openmpi.4.0.3" [color=linen fillcolor=linen]
+	"gsl/2.6/gcc.8.4.0" [color=lavender fillcolor=lavender]
+	"hdf5/1.10.5/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"lammps/3Mar2020/gcc.8.4.0" [color=linen fillcolor=linen]
+	"mdanalysis/0.20.1" [color=orangered fillcolor=linen]
+	"mdtraj/1.9.3" [color=orangered fillcolor=linen]
+	"mkl/2019.5.281" [color=lavender fillcolor=lavender]
+	"namd/2.14b2/gcc.8.4.0" [color=linen fillcolor=linen]
+	"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" [color=linen fillcolor=linen]
+	"namd/2.14b2/gcc.8.4.0-openmpi.4.0.3" [color=linen fillcolor=linen]
+	"openbabel/3.0.0" [color=linen fillcolor=linen]
+	"openeye-toolkits/2019.10.2" [color=orangered fillcolor=linen]
+	"openmm/7.4.1" [color=orangered fillcolor=linen]
+	"openmoltools/0.8.6" [color=orangered fillcolor=linen]
+	"openmpi/4.0.3/gcc.8.4.0" [color=slategray1 fillcolor=slategray1]
+	"plumed/2.6.1/gcc.8.4.0-openmpi.4.0.3" [color=wheat fillcolor=wheat]
+	"pyemma/2.5.7" [color=orangered fillcolor=linen]
+	"python/3.8.0" [color=honeydew2 fillcolor=honeydew2]
+	"wxWidgets/3.1.3" [color=wheat fillcolor=wheat]
+	"chimera/1.15" -> "schrodinger/2020.1" [style=invis]
+	"schrodinger/2020.1" -> "turbomole-mpi/7.5" [style=invis]
+	"turbomole-mpi/7.5" -> "turbomole-mpi/7.6" [style=invis]
+	"chimera/1.15" [color=orangered fillcolor=linen]
+	"schrodinger/2020.1" [color=linen fillcolor=linen]
+	"turbomole-mpi/7.5" [color=orangered fillcolor=linen]
+	"turbomole-mpi/7.6" [color=linen fillcolor=linen]
+	"turbomole-smp/7.5" -> "turbomole-smp/7.6" [style=invis]
+	"turbomole-smp/7.6" -> "turbomole/7.5" [style=invis]
+	"turbomole/7.5" -> "turbomole/7.6" [style=invis]
+	"turbomole-smp/7.5" [color=linen fillcolor=linen]
+	"turbomole-smp/7.6" [color=linen fillcolor=linen]
+	"turbomole/7.5" [color=linen fillcolor=linen]
+	"turbomole/7.6" [color=linen fillcolor=linen]
+	"amber/19.11/gcc.8.4.0" -> "python/3.8.0"
+	"amber/19.11/gcc.8.4.0" -> "gcc/8.4.0"
+	"gromacs/2020.4/gcc.8.4.0" -> "gcc/8.4.0"
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243" -> "cuda/10.1.243"
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243" -> "gcc/8.4.0"
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" -> "cuda/10.1.243"
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" -> "openmpi/4.0.3/gcc.8.4.0"
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1" -> "cuda/10.1.243"
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1" -> "plumed/2.6.1/gcc.8.4.0-openmpi.4.0.3"
+	"gromacs/2020.4/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3.plumed.2.6.1" -> "openmpi/4.0.3/gcc.8.4.0"
+	"gromacs/2020.4/gcc.8.4.0-openmpi.4.0.3" -> "openmpi/4.0.3/gcc.8.4.0"
+	"gromacs/2021.2/gcc.8.4.0" -> "gcc/8.4.0"
+	"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243" -> "cuda/10.1.243"
+	"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243" -> "gcc/8.4.0"
+	"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" -> "cuda/10.1.243"
+	"gromacs/2021.2/gcc.8.4.0-cuda.10.1.243.openmpi.4.0.3" -> "openmpi/4.0.3/gcc.8.4.0"
+	"gromacs/2021.2/gcc.8.4.0-openmpi.4.0.3" -> "openmpi/4.0.3/gcc.8.4.0"
+	"lammps/3Mar2020/gcc.8.4.0" -> "openmpi/4.0.3/gcc.8.4.0"
+	"lammps/3Mar2020/gcc.8.4.0" -> "gcc/8.4.0"
+	"lammps/3Mar2020/gcc.8.4.0" -> "ffmpeg/4.1.3"
+	"lammps/3Mar2020/gcc.8.4.0" -> "hdf5/1.10.5/gcc.8.4.0"
+	"lammps/3Mar2020/gcc.8.4.0" -> "gsl/2.6/gcc.8.4.0"
+	"mdanalysis/0.20.1" -> "python/3.8.0"
+	"mdtraj/1.9.3" -> "python/3.8.0"
+	"namd/2.14b2/gcc.8.4.0" -> "gcc/8.4.0"
+	"namd/2.14b2/gcc.8.4.0" -> "charm/6.10.1/gcc.8.4.0"
+	"namd/2.14b2/gcc.8.4.0" -> "mkl/2019.5.281"
+	"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" -> "cuda/10.1.243"
+	"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" -> "gcc/8.4.0"
+	"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" -> "charm/6.10.1/gcc.8.4.0"
+	"namd/2.14b2/gcc.8.4.0-cuda.10.1.243" -> "mkl/2019.5.281"
+	"namd/2.14b2/gcc.8.4.0-openmpi.4.0.3" -> "openmpi/4.0.3/gcc.8.4.0"
+	"namd/2.14b2/gcc.8.4.0-openmpi.4.0.3" -> "charm/6.10.1/gcc.8.4.0"
+	"namd/2.14b2/gcc.8.4.0-openmpi.4.0.3" -> "mkl/2019.5.281"
+	"openbabel/3.0.0" -> "wxWidgets/3.1.3"
+	"openbabel/3.0.0" -> "boost/1.66.0/gcc.8.4.0"
+	"openbabel/3.0.0" -> "gcc/8.4.0"
+	"openeye-toolkits/2019.10.2" -> "python/3.8.0"
+	"openmm/7.4.1" -> "python/3.8.0"
+	"openmoltools/0.8.6" -> "python/3.8.0"
+	"openmoltools/0.8.6" -> "amber/19.11/gcc.8.4.0"
+	"pyemma/2.5.7" -> "python/3.8.0"
+	"pyemma/2.5.7" -> "hdf5/1.10.5/gcc.8.4.0"
+	subgraph clusterLegend {
+		label="CHEMISTRY modules"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=16
+		color=royalblue3
+		subgraph struct0 {
+			node [color=white shape=plaintext]
+			struct0 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">A</TD></TR>
+          <TR><TD bgcolor="invis">A requires B</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="aliceblue">C</TD></TR>
+          <TR><TD bgcolor="invis">Users don't use C</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct1 {
+			node [color=white shape=plaintext]
+			struct1 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="invis">   </TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+        </TABLE>>]
+		}
+		struct0:p0 -> struct1:p0
+		subgraph struct2 {
+			node [color=white shape=plaintext]
+			struct2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD colspan='2'><FONT COLOR="royalblue3">Modules Categories:</FONT></TD></TR>
+          <TR><TD PORT="p0" bgcolor="snow2">AI-LEARNING</TD><TD bgcolor="slategray1">COMPILERS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="lavenderblush2">BIOTOOLS</TD><TD bgcolor="cornsilk">ENGINEERING</TD></TR>
+          <TR><TD PORT="p2" bgcolor="linen">CHEMISTRY</TD><TD bgcolor="gainsboro">GENOMICS</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct3 {
+			node [color=white shape=plaintext]
+			struct3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="azure2">IMAGING</TD><TD bgcolor="powderblue">PHYSICS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="honeydew2">LANGUAGES</TD><TD bgcolor="oldlace">STATISTICS</TD></TR>
+          <TR><TD PORT="p2" bgcolor="lavender">LIBRARIES</TD><TD bgcolor="wheat">TOOLS</TD></TR>
+        </TABLE>>]
+		}
+		struct2:p0 -> struct3:p0 [color=invis style=""]
+	}
+}

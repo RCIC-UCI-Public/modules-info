@@ -1,0 +1,110 @@
+digraph {
+	graph [center=true rankdir=LR]
+	node [penwidth=2 shape=record style=filled]
+	edge [arrowhead=vee arrowsize=0.5 color=royalblue3]
+	"boost/1.66.0/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"cgal/5.0.2" [color=orangered fillcolor=lavender]
+	"freetype/2.10.2" [color=lavender fillcolor=lavender]
+	"gcc/8.4.0" [color=slategray1 fillcolor=slategray1]
+	"gdal/3.1.0" [color=lavender fillcolor=lavender]
+	"geos/3.8.1" [color=wheat fillcolor=wheat]
+	"gsl/2.6/gcc.8.4.0" [color=lavender fillcolor=lavender]
+	"hdf4/4.2.15" [color=lavender fillcolor=lavender]
+	"jsoncpp/1.9.4" [color=lavender fillcolor=lavender]
+	"libjpeg/9d" [color=lavender fillcolor=lavender]
+	"libpng/1.6.37" [color=lavender fillcolor=lavender]
+	"mkl/2019.5.281" [color=lavender fillcolor=lavender]
+	"netcdf-c/4.7.0/gcc.8.4.0" [color=wheat fillcolor=wheat]
+	"proj/6.3.2" [color=lavender fillcolor=lavender]
+	"sqlite3/3.32.3" [color=lavender fillcolor=lavender]
+	"suitesparse/5.7.1" [color=orangered fillcolor=lavender]
+	"sundials/5.6.1" [color=orangered fillcolor=lavender]
+	"szip/2.1.1" [color=lavender fillcolor=lavender]
+	"windninja/3.7.3" [color=lavender fillcolor=lavender]
+	"zlib/1.2.11" [color=lavender fillcolor=lavender]
+	"OpenBLAS/0.3.6" -> "OpenCL/2.2" [style=invis]
+	"OpenCL/2.2" -> "eigen/3.3.7" [style=invis]
+	"eigen/3.3.7" -> "ffmpeg/0.10.16" [style=invis]
+	"OpenBLAS/0.3.6" [color=lavender fillcolor=lavender]
+	"OpenCL/2.2" [color=lavender fillcolor=lavender]
+	"eigen/3.3.7" [color=lavender fillcolor=lavender]
+	"ffmpeg/0.10.16" [color=orangered fillcolor=lavender]
+	"ffmpeg/1.2.12" -> "ffmpeg/4.1.3" [style=invis]
+	"ffmpeg/4.1.3" -> "lapack/3.9.0" [style=invis]
+	"lapack/3.9.0" -> "scalapack/2.1.0" [style=invis]
+	"ffmpeg/1.2.12" [color=orangered fillcolor=lavender]
+	"ffmpeg/4.1.3" [color=lavender fillcolor=lavender]
+	"lapack/3.9.0" [color=lavender fillcolor=lavender]
+	"scalapack/2.1.0" [color=lavender fillcolor=lavender]
+	"xerces-c/3.2.3" [color=orangered fillcolor=lavender]
+	"cgal/5.0.2" -> "gcc/8.4.0"
+	"freetype/2.10.2" -> "gcc/8.4.0"
+	"gdal/3.1.0" -> "gcc/8.4.0"
+	"gdal/3.1.0" -> "proj/6.3.2"
+	"gdal/3.1.0" -> "sqlite3/3.32.3"
+	"gdal/3.1.0" -> "geos/3.8.1"
+	"gsl/2.6/gcc.8.4.0" -> "gcc/8.4.0"
+	"hdf4/4.2.15" -> "szip/2.1.1"
+	"hdf4/4.2.15" -> "zlib/1.2.11"
+	"hdf4/4.2.15" -> "libjpeg/9d"
+	"hdf4/4.2.15" -> "gcc/8.4.0"
+	"jsoncpp/1.9.4" -> "gcc/8.4.0"
+	"libjpeg/9d" -> "gcc/8.4.0"
+	"libpng/1.6.37" -> "gcc/8.4.0"
+	"proj/6.3.2" -> "sqlite3/3.32.3"
+	"proj/6.3.2" -> "gcc/8.4.0"
+	"sqlite3/3.32.3" -> "gcc/8.4.0"
+	"suitesparse/5.7.1" -> "gcc/8.4.0"
+	"suitesparse/5.7.1" -> "mkl/2019.5.281"
+	"sundials/5.6.1" -> "gcc/8.4.0"
+	"szip/2.1.1" -> "gcc/8.4.0"
+	"windninja/3.7.3" -> "gcc/8.4.0"
+	"windninja/3.7.3" -> "netcdf-c/4.7.0/gcc.8.4.0"
+	"windninja/3.7.3" -> "gdal/3.1.0"
+	"windninja/3.7.3" -> "boost/1.66.0/gcc.8.4.0"
+	"zlib/1.2.11" -> "gcc/8.4.0"
+	subgraph clusterLegend {
+		label="LIBRARIES modules"
+		fontcolor=royalblue3 fontname="Numbus-Roman" fontsize=16
+		color=royalblue3
+		subgraph struct0 {
+			node [color=white shape=plaintext]
+			struct0 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">A</TD></TR>
+          <TR><TD bgcolor="invis">A requires B</TD></TR>
+          <TR><TD PORT="p1" border="2" color="red" bgcolor="aliceblue">C</TD></TR>
+          <TR><TD bgcolor="invis">Users don't use C</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct1 {
+			node [color=white shape=plaintext]
+			struct1 [label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="aliceblue">&emsp; B &emsp;</TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+          <TR><TD PORT="p1" bgcolor="invis">   </TD></TR>
+          <TR><TD bgcolor="invis">   </TD></TR>
+        </TABLE>>]
+		}
+		struct0:p0 -> struct1:p0
+		subgraph struct2 {
+			node [color=white shape=plaintext]
+			struct2 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD colspan='2'><FONT COLOR="royalblue3">Modules Categories:</FONT></TD></TR>
+          <TR><TD PORT="p0" bgcolor="snow2">AI-LEARNING</TD><TD bgcolor="slategray1">COMPILERS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="lavenderblush2">BIOTOOLS</TD><TD bgcolor="cornsilk">ENGINEERING</TD></TR>
+          <TR><TD PORT="p2" bgcolor="linen">CHEMISTRY</TD><TD bgcolor="gainsboro">GENOMICS</TD></TR>
+        </TABLE>>]
+		}
+		subgraph struct3 {
+			node [color=white shape=plaintext]
+			struct3 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="5">
+          <TR><TD PORT="p0" bgcolor="azure2">IMAGING</TD><TD bgcolor="powderblue">PHYSICS</TD></TR>
+          <TR><TD PORT="p1" bgcolor="honeydew2">LANGUAGES</TD><TD bgcolor="oldlace">STATISTICS</TD></TR>
+          <TR><TD PORT="p2" bgcolor="lavender">LIBRARIES</TD><TD bgcolor="wheat">TOOLS</TD></TR>
+        </TABLE>>]
+		}
+		struct2:p0 -> struct3:p0 [color=invis style=""]
+	}
+}

@@ -133,6 +133,14 @@ For the examples below assume messages-DATE\*.gz fles are in backup/
    ./plotRequests
    ```
 
+1  **stats**
+
+   For output of parseMod and modGraph.py by year:
+
+   - 2021-usage output of parseMod
+   - dot-graphs-2021/usageStats output of parseMod 
+   - dot-graphs-2021/  output of modGraph.py
+
 ## No longer used  scripts  and files
 
 1. **examples/**
