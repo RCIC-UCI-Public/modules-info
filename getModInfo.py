@@ -96,7 +96,7 @@ class ModType:
 class ModInfo:
     def __init__(self, args=None):
         self.args = args
-        self.cmd = ['/usr/bin/modulecmd', 'python', 'avail', '-tv']
+        self.cmd = ['/usr/bin/modulecmd', 'python', 'avail', '-t', '-v']
         self.modtypes = [] # list of ModType instances, one per module type: biotools, compielrs, etc
         self.loaded = []   # list of loaded modules across all module types
         self.defaultDir = "/opt/rcic/Modules/modulefiles"
