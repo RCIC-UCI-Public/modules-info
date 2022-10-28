@@ -10,26 +10,39 @@ import numpy as np
 import matplotlib.ticker as ticker
 from scipy import interpolate 
 
-# collected from RT tickets, per month/year for all requests and sw requests
+# labels for plots
+monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+monthLabels = ['2019-01','2019-02','2019-03','2019-04','2019-05','2019-06',
+               '2019-07','2019-08','2019-09','2019-10','2019-11','2019-12',
+               '2020-01','2020-02','2020-03','2020-04','2020-05','2020-06',
+		       '2020-07','2020-08','2020-09','2020-10','2020-11','2020-12',
+               '2021-01','2021-02','2021-03','2021-04','2021-05','2021-06',
+               '2021-07','2021-08','2021-09','2021-10','2021-11','2021-12',
+               '2022-01','2022-02','2022-03','2022-04','2022-05','2022-06',
+               '2022-07','2022-08','2022-09','2022-10','2022-11','2022-12',
+		      ]
+
+# collected from RT tickets, per month/year for all requests
 all2019 = [125, 95,208,175,128, 97,148,157,121,148, 76, 73]
 all2020 = [138,118,125,160,116,103,105,117,113,108,135,112]
 all2021 = [228,163,136,157, 83,140,117, 81, 88,146,110, 58]
-all2022 = [123, 88, 80, 77, 88, 95, 67]
+all2022 = [123, 88, 80, 77, 88, 95, 67,100,168]
 
+# collected from RT tickets, per month/year for sw related requests
 sw2019  = [18,17,20,20,23,25,29,35,27,30,10,11] 
 sw2020  = [19,23,11,25,18,16,11,15,23,11,23,20] 
 sw2021  = [28,22,21,16,10,15,25,10, 7,19,13, 8]
-sw2022  = [13,12,10,9,17,12,6]
+sw2022  = [13,12,10, 9,17,12, 6,10,26]
 
 # set generic plot params
 params = {"axes.titleweight":"bold", 
           "figure.facecolor": (1.0, 1.0, 1.0, 1.0),
           "axes.facecolor":(1.0, 1.0, 1.0, 1.0),
           "axes.titlepad": 18,              # vertical space for plot title
-          'axes.titlecolor':'royalblue',    # title color
+          'axes.titlecolor':'steelblue',    # title color
           'axes.titleweight': 'bold',       # title weight
           'axes.titlesize': 'large',        # title size
-          "axes.labelcolor":'royalblue',    # x,y-axes titles color
+          "axes.labelcolor":'steelblue',    # x,y-axes titles color
           "axes.labelsize" : "12",          # x,y-axes size
 		  'figure.subplot.bottom': 0.18,    # space below x-axis title
 }
@@ -47,17 +60,8 @@ def printAllRequests():
 
     # points and labels for x-axis
     total_m = len(y1) + 1
-    #total_m = len(sw2019) + len(sw2020) + len(sw2021) + 1
-    x = np.array(range(1,total_m)) #  months for 2019-2020-2021 (not full)
-    xlabels = ['2019-01','201902','2019-03','2019-04','2019-05','2019-06',
-               '2019-07','2019-08','2019-09','2019-10','2019-11','2019-12',
-               '2020-01','2020-02','2020-03','2020-04','2020-05','2020-06',
-		       '2020-07','2020-08','2020-09','2020-10','2020-11','2020-12',
-               '2021-01','2021-02','2021-03','2021-04','2021-05','2021-06',
-               '2021-07','2021-08','2021-09','2021-10','2021-11','2021-12',
-               '2022-01','2022-02','2022-03','2022-04','2022-05','2022-06',
-			   '2022-07',
-		      ]
+    x = np.array(range(1,total_m)) #  months for 2019-2022
+    xlabels = monthLabels[:len(x)] #  labels for months
 
     # smooth data over 300 points, this replaces 
     # obsolete python2 scipy.interpolate.spline
@@ -69,44 +73,62 @@ def printAllRequests():
 
     # set symbols and lines 
     c1 = 'crimson'
-    c2 = 'royalblue'
-    alpha = 0.4    # alpha
+    c2 = 'dodgerblue'
+    alpha = 0.8    # alpha
     marker = 'o'   # marker type circle
-    msize = 5      # marker size
+    msize = 4      # marker size
 
     # plot data for all tickets 
-    plt.plot(x_smooth,y2_smooth, label='all tickets', color=c2)
+    plt.plot(x_smooth,y2_smooth, label='All tickets', color=c2)
     plt.plot(x, y2, marker, markersize=msize, color=c2, alpha=alpha)
 
     # plot data for sw tickets 
-    plt.plot(x_smooth,y1_smooth, label='software tickets', color=c1)
+    plt.plot(x_smooth,y1_smooth, label='Software tickets', color=c1)
     plt.plot(x, y1, marker, markersize=msize, color=c1, alpha=alpha)
 
     # set plot properties
     plt.title("RT tickets")
     plt.xlabel("Time")
-    plt.ylabel("Number of requests")
-    plt.xticks(x-1, xlabels, rotation=15, fontsize=9)
+    plt.ylabel("Number of tickets")
+    plt.xticks(x, xlabels, rotation=45, fontsize=9)
     yticks = range(1,int(max(y2)/10+5))
     yticks = np.asarray(yticks) * 10
     plt.yticks(yticks)
-    plt.grid(True)
-    plt.xlim(x[0]-0.25, x[-1]+0.25)
+    plt.grid(True, linestyle=":")
+    plt.xlim(x[0]-1, x[-1]+1)
     plt.ylim(0, (max(y2)/10+1)*10)
     ytick_spacing = 20
     plt.gca().yaxis.set_major_locator(ticker.MultipleLocator(ytick_spacing))
     plt.gca().yaxis.set_minor_locator(ticker.MultipleLocator(5))
 
     # make every n-th label visible on xaxis
-    nvis = 4
-    visible_labels = [lab for lab in plt.gca().get_xticklabels() if lab.get_visible() is True and lab.get_text() != '']
+    nvis = 3
+    xx = []
     for i in range(len(x)):
-        if x[i] % nvis : plt.setp(visible_labels[i], visible=False)
-    plt.legend(loc="best") # plot legend
+        if x[i] % nvis  == 0:
+            xx.append(x[i])
+    plt.gca().set_xticks( xx )
+
+	# plot legend
+    plt.legend(loc="best")
     
-    # show and save#plt.show()
+	# plot text for OS change 2022-09
+    # set a1,a2,b1,b2 for visual best
+    a1 = x[43] # Aug 2022, change OS
+    a2 = a1
+    b1 = 1
+    b2 = 180
+    plt.plot([a1,a2], [b1,b2], ":", color="crimson")
+    plt.text(a2-5, b2+5, s="OS change", fontsize=10, color="crimson" )
+
+    # show and save plt.show()
     plt.savefig("%s.png" % name)
     plt.close(1)
+
+    # another way of  showing not every label on x-axis, more compelx
+    #visible_labels = [lab for lab in plt.gca().get_xticklabels() if lab.get_visible() is True and lab.get_text() != '']
+    #for i in range(len(x)):
+    #    if x[i] % nvis : plt.setp(visible_labels[i], visible=False)
 
     # handle in params or plt.subplots_adjust(bottom=0.18)  # gives space below xaxis title
     # print (plt.rcParams.keys()) # how to get all params names
@@ -123,13 +145,13 @@ def printSwRequests():
     
     # points and labels for x-axis
     x = np.array(range(1,13)) #  months 1:12
-    xlabels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    xlabels = monthNames
     
     # bars colors by year
     c1 = 'darkviolet'     # 2019
     c2 = 'deepskyblue'    # 2020
-    c3 = 'crimson'        # 2021
-    c4 = 'orange'         # 2022
+    c3 = 'orange'         # 2021
+    c4 = 'crimson'        # 2022
     
     # plot data
     fig, ax = plt.subplots()
@@ -145,19 +167,29 @@ def printSwRequests():
     plt.xticks(x+width*1.5, xlabels)
     yticks = range(1,int(max(y1+y2+y3+y4)/5+2))
     yticks = np.asarray(yticks) * 5
+    print (yticks)
     plt.yticks(yticks)
-    plt.grid(axis='y', alpha=1.0)
+    plt.grid(axis='y', linestyle=":", alpha=1.0)
     plt.xlim(x[0]-0.5, x[-1]+1)
-    plt.title("RT software requests")
+    plt.title("RT software related tickets")
     plt.xlabel("Time")
-    plt.ylabel("Number of requests")
+    plt.ylabel("Number of tickets")
     
     # plot legend
     yl = ["2019 (%d)" % sum(y1),
 	      "2020 (%d)" % sum(y2),
 		  "2021 (%d)" % sum(y3),
 		  "2022 (%d)" % sum(y4)]
-    plt.legend(yl)
+    plt.legend(yl,loc=2) # location upper left
+
+	# plot text for OS change 2022-09
+    # set a1,a2,b1,b2 for visual best
+    a1 = x[8]+width*3
+    a2 = a1
+    b1 = y4[8]+0.1
+    b2 = b1 + 15
+    plt.plot([a1,a2], [b1,b2], ":", color="crimson")
+    plt.text(a2-1, b2+width, s="OS change", fontsize=10, color="crimson" )
     
 	# This adds a number above the bar, hard to read when stacked
     #ax.bar_label(b1, padding=3)
