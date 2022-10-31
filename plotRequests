@@ -165,12 +165,12 @@ def printSwRequests():
     
     # set plot properties
     plt.xticks(x+width*1.5, xlabels)
-    yticks = range(1,int(max(y1+y2+y3+y4)/5+2))
+    yticks = range(1,int(max(y1+y2+y3+y4)/5+3)) # add extra 3 for legend, text
     yticks = np.asarray(yticks) * 5
-    print (yticks)
     plt.yticks(yticks)
     plt.grid(axis='y', linestyle=":", alpha=1.0)
     plt.xlim(x[0]-0.5, x[-1]+1)
+    plt.ylim(0, max(yticks))
     plt.title("RT software related tickets")
     plt.xlabel("Time")
     plt.ylabel("Number of tickets")
@@ -189,7 +189,7 @@ def printSwRequests():
     b1 = y4[8]+0.1
     b2 = b1 + 15
     plt.plot([a1,a2], [b1,b2], ":", color="crimson")
-    plt.text(a2-1, b2+width, s="OS change", fontsize=10, color="crimson" )
+    plt.text(a2-1, b2+1, s="OS change", fontsize=10, color="crimson" )
     
 	# This adds a number above the bar, hard to read when stacked
     #ax.bar_label(b1, padding=3)
