@@ -5,6 +5,10 @@
 # Arguments:  list of files to process, if empty use all /var/log/module-hpc* files
 
 import sys
+if sys.version_info < (3,8):
+    str = "Please load  one of the available python3 modules."
+    print (str)
+    sys.exit(0)
 import os
 from collections import defaultdict
 from getModInfo import ModInfo
@@ -159,7 +163,7 @@ class  FileParser:
         data += [0.1] * len(self.unused)
 
         x = data
-        ylog = np.log10(data)
+        ylog = np.log10(np.clip(data, 0.1, None))
 
         bins=[-1,0,1,2,3,4,5,6]
         plt.figure(1)
@@ -189,6 +193,7 @@ class  FileParser:
         self.usageGraph()
         
 ##### Run from a command line #####
+
 if __name__ == "__main__":
     app = FileParser(sys.argv)
     app.run()
