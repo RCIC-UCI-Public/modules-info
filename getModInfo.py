@@ -138,6 +138,7 @@ class ModInfo:
         self.lines = error.decode('utf-8').splitlines()
 
         for l in self.lines:
+            l = l.rstrip(" <L>")                # strip highliting of loaded module
             if match(r'^\s*$', l):              # skip empty lines
                 continue 
             if l[-1] == ":" :                   # add module type
