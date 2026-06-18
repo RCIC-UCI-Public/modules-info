@@ -3,28 +3,35 @@ Scripts for parsing modules information on a cluster.
 
 ## Requirements
 
-Python scripts were tested with python from anaconda/3.6-4.3.1
-Any version of python 3 will work provided that there are
-modules installed:
+Python scripts were tested with python 3 (load modules).
+Any system version of python 3 will work provided that there are
+pytohn modules installed:
 - graphviz
 - itertools
+- matplotlib
 
-For the examples below assume messages-DATE\*.gz fles are in backup/
+For the examples below assume module-hpc.log-DATE.gz fles are in backup/
 
 ## Using scripts
+
+All scripts should be in the same directory.
 
 1. **parseMod**     
 
    Requirements: 
    - imports  classes from getModinfo.py
    
-   Parse files provided on a command line and find how many times environment modules were loaded.
-   If none provided, will parse /var/log/messages\* files. The output contains 
-   - for each used module: a module name and a count of times  it was loaded 
-   - a list of modules that were not loaded.
+   Purpose: parse files provided on a command line and find how many times any 
+   environment modules were loaded.
+   If none provided, will parse /var/log/module-hpc.log-DATE.gz files. 
+
+   USAGE:  parse FILEs provided on a command line and find how many times modules were loaded.
+   If none provided, will parse /var/log/module-hpc.DATE.gz files. The output contains per each used
+   module a module name and a count of times loaded and a list of modules that were not loaded.
+   Creates a pie-chart of modules usage as dot-graphs/usageStats.png.
    Output is an ascii file, naming schema  out-parsemod-YYYYMMDD
 
-   Example: run script on all modules-DATE files and redirect output in a file
+   Example: run script on all module log files  in backups/ 
    ```bash
    ./parseMod -h
    ./parseMod backups/modules* 
@@ -53,11 +60,11 @@ For the examples below assume messages-DATE\*.gz fles are in backup/
 
 1. **getModInfo.py**
    
-   Collect information about modules installed on the host using `modules avail`. Checks available
+   USAGE: Collect information about modules installed on the host using 'modules avail'. Checks available
    modules, parses their module files, extracts info about logging, name and loaded modules for each
-   category of modules (per MODULEPATH entries). Called as a python module from `parseMod` or `modGraph`.
+   category of modules (per MODULEPATH entries). Called as a python module from parseMod and modGraph.
    When run on a command line, just prints number of modules by category and total number on stdout.
-   
+
    Example: 
    ```bash
    ./getModInfo.py -h
@@ -104,8 +111,8 @@ For the examples below assume messages-DATE\*.gz fles are in backup/
    
    Process one or two files with info about modules usage and print a line by
    line comparison of what modules are used and how many times. In case of one
-   file  values for just that files are listed.  Files are the output of parseMod 
-   (abridged). Mark modules used <50 times for removal.  Print result on stdout.
+   file  values for just that files are listed.  Files are the output of parseMod.
+   Mark modules used <50 times for removal.  Print result on stdout.
 
    Example:
    ```bash
@@ -135,13 +142,15 @@ For the examples below assume messages-DATE\*.gz fles are in backup/
 
 1  **stats**
 
-   For output of parseMod and modGraph.py by year:
+   For legacy output of parseMod and modGraph.py by year:
 
    - 2021-usage output of parseMod
    - dot-graphs-2021/usageStats output of parseMod 
    - dot-graphs-2021/  output of modGraph.py
 
 ## No longer used  scripts  and files
+
+Left as examples.
 
 1. **examples/**
 
@@ -171,5 +180,4 @@ For the examples below assume messages-DATE\*.gz fles are in backup/
 
    Initial old  record of what next software to install.
    Obsoleted by next-lab-software in admixbuilder repo
-
 
